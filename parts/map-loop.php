@@ -58,7 +58,8 @@ $prop_loc        = get_location($post);
                         ?>
                         <li class="level-item">
                             <span class="icon-text">
-                                <span class="icon material-icons icon-small" title="<?php echo sprintf(ngettext("%d Dormitorio", "%d Dormitorios", $dorms), $dorms); ?>">
+                                <?php $title = sprintf("%d Dormitorios", $dorms); ?>
+                                <span class="icon material-icons icon-small" title="<?= $title ?>">
                                     hotel
                                 </span>
                                 <span><?php echo sprintf("%d", $dorms); ?></span>
@@ -71,7 +72,8 @@ $prop_loc        = get_location($post);
                         ?>
                         <li class="level-item">
                             <span class="icon-text">
-                                <span class="icon material-icons icon-small" title="<?php echo sprintf(ngettext("%d Baño", "%d Baños", $baths), $baths);?>">
+                                <?php $title = sprintf("%d Baños", $baths); ?>
+                                <span class="icon material-icons icon-small" title="<?= title ?>">
                                     bathtub
                                 </span>
                                 <span><?= sprintf("%d", $baths);?></span>

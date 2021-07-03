@@ -42,7 +42,8 @@ $prop_bathrooms    = $data['_prop_bathrooms'][0];
                         $prop_dormrooms = 0;
                     endif;
                     $dorms = intval($prop_dormrooms);
-                    echo sprintf(ngettext("%d Dormitorio", "%d Dormitorios", $dorms), $dorms);
+                    echo sprintf("%d Dormitorios", $dorms);
+                    //echo sprintf(ngettext("%d Dormitorio", "%d Dormitorios", $dorms), $dorms);
                 ?>
                 </span>
             </span>
@@ -61,7 +62,8 @@ $prop_bathrooms    = $data['_prop_bathrooms'][0];
                         //    $prop_bathrooms = 0;
                         //endif;
                         $baths = intval($prop_bathrooms);
-                        echo sprintf(ngettext("%d Baño", "%d Baños", $baths), $baths);
+                        //echo sprintf(ngettext("%d Baño", "%d Baños", $baths), $baths);
+                        echo sprintf("%d Baños", $baths);
                     ?>
                 </span>
             </span>

@@ -108,7 +108,8 @@ $statuses        = get_the_terms($post->ID, 'status')[0];
                                         ?>
                                         <li class="level-item">
                                             <span class="icon-text">
-                                                <span class="icon material-icons icon-small" title="<?php echo sprintf(ngettext("%d Dormitorio", "%d Dormitorios", $dorms), $dorms); ?>">
+                                                <?php $title = sprintf("%d Dormitorios", $dorms); ?>
+                                                <span class="icon material-icons icon-small" title="<?= $title ?>">
                                                     hotel
                                                 </span>
                                                 <span><?php echo sprintf("%d", $dorms); ?></span>
@@ -121,7 +122,8 @@ $statuses        = get_the_terms($post->ID, 'status')[0];
                                         ?>
                                         <li class="level-item">
                                             <span class="icon-text">
-                                                <span class="icon material-icons icon-small" title="<?php echo sprintf(ngettext("%d Baño", "%d Baños", $baths), $baths);?>">
+                                                <?php $title = sprintf("%d Baños", $baths); ?>
+                                                <span class="icon material-icons icon-small" title="<?= $title ?>">
                                                     bathtub
                                                 </span>
                                                 <span><?= sprintf("%d", $baths);?></span>

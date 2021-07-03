@@ -1,0 +1,81 @@
+//main: theme.scss
+html{
+    font-size: 14px;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*
+.navbar{
+z-index: 100;
+}
+.navbar.is-transparent{
+background: transparent;
+.navbar-item{
+color: $white;
+}
+}
+.navbar-item#logo{
+background: $white
+}
+*/
+
+.search-panel{
+    padding: .75rem;
+    background: $grey-lightest;
+    //background: $dark;
+    .label{
+        //color: $light;
+    }
+}
+
+
+/* styling */
+#page-wrap {
+    background: #fafafa;
+}
+.card-header{
+    box-shadow: unset;
+}
+.card-header-title{
+    padding: 1.5rem 1.5rem .75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-footer-padding{
+    padding: .75rem 1.5rem;
+}
+
+.is-sticky-container{
+    position: relative;
+}
+.is-sticky{
+    position: sticky;
+    top: 10;
+    .admin-bar &{
+        top: 42px;
+    }
+}
+
+
+#footer{
+    padding: 1.5rem 0;
+    background: $grey-lightest;
+}
+#copyright{
+    &:empty{
+        display: none;
+    }
+    padding: .75rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: -1.5rem;
+    background: $grey-light;
+    color: #fff;
+    .loungelogo img{
+        line-height: 40px;
+        vertical-align: middle;
+    }
+}

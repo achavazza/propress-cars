@@ -44,6 +44,14 @@ if ( file_exists(CMB_PATH . '/init.php' ) ) {
     //Attached agents
     require_once (CMB_PLUGINS . '/CMB2-attached-posts/cmb2-attached-posts-field.php');
 
+    //CMB2 Tags
+    //https://github.com/florianbeck/cmb2-field-type-tags
+    //require_once (CMB_PLUGINS . '/cmb2-field-type-tags/cmb2-field-type-tags.php');
+    require_once (CMB_PLUGINS . '/cmb2-field-type-tags/CMB2-default-tags.php');
+
+    //currency
+    require_once (CMB_PLUGINS . '/CMB2-currency-price-field/CMB2-currency-price-field.php');
+
     //metaboxes list
     //include('inc/custom-metaboxes/contact.php');
     //include('inc/post-types/internal.php');
@@ -56,7 +64,8 @@ add_action( 'admin_enqueue_scripts', 'cmb2_style_fixes');
 
 // post-types & metaboxes
 require_once ('inc/post-types/slides.php');
-require_once ('inc/post-types/propiedad.php');
+//require_once ('inc/post-types/propiedad.php');
+require_once ('inc/post-types/vehicle.php');
 //include('inc/post-types/propiedad.php');
 require_once ('inc/post-types/agents.php');
 
@@ -102,11 +111,12 @@ require_once 'inc/custom-functions.php';
         }
         return false;
     }
-
+    /*
     if(empty(get_option('tnb_setup_options')['tnb_setup_API'])){
         echo('falta en configuraciones la clave de gmaps');
     }
     define('GMAPS_KEY', get_option('tnb_setup_options')['tnb_setup_API']);
+    */
 
     /*
      * Properly enqueue of styles and scripts
@@ -137,12 +147,13 @@ require_once 'inc/custom-functions.php';
         wp_register_script('siema-init'        , get_template_directory_uri().'/js/plugins/siema-init.js', array('siema'), '1', true);
         wp_register_script('lity'              , get_template_directory_uri().'/js/plugins/lity.js', array('jquery'), '2.4.1', true);
 
-        wp_register_script('infobubble'   , (get_template_directory_uri().'/js/plugins/infobubble.js'), array(), null, true);
-        wp_register_script('initmaps'     , (get_template_directory_uri().'/js/map-search/initmaps.js'), array('infobubble'), '1.0.0', true);
-        wp_register_script('gmaps'        , ('http://maps.google.com/maps/api/js?&key='.GMAPS_KEY.'&callback=initMap'), array('initmaps'), null, true);
+        //maps
+        //wp_register_script('infobubble'   , (get_template_directory_uri().'/js/plugins/infobubble.js'), array(), null, true);
+        //wp_register_script('initmaps'     , (get_template_directory_uri().'/js/map-search/initmaps.js'), array('infobubble'), '1.0.0', true);
+        //wp_register_script('gmaps'        , ('http://maps.google.com/maps/api/js?&key='.GMAPS_KEY.'&callback=initMap'), array('initmaps'), null, true);
         //wp_register_script('gmapscluster' , (''), array('gmaps'), null, true);
-        wp_register_script('map'          , ('http://maps.google.com/maps/api/js?&key='.GMAPS_KEY), array(), null, true);
-        wp_register_script('renderMap'     , (get_template_directory_uri().'/js/map-search/renderMap.js'), array('map', 'infobubble', 'jquery'), '1.0.0', true);
+        //wp_register_script('map'          , ('http://maps.google.com/maps/api/js?&key='.GMAPS_KEY), array(), null, true);
+        //wp_register_script('renderMap'     , (get_template_directory_uri().'/js/map-search/renderMap.js'), array('map', 'infobubble', 'jquery'), '1.0.0', true);
 
         //wp_register_script('scripts'      , get_template_directory_uri().'/js/scripts.js', array('bootstrap', 'jquery'), null, true);
         wp_register_script('scripts'      , get_template_directory_uri().'/js/scripts.js', array('jquery'), null, true);
@@ -206,6 +217,9 @@ require_once 'inc/custom-functions.php';
     require_once 'inc/the_search_string.php';
     require_once 'inc/pagenavi.php';
     require_once 'inc/breadcrumb.php';
+
+    //require_once(get_template_directory().'/inc/price-block.php');
+    require_once 'inc/price-block.php';
 
     /*
      * Cunstom frontend functions
@@ -343,7 +357,7 @@ require_once 'inc/custom-functions.php';
      }
     add_action('widgets_init', 'unregister_default_wp_widgets', 1);
 
-    //require_once ('inc/widgets/widget-example.php');
+    require_once ('inc/widgets/widget-example.php');
     require_once ('inc/widgets/viewed-properties.php');
     require_once ('inc/widgets/widget-agent.php');
     require_once 'inc/renderMap.php';

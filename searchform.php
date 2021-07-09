@@ -12,7 +12,7 @@
                 $inputContent .= '<div class="control">';
                 $inputContent .= '<input class="input" type="text" id="s" name="s" value="'. get_search_query() .'" placeholder="Buscar"/>';
                 //$inputContent .= '<input type="hidden" name="post_type" value="propiedad" />';
-                $inputContent .= '<input type="hidden" name="search" value="advanced">';
+                //$inputContent .= '<input type="hidden" name="search" value="advanced">';
                 $inputContent .= '</div>';
             /*
             if($_GET['search'] == 'advanced'){

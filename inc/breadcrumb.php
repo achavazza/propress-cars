@@ -10,6 +10,7 @@ function the_breadcrumb() {
 			//echo '<li>';
 			//the_category(' </li><li> ');
 		if (is_single()) {
+            /*
             $tax      = 'operacion';
             $term     = get_the_terms($post->ID,$tax)[0];
             $termlink = get_term_link($term->term_id,$tax);
@@ -20,6 +21,7 @@ function the_breadcrumb() {
                     echo '<a href="'.$termlink.'" title="'.$term->name.'">'.$term->name.'</a>';
                 echo "</li>";
             }
+            */
             echo '<li class="is-active">';
 			echo '<a href="#">';
 			    the_title();

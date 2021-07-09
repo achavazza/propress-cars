@@ -1,4 +1,4 @@
-alert('init');
+//alert('init');
 if (typeof loop !== 'undefined') {
     loop = loop
 }else{

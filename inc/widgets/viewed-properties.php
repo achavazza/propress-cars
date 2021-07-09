@@ -75,7 +75,7 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 		);
 
 		self::$defaults = array(
-			'title' => 'Propiedades vistas',
+			'title' => __('Propiedades vistas', 'tnb'),
 			'desc'  => '',
 			'posts_num'  => 3,
             //'image' => '',
@@ -201,10 +201,10 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 
 		// If $widget is empty, rebuild our cache
 		if ( empty( $widget ) ) {
-            $values = explode(";", $_COOKIE['wpb_visited_props']);
             $widget = '';
+            $values = explode(";", $_COOKIE['wpb_visited_props']);
             $post_num = intval($instance['posts_num']);
-
+            
         	$widget_query = new WP_Query([
 				'post_type'           => 'propiedad',
         		'posts_per_page'      => $post_num,
@@ -289,13 +289,9 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 
 			// Before widget hook
 
-
 			// After widget hook
-
 			wp_cache_set( $atts['cache_id'], $widget, 'widget', WEEK_IN_SECONDS );
-
 		}
-
 		return $widget;
 	}
 
@@ -323,8 +319,8 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 		$cmb2 = $this->cmb2();
 
 		$cmb2->object_id( $this->option_name );
-		//CMB2_hookup::enqueue_cmb_css();
-		//CMB2_hookup::enqueue_cmb_js();
+		CMB2_hookup::enqueue_cmb_css();
+		CMB2_hookup::enqueue_cmb_js();
 		$cmb2->show_form();
 	}
 

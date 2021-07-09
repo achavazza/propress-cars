@@ -1,3 +1,4 @@
+
 .widget-content .cmb-th, .widget-content .cmb-td{
     float: none;
     padding: 0;
@@ -12,4 +13,14 @@
 }
 .widget-content .cmb2-wrap .regular-text{
     width: 400px;
+}
+
+.cmb2-wrap .cmb2_select {
+    margin-top: 0 !important;
+}
+
+.cmb-type-group .cmb2-wrap > .cmb-field-list > .cmb-row,
+.cmb2-postbox .cmb2-wrap > .cmb-field-list > .cmb-row {
+    padding: 1em 0 !important;
+    margin-bottom: 0;
 }

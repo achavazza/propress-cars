@@ -1,0 +1,77 @@
+.cmb-type-tags .cmb2-metabox-description,
+.cmb-type-tags-sortable .cmb2-metabox-description {
+	padding-top: 0.5em;
+	padding-bottom: 1em;
+}
+.cmb-type-tags .hide-if-no-js,
+.cmb-type-tags-sortable .hide-if-no-js {
+	display:none;
+}
+.cmb-type-tags-sortable span {
+	float:none;
+}
+.cmb-type-tags-sortable span:hover {
+	/*font-weight: 700;*/
+    background: rgba(34, 113, 177, .2);
+	cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.cmb-type-tags-sortable span.ui-sortable-helper {
+	cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+
+.cmb-type-default-tags .tagchecklist,
+.cmb-type-tags-sortable .tagchecklist{
+    display: flex;
+    margin-left: 0;
+    margin-top: 2px;
+}
+.cmb-type-default-tags .tagchecklist li,
+.cmb-type-tags-sortable .tagchecklist span{
+    /*flex: 0 auto;*/
+    display: flex;
+    align-items: center;
+    /*line-height: 1.8;*/
+    position: relative;
+    padding: 2px 10px 2px 2px;
+    border-radius: 2px;
+    /* padding-left: 20px;*/
+}
+.cmb-type-default-tags .tagchecklist{
+    flex-flow: column;
+}
+.cmb-type-default-tags .tagchecklist li{
+    /*flex: 0 auto;*/
+    display: flex;
+    align-items: center;
+    /*line-height: 1.8;*/
+    position: relative;
+    padding: 0;
+    border-radius: 2px;
+    /* padding-left: 20px;*/
+}
+
+.cmb-type-default-tags .tagchecklist .ntdelbutton,
+.cmb-type-tags-sortable .tagchecklist .ntdelbutton{
+    left: 0;
+    position: relative;
+    margin: 0;
+}
+.cmb-type-default-tags .tagchecklist .ntdelbutton .remove-tag-icon,
+.cmb-type-tags-sortable .tagchecklist .ntdelbutton .remove-tag-icon{
+    pointer-events: none;
+}
+
+#poststuff .ajaxtag.hide-if-no-js {
+    display: inline-block !important;
+}
+#poststuff .tagsdiv .howto{
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-left: 20px;
+}

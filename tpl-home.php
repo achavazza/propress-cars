@@ -18,10 +18,10 @@ if($img){
 ?>
 
 <?php include('inc/slider.php'); ?>
-<div class="search-panel block">
-	<div class="container">
+<div class="container">
+    <div class="search-panel">
 		<?php echo get_search_form(); ?>
-	</div>
+    </div>
 </div>
 
 <?php if (have_posts()) : ?>

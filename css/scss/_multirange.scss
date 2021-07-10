@@ -1,0 +1,123 @@
+//main: theme.scss
+@supports (--css: variables) {
+	input[type="range"].multirange {
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+        width: 100%;
+
+        &::-moz-range-thumb {
+            transform: scale(1); /* FF doesn't apply position it seems */
+        }
+        &.original {
+            position: absolute;
+            &::-webkit-slider-thumb {
+                position: relative;
+                z-index: 2;
+            }
+            &::-moz-range-thumb {
+                z-index: 2;
+            }
+            &::-moz-range-track {
+                border-color: transparent; /* needed to switch FF to "styleable" control */
+            }
+        }
+        &.middle {
+            position: absolute;
+            -webkit-appearance: none;
+            &:focus {
+                outline: none;
+            }
+            &::-moz-range-thumb,
+            &::-webkit-slider-thumb {
+                position: relative;
+                z-index: 1;
+                height: 9px;
+                width: var(--size);
+                margin-top: 6px;
+                margin-bottom: 6px;
+                background: transparent;
+                -webkit-appearance: none;
+                cursor: pointer;
+                border: 0;
+            }
+        }
+        &.ghost {
+            position: relative;
+            background: var(--track-background);
+            --track-background: linear-gradient(to right,
+            transparent var(--low), var(--range-color) 0,
+            var(--range-color) var(--high), transparent 0
+            ) no-repeat 0 45% / 100% 40%;
+            --range-color: hsl(190, 80%, 40%);
+
+            &::-webkit-slider-runnable-track,
+            &::-moz-range-track {
+                background: var(--track-background);
+            }
+            &::-webkit-slider-thumb,
+            &::-moz-range-thumb {
+                position: relative;
+                z-index: 2;
+            }
+        }
+	}
+}
+
+/* IE */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+	input[type="range"].multirange {
+		padding: 0;
+		vertical-align: top;
+        &::-ms-track {
+            color: transparent; /* Hide tick marks */
+            background: transparent;
+            border: 0;
+        }
+        &::-ms-fill-lower {
+            background: transparent;
+        }
+        &::-ms-fill-upper {
+            background: transparent;
+        }
+        &.original {
+            position: absolute;
+            &::-ms-track {
+                background: hsl(190, 80%, 40%);
+            }
+            &::-ms-fill-lower {
+                background: #ddd;
+            }
+        }
+        &.middle {
+            position: absolute;
+        }
+        &.ghost {
+            position: relative;
+            &::-ms-fill-upper {
+                background: #ddd;
+            }
+        }
+        /* Switch colors when inputs are switched, see JavaScript */
+        &.switched{
+            &.original{
+                &::-ms-fill-lower {
+                    background: transparent;
+                }
+                &::-ms-fill-upper {
+                    background: #ddd;
+                }
+            }
+            &.ghost{
+                &::-ms-fill-upper {
+                    background: transparent;
+                }
+                &::-ms-fill-lower {
+                    background: #ddd;
+                }
+            }
+        }
+	}
+}

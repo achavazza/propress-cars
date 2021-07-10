@@ -112,21 +112,38 @@ ul.is-unstyled {
 .search-fields{
     $field-distance: .75rem;
 
+    padding: 2.5rem 1rem;
+
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    //align-items: flex-end;
     flex-wrap: wrap;
     /*
     .label{
     display: none;
     }
     */
+    .slider-container{
+        padding: 1rem;
+    }
     .field{
         padding-right: $field-distance;
-        //width: 50%;
         flex: 1;
-        margin-bottom: $field-distance;
+
+
+        margin-bottom: 0;
+        //margin-bottom: $field-distance;
         &.field-search{
             flex-grow: 2;
+        }
+        &.flex-1{
+            flex: 1;
+        }
+        &.flex-2{
+            flex: 2;
+        }
+        &.flex-0{
+            flex: 0;
         }
     }
     .map-search &{

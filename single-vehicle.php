@@ -27,13 +27,15 @@ $prop_link         = get_the_permalink();
 	</div>
 </div>
 
-<div class="block">
-	<div class="container">
-	</div>
-</div>
 <div class="container">
     <?php the_breadcrumb(); ?>
-    <?php include('inc/featured-image.php'); ?>
+</div>
+<div class="featured">
+    <div class="container">
+        <?php include('inc/featured-image.php'); ?>
+    </div>
+</div>
+<div class="container">
 	<div class="columns">
 		<div class="column is-three-quarters">
 
@@ -128,7 +130,12 @@ $prop_link         = get_the_permalink();
                     // detalles
                     // descripcion de servicios y detalles de la propieadd
                     //get_template_part('parts/props/prop','details')
-                    get_template_part('parts/props/prop','interior') 
+                    get_template_part('parts/props/prop','interior')
+                    ?>
+                    <?php
+                    // detalles
+                    // descripcion de servicios y detalles de la propieadd
+                    get_template_part('parts/props/prop','additionals')
                     ?>
 
 				</div>

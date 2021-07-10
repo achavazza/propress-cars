@@ -163,6 +163,19 @@ require_once 'inc/custom-functions.php';
     }
     add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 
+    //wp_register_script('multirange'   , get_template_directory_uri().'/js/multirange.js', null, null, true);
+    //wp_enqueue_script('multirange');
+
+    //wp_register_script('range'   , get_template_directory_uri().'/js/range.js', array('jquery'), null, true);
+    //wp_enqueue_script('range');
+
+    //wp_register_script('multitouchrange'   , get_template_directory_uri().'/js/multitouchrange.js', null, null, true);
+    //wp_enqueue_script('multitouchrange');
+
+    wp_register_script('nouislider'        , get_template_directory_uri().'/js/plugins/nouislider.js', null, null, true);
+    wp_register_script('nouislider-init'   , get_template_directory_uri().'/js/plugins/nouislider-init.js', array('nouislider'), null, true);
+    wp_enqueue_script('nouislider-init');
+
     /* bulma y cf7 */
     /*
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -225,6 +238,7 @@ require_once 'inc/custom-functions.php';
      * Cunstom frontend functions
      * ========================================================================================================
      */
+
     function currency(){
          global $currency;
          $currency = array(
@@ -233,6 +247,24 @@ require_once 'inc/custom-functions.php';
          );
          return $currency;
     }
+    function transmision(){
+        global $transmision;
+        $transmision = array(
+            1 => __('Manual', 'tnb' ),
+            2 => __('Automática', 'tnb' ),
+        );
+        return $transmision;
+    }
+    function combustible(){
+        global $combustible;
+        $combustible = array(
+            1 => __('Nafta', 'tnb' ),
+            2 => __('Diesel', 'tnb' ),
+            3 => __('Eléctico', 'tnb' ),
+        );
+        return $combustible;
+    }
+    /*
     function orientation(){
         global $orientation;
         $orientation = array(
@@ -280,7 +312,7 @@ require_once 'inc/custom-functions.php';
         );
         return $services;
     }
-
+    */
 
 
 

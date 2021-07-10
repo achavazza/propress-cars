@@ -109,7 +109,7 @@ function create_vehicle_taxonomies() {
     $args = array(
         'hierarchical'          => false,
         'labels'                => $labels,
-        'show_ui'               => true,
+        'show_ui'               => false,
         //'show_in_quick_edit'    => false,
         //'meta_box_cb'           => false,
         'show_admin_column'     => true,
@@ -257,7 +257,7 @@ function create_vehicle_taxonomies() {
     $args = array(
         'hierarchical'          => false,
         'labels'                => $labels,
-        'show_ui'               => true,
+        'show_ui'               => false,
         //'show_in_quick_edit'    => false,
         //'meta_box_cb'           => false,
         'show_admin_column'     => true,
@@ -297,8 +297,8 @@ function create_vehicle_taxonomies() {
         'hierarchical'          => false,
         'labels'                => $labels,
         'show_ui'               => true,
-        'show_in_quick_edit'    => false,
-        'meta_box_cb'           => false,
+        //'show_in_quick_edit'    => false,
+        //'meta_box_cb'           => false,
         'show_admin_column'     => true,
         'show_in_nav_menus'     => true,
         //'update_count_callback' => '_update_post_term_count',
@@ -334,8 +334,8 @@ function create_vehicle_taxonomies() {
         'hierarchical'          => false,
         'labels'                => $labels,
         'show_ui'               => true,
-        'show_in_quick_edit'    => false,
-        'meta_box_cb'           => false,
+        //'show_in_quick_edit'    => false,
+        //'meta_box_cb'           => false,
         'show_admin_column'     => true,
         'show_in_nav_menus'     => true,
         //'update_count_callback' => '_update_post_term_count',
@@ -556,26 +556,16 @@ function cmb2_prop_base() {
     /* CMB ==================================== */
     $cmb = new_cmb2_box( array(
         'id'            => 'op_metabox',
-        'title'         => __( 'Detalles de la operación', 'tnb' ),
+        'title'         => __( 'Detalles de la publicación', 'tnb' ),
         'object_types'  => array( 'vehicle' ), // post type
         //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
-        'context'       => 'normal',
-        'priority'      => 'high',
+        'context'       => 'side',
+        //'context'       => 'normal',
+        'priority'      => 'default',
+        //'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
-    ) );
-
-    $cmb->add_field( array(
-        'name'     => 'Formato',
-        'desc'     => 'Auto, Camioneta, Deportivo, Pick-Up, etc.',
-        'id'       => $prefix .'format',
-        'taxonomy' => 'format',
-        'type'     => 'taxonomy_select',
-        // Optional:
-        'options' => array(
-            'no_terms_text' => __('Lo sentimos, no encontramos ningun formato, agregue uno')
-        ),
     ) );
     /*
     $cmb->add_field( array(
@@ -608,11 +598,6 @@ function cmb2_prop_base() {
         ),
     ) );
     $cmb->add_field( array(
-        'name'              => 'Motor',
-        'id'                => $prefix .'motor',
-        'type'              => 'text',
-    ) );
-    $cmb->add_field( array(
         'name'     => 'Valor Venta',
         //'desc'     => '(Solo se muestra en caso de que la operación sea venta)',
         'id'       => $prefix .'price_sale',
@@ -626,6 +611,12 @@ function cmb2_prop_base() {
         //'escape_cb'       => 'intval',
         'type'             => 'text_money',
         'before_field'     => 'U$D',
+    ) );
+    $cmb->add_field( array(
+        'name'             => 'Destacado',
+        'id'               => $prefix .'featured',
+        'desc'             => 'Marcar como unidad destacada',
+        'type'             => 'checkbox',
     ) );
 }
 
@@ -671,6 +662,7 @@ function cmb2_prop_details() {
     $prefix = '_prop_';
 
     /* CMB3 ==================================== */
+
     $cmb3 = new_cmb2_box( array(
         'id'            => 'detail_metabox',
         'title'         => __( 'Detalles del vehículo', 'tnb' ),
@@ -681,25 +673,66 @@ function cmb2_prop_details() {
         'show_names'    => true, // Show field names on the left
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
-    ) );
+    ));
     $cmb3->add_field( array(
         'name'              => 'Condición',
         'id'                => $prefix .'status',
+        'desc'              => __('Nuevo, Usado, etc', 'tnb'),
         'taxonomy'          => 'status',
         'type'              => 'taxonomy_select',
         // Optional:
         'options' => array(
-            'no_terms_text' => __('Lo sentimos, no encontramos un tipo de propiedad, agregue una') // Change default text. Default: "No terms"
+            'no_terms_text' => __('No encontramos condiciones de venta, agregue una', 'tnb') // Change default text. Default: "No terms"
         ),
     ) );
-    /*
     $cmb3->add_field( array(
-        'name'             => 'Destacado',
-        'id'               => $prefix .'featured',
-        'desc'             => 'Marcar como propiedad destacada',
-        'type'             => 'checkbox',
+        'name'     => 'Formato',
+        'desc'     => 'Auto, Camioneta, Deportivo, Pick-Up, etc.',
+        'id'       => $prefix .'format',
+        'taxonomy' => 'format',
+        'type'     => 'taxonomy_select',
+        // Optional:
+        'options' => array(
+            'no_terms_text' => __('No encontramos ningun formato, agregue uno', 'tnb')
+        ),
     ) );
-    */
+    $cmb3->add_field( array(
+        'name'              => 'Motor',
+        'id'                => $prefix .'motor',
+        //'id'                => $prefix .'motor',
+        'type'              => 'text_small',
+        'after_field'       => ' cm<sup>3</sup>',
+        'attibutes'         => array(
+            'placeholder' => '1600',
+        )
+    ));
+    $cmb3->add_field( array(
+        'name'              => 'Año',
+        'id'                => $prefix .'año',
+        'type'              => 'text_small',
+        'attibutes'         => array(
+            'placeholder'   => '2019',
+        )
+    ));
+    $cmb3->add_field( array(
+    	'name'              => 'Transmisión',
+    	'id'                => $prefix .'transmision',
+    	'type'              => 'select',
+        'select_all_button' => true,
+        //'default'         => set_default_transmision(true),
+    	'options'           => transmision(),
+        //'default_cb'        => 'set_default_services',
+    ));
+    $cmb3->add_field( array(
+    	'name'              => 'Combustible',
+    	'id'                => $prefix .'combustible',
+    	'type'              => 'select',
+        'select_all_button' => true,
+        //'default'         => set_default_combustible(true),
+    	'options'           => combustible(),
+        //'default_cb'        => 'set_default_services',
+    ));
+
     $cmb3->add_field( array(
         'name'        => 'Interior',
         'id'          => $prefix . 'interior',
@@ -732,7 +765,7 @@ function cmb2_prop_details() {
     	'type'              => 'taxonomy_multicheck',
         'select_all_button' => true,
         'text'              => array(
-            'no_terms_text' => __('Lo sentimos, no encontramos ningún tipo de financiación') // Change default text. Default: "No terms"
+            'no_terms_text' => __('No encontramos ningún tipo de financiación') // Change default text. Default: "No terms"
         ),
         'remove_default' => 'true',
         //'default'           => set_default_services(true),
@@ -823,9 +856,7 @@ function cmb2_prop_details() {
 	    ),
         'options_cb' => 'get_service_list'
     ));
-    */
-
-    /*$cmb3->add_field( array(
+    $cmb3->add_field( array(
     	'name'              => 'Servicios',
     	'id'                => $prefix .'services',
     	'type'              => 'multicheck',
@@ -893,8 +924,12 @@ function cmb2_gallery() {
         'title'         => __( 'Galería de imágenes', 'tnb' ),
         'object_types'  => array( 'vehicle' ), // post type
         //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
-        'context'       => 'normal',
+        //'context'       => 'normal',
+        //'priority'      => 'low',
+        'context'       => 'side',
+        //'context'       => 'normal',
         'priority'      => 'low',
+        //'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default

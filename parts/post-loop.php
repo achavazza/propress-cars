@@ -1,23 +1,33 @@
 <?php
 //grab data
-$data            = get_post_meta($post->ID);
+
 
 $prop_title      = get_the_title();
 $prop_img        = get_the_post_thumbnail_url(null, 'large');
 $default         = get_the_post_thumbnail($post->ID, 'medium');
 $thumb           = empty($prop_img) ? $default : $prop_img;
 
-$prop_address    = $data['_prop_address'][0];
-$prop_extra      = $data['_prop_extra'][0];
-$prop_feat       = $data['_prop_featured'][0];
-
 $prop_link       = get_the_permalink();
-$mapGPS          = get_post_meta($post->ID, '_prop_map', true);
 
-$prop_rooms      = $data['_prop_rooms'][0];
-$prop_sup        = $data['_prop_sup'][0];
-$prop_dormrooms  = $data['_prop_dormrooms'][0];
-$prop_bathrooms  = $data['_prop_bathrooms'][0];
+$data            = wp_parse_args(get_post_meta($post->ID), array(
+    '_prop_combustible' => 1,
+    '_prop_transmision' => 1,
+    '_prop_motor'       => 0,
+    '_prop_año'         => 2000,
+));
+
+pr($data);
+//pr($data['_prop_motor'][0]);
+
+//$prop_address    = $data['_prop_address'][0];
+//$prop_extra      = $data['_prop_extra'][0];
+//$prop_feat       = $data['_prop_featured'][0];
+//$mapGPS          = get_post_meta($post->ID, '_prop_map', true);
+
+//$prop_rooms      = $data['_prop_rooms'][0];
+//$prop_sup        = $data['_prop_sup'][0];
+//$prop_dormrooms  = $data['_prop_dormrooms'][0];
+//$prop_bathrooms  = $data['_prop_bathrooms'][0];
 //$prop_garage     = $data['_prop_garage'][0];
 //$prop_time       = $data['_prop_time'][0];
 
@@ -28,10 +38,10 @@ $prop_bathrooms  = $data['_prop_bathrooms'][0];
 //$prop_currency     = currency()[$data['_prop_currency'][0]];
 //$cur_symbol      = $prop_currency ? '$' : 'U$S';
 
-$type            = get_the_terms($post, 'tipo')[0];
-$ops             = get_the_terms($post->ID, 'operacion');
-$prop_loc        = get_location($post);
-$statuses        = get_the_terms($post->ID, 'status')[0];
+//$type            = get_the_terms($post, 'tipo')[0];
+//$ops             = get_the_terms($post->ID, 'operacion');
+//$prop_loc        = get_location($post);
+//$statuses        = get_the_terms($post->ID, 'status')[0];
 
 //var_dump($prop_sale);
 
@@ -82,7 +92,9 @@ $statuses        = get_the_terms($post->ID, 'status')[0];
                         <?php
                         //$args = $data;
                         //pase todos los contenidos a un template
-                        get_template_part('parts/price','block', $data) ?>
+                        //get_template_part('parts/price','block', $data)
+                        echo price_block($post->ID);
+                        ?>
                     </a>
                 </div>
             </div>

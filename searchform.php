@@ -1,4 +1,5 @@
 <form action="<?php bloginfo('siteurl'); ?>" id="searchform" method="get" class="form">
+    <input type="hidden" name="post_type" value="vehicle" />
     <?php //if(!is_front_page()): ?>
         <?php /*
         <div class="panel-head">
@@ -20,9 +21,9 @@
             }
             */
 
-            echo sprintf('<li class="field field-search">%s</li>', $inputContent);
+            //echo sprintf('<li class="field field-search">%s</li>', $inputContent);
 
-            $taxonomies = array('tipo','operacion','location','features');
+            $taxonomies = array('status','brand','format');
             $args = array('order'=>'DESC','hide_empty'=>true);
             echo get_terms_dropdown($taxonomies, $args);
 
@@ -32,140 +33,128 @@
                     $thisQuery = get_query_var($taxonomy);
                     $terms     = get_terms($taxonomy, $args);
                     switch($taxonomy){
-                        case 'tipo';
-                        $empty = 'Elija un Tipo';
-                        $label = 'Propiedad';
-                        $plural = 'propiedades';
-                        //$label = 'Tipo de propiedad';
+                        case 'status';
+                        $empty = 'Condicion';
+                        $label = 'Condicion';
+                        $plural = 'Condiciones';
                         break;
 
-                        case 'operacion';
-                        $empty = 'Elija una Operación';
-                        $label = 'Operación';
-                        $plural = 'Operaciones';
-                        //$label = 'Tipo de operación';
+                        case 'brand';
+                        $empty = 'Marca';
+                        $label = 'Marca';
+                        $plural = 'Marcas';
                         break;
 
-                        case 'features';
-                        $empty = 'Elija una PRestacion';
-                        $label = 'Prestaciones';
-                        $plural = 'Prestaciones';
-                        //$label = 'Tipo de operación';
-                        break;
-
-                        case 'location';
-                        $empty = 'Localidad';
-                        //$empty = 'Elija una Localidad';
-                        $label = 'Localidad';
-                        $plural = 'Localidades';
+                        case 'format';
+                        $empty = 'Formato';
+                        $label = 'Formato';
+                        $plural = 'Formatos';
                         break;
                     }
 
-                    if($taxonomy == 'location'){
-                        $terms = get_terms($taxonomy, array('orderby' => 'term_group', 'hierarchical' => true));
-                        if ( !empty( $terms ) && !is_wp_error( $terms ) ){
-                            //$inputLabel   = '<label for="'.$taxonomy.'">'.$label.'</label>';
-                            $inputContent = '';
-                            $inputContent .= '<label for="'.$taxonomy.'" class="label">'.$label.'</label>';
-                            $inputContent .= '<div class="control">';
-                            $inputContent .= '<span class="select is-fullwidth">';
-                            $inputContent .= '<select id="'.$taxonomy.'" name="'.$taxonomy.'">';
-                            $inputContent .= '<option value="" disabled selected>Localidad</option>';
-                            $inputContent .= '<option value="">Todas las '.$plural.'</option>';
-                            //foreach( get_terms( $taxonomy, array( 'hide_empty' => false) ) as $term ) {
-                            //foreach( get_terms( $taxonomy, array( 'hide_empty' => false, 'parent' => 0 ) ) as $term ) {
-                            $i = 0;
-                            foreach($terms as $term){
-                                $selected = '';
-                                if($thisQuery == $term->slug){
-                                    $selected = 'selected';
-                                }
-                                if ($term->parent == 0 ) {
-                                    if ($i != 0) {
-                                        $inputContent .= '</optgroup>';
-                                    }
-                                    $inputContent .=  '<optgroup label="Localidad '.$term->name.'">';
-                                }
-                                if ($term->parent == 0 ) {
-                                    $inputContent .= '<option name="'.$term->slug.'" value="'.$term->slug.'" '.$selected.'>Ciudad de '.$term->name.'</option>';
-                                }else{
-                                    $inputContent .=  '<option name="'.$term->slug.'" value="'.$term->slug.'" '.$selected.'>'.$term->name.'</option>';
-                                }
-
-                                if($i == count($terms)){
-                                    $inputContent .= '</optgroup>';
-                                }
-                                $i++;
-                            }
-                            $inputContent .= '</span>';
-                            $inputContent .= '</div>';
-
-                            echo sprintf('<li class="field">%s</li>', $inputLabel.$inputContent);
+                    $inputContent = '';
+                    //$inputContent .= '<label for="'.$taxonomy.'" class="label">'.$label.'</label>';
+                    $inputContent .= '<div class="control">';
+                    $inputContent .= '<span class="select is-fullwidth">';
+                    $inputContent .= '<select id="'.$taxonomy.'" name="'.$taxonomy.'">';
+                    $inputContent .= '<option value="" disabled selected>'.$label.'</option>';
+                    //$inputContent .= '<option value="">Todas las '.$plural.'</option>';
+                    //<option value="">'.$empty.'</option>';
+                    foreach($terms as $term){
+                        $selected = '';
+                        if($thisQuery == $term->slug){
+                            $selected = 'selected';
                         }
-                    }else{
-                        //$inputLabel = '<label for="'.$taxonomy.'">'.$label.'</label>';
-
-                        $inputContent = '';
-                        $inputContent .= '<label for="'.$taxonomy.'" class="label">'.$label.'</label>';
-                        $inputContent .= '<div class="control">';
-                        $inputContent .= '<span class="select is-fullwidth">';
-                        $inputContent .= '<select id="'.$taxonomy.'" name="'.$taxonomy.'">';
-                        $inputContent .= '<option value="" disabled selected>'.$label.'</option>';
-                        $inputContent .= '<option value="">Todas las '.$plural.'</option>';
-                        //<option value="">'.$empty.'</option>';
-                        foreach($terms as $term){
-                            $selected = '';
-                            if($thisQuery == $term->slug){
-                                $selected = 'selected';
-                            }
-                            $inputContent .=  '<option name="'.$term->slug.'" value="'.$term->slug.'" '.$selected.'>'.$term->name.'</option>';
-                        }
-                        $inputContent .= '</select>';
-                        $inputContent .= '</span>';
-                        $inputContent .= '</div>';
-                        echo sprintf('<li class="field">%s</li>', $inputLabel.$inputContent);
-
+                        $inputContent .=  '<option name="'.$term->slug.'" value="'.$term->slug.'" '.$selected.'>'.$term->name.'</option>';
                     }
+                    $inputContent .= '</select>';
+                    $inputContent .= '</span>';
+                    $inputContent .= '</div>';
+                    echo sprintf('<li class="field flex-1">%s</li>', $inputLabel.$inputContent);
+
                 }
             }
             ?>
+            <?php /*
             <li class="field">
-                <label for="bedrooms" class="label">Dormitorios</label>
                 <?php
-                function sel($v = null){
-                    if(!empty($v)){
-                        if($_GET['dormitorios'] == $v){
-                            echo 'selected="selected"';
-                        }
-                    }
-                }
+                $price_low  = $price_low ? $_GET['price_low'] : 0;
+                $price_high = $price_high ? $_GET['price_high'] : 100000;
+                //pr($price_low);
+                //pr($price_high);
+                $step = $price_high / 20;
                 ?>
-                <div class="control">
-                <span class="select is-fullwidth">
-                    <select id="bedrooms" name="dormitorios" value="<?php echo $_GET['dormitorios'] ?>">
-                        <option <?php sel() ?> value="">Dormitorios</option>
-                        <option <?php sel(1) ?> value="1">Monoambiente</option>
-                        <option <?php sel(1) ?> value="1">1 Dormitorio</option>
-                        <option <?php sel(2) ?> value="2">2 Dormitorios</option>
-                        <option <?php sel(3) ?> value="3">3 Dormitorios</option>
-                        <option <?php sel(4) ?> value="4">4 Dormitorios</option>
-                    </select>
-                </span>
+                <input type="range" multiple min="<?= $price_low ?>" max="<?= $price_high ?>" step="<?= $step ?>" value="<?php //printf('%s,%s', $price_low, $price_high) ?>" class="" style="--low:0; --high:100%;">
+            </li>
+            */ ?>
+            <li class="field flex-2 is-flex is-flex-direction-column">
+                <label>Rango de precios</label>
+                <div class="slider-container">
+                    <?php
+                    $price_low  = $price_low ? $_GET['price_low'] : 0;
+                    $price_high = $price_high ? $_GET['price_high'] : 100000;
+                    $step = ($price_high - $price_low) / 50;
+                    //echo $step;
+                    ?>
+                    <div id="range-slider"></div>
+        			<input name="price_low"  type="hidden" step="<?= $step  ?>" value="<?= $price_low  ?>" class="example-val" id="lower-value" />
+        			<input name="price_high" type="hidden" step="<?= $step  ?>" value="<?= $price_high ?>" class="example-val" id="upper-value" />
+                </div>
+            </li>
+            <?php /*
+            <li>
+                <div class="wrap" role="group" aria-labelledby="multi-lbl" style="--a: -30; --b: 20; --min: -50; --max: 50">
+                    <?php // <div id="multi-lbl">Multi thumb slider:</div> ?>
+
+                    <?php // <label class="sr-only" for="a">Value A:</label> ?>
+                    <input id="a" type="range" min="-50" value="-30" max="50"/>
+                    <output for="a" style="--c: var(--a)"></output>
+
+                    <?php //<label class="sr-only" for="b">Value B:</label> ?>
+
+                    <input id="b" type="range" min="-50" value="20" max="50"/>
+                    <output for="b" style="--c: var(--b)"></output>
+                </div>
+            </li>
+            */ ?>
+            <?php /*
+            <li class="field">
+                <?php
+                $price_low  = $price_low ? $_GET['price_low'] : 0;
+                $price_high = $price_high ? $_GET['price_high'] : 100000;
+                $step = $price_high / 20;
+                ?>
+                <div slider>
+                 <div>
+                   <div inverse-left style="width:70%;"></div>
+                   <div inverse-right style="width:70%;"></div>
+                   <div range style="left:30%;right:40%;"></div>
+                   <span thumb style="left:30%;"></span>
+                   <span thumb style="left:60%;"></span>
+                   <div sign style="left:30%;">
+                     <span id="value">30</span>
+                   </div>
+                   <div sign style="left:60%;">
+                     <span id="value">60</span>
+                   </div>
+                 </div>
+                 <input id="priceLow" name="price_low" value="" type="range" min="<?= $price_low ?>" max="<?= $price_high ?>" step="<?= $step  ?>" tabindex="0" _oninput="min()" />
+                 <input id="priceHigh" name="price_low" value="" type="range" min="<?= $price_low ?>" max="<?= $price_high ?>" step="<?= $step  ?>" type="range" _oninput="max()" />
                 </div>
             </li>
             <?php /*
             <li class="col-auto flex-fill">
                 <label for="priceLow" class="form-label">Example range</label>
-                <input id="priceLow" type="range" class="form-range" min="0" max="5" step="1" placeholder="Ej. 1100000" name="price_low"  value="<?php echo $_GET['price_low'] ?>">
+                <input id="priceLow" type="range" class="form-range" min="0" max="5000" step="1000" placeholder="Ej. 1100000" name="price_low"  value="<?php echo $_GET['price_low'] ?>">
             </li>
             <li class="col-auto flex-fill">
                 <label for="priceHigh" class="form-label">Example range</label>
-                <input for="priceHigh" type="range" class="form-range" min="0" max="5" step="1" placeholder="Ej. 2200000" name="price_high" value="<?php echo $_GET['price_high'] ?>">
+                <input for="priceHigh" type="range" class="form-range" min="0" max="5000" step="1000" placeholder="Ej. 2200000" name="price_high" value="<?php echo $_GET['price_high'] ?>">
             </li>
             */ ?>
 
 
-            <li class="field field-button">
+            <li class="field flex-1 field-button">
                 <span class="control">
                 <button type="submit" id="searchsubmit" class="button is-primary is-fullwidth">
                     <i class="qs-icon icon-search"></i>

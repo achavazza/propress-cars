@@ -24,3 +24,13 @@
     padding: 1em 0 !important;
     margin-bottom: 0;
 }
+
+
+#side-sortables .cmb-row .cmb2_select{
+    width: 100%;
+}
+#side-sortables .cmb-row .cmb-th,
+#side-sortables .cmb-row .cmb-td,
+#side-sortables .cmb-row .cmb-td .cmb2-metabox-description {
+    padding-bottom: 0;
+}

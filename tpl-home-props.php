@@ -18,10 +18,10 @@ if($img){
 ?>
 
 <?php include('inc/slider.php'); ?>
-<div class="search-panel block">
-	<div class="container">
+<div class="container">
+    <div class="search-panel">
 		<?php echo get_search_form(); ?>
-	</div>
+    </div>
 </div>
 <?php /*
 <?php if (have_posts()) : ?>
@@ -81,7 +81,7 @@ if ( $loop->have_posts() ) :
 
 <?php
 $args = array(
-'post_type'      => 'propiedad',
+'post_type'      => 'vehicle',
 'posts_per_page' => 3,
 'meta_query'  => array(
         array(
@@ -98,7 +98,7 @@ if ( $loop->have_posts() ) : ?>
     <div class="section">
         <div class="container">
 
-        <h3 class="title is-3"><?php echo _e('Propiedades destacadas','tnb') ?></h3>
+        <h3 class="title is-3"><?php echo _e('Unidades destacadas','tnb') ?></h3>
         <div class="columns is-same-height is-multiline">
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
             <?php array_push($featPosts, get_the_ID()); ?>
@@ -128,7 +128,7 @@ if ( $loop->have_posts() ) : ?>
 $args = array(
 	//'ignore_sticky_posts' => 1,
 	//'paged'               => $paged
-	'post_type'      => 'propiedad',
+	'post_type'      => 'vehicle',
 	'posts_per_page' => 12,
 	'post__not_in'   => $featPosts
 );
@@ -138,7 +138,7 @@ if ( $loop->have_posts() ) :
     ?>
     <div class="section">
         <div class="container">
-        <h3 class="title is-3"><?php echo _e('Últimas propiedades','tnb') ?></h3>
+        <h3 class="title is-3"><?php echo _e('Últimas unidades incorporadas','tnb') ?></h3>
 
     	<div class="columns is-same-height is-multiline">
     		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>

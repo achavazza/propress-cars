@@ -1,0 +1,17 @@
+//main: ../../theme.scss
+
+@import "_nouislider.core";
+@import "_nouislider.pips";
+@import "_nouislider.tooltips";
+
+
+.noUi-tooltip {
+    display: none;
+}
+.noUi-active .noUi-tooltip {
+    display: block;
+}
+.noUi-horizontal .noUi-tooltip {
+    bottom: unset;
+    top: 120%;
+}

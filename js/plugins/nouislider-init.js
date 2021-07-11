@@ -9,8 +9,8 @@ var step        = parseInt(lowerValue.getAttribute('step'));
 noUiSlider.create(rangeSlider, {
     //connect: true,
     //behaviour: 'tap',
-    start: [0, 10000],
-    step: step,
+    start: [lowerValue.value, upperValue.value],
+    step: 1000,
     tooltips: true,
     behaviour: 'drag',
     connect: true,
@@ -42,12 +42,13 @@ rangeSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, 
     //nodes[handle].innerHTML = values[handle] + ', ' + positions[handle].toFixed(2) + '%';
 });
 */
+
 rangeSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
     nodes[handle].value = values[handle];
 });
 
 lowerValue.addEventListener('change', function () {
-    rangeSlider.noUiSlider.set([null, this.value]);
+    rangeSlider.noUiSlider.set([this.value, null]);
 });
 upperValue.addEventListener('change', function () {
     rangeSlider.noUiSlider.set([null, this.value]);

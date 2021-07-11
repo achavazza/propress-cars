@@ -11,7 +11,6 @@ function tnb_post_by_slug($the_slug, $post_type = "page"){
         'numberposts' => 1
     );
     $my_page = get_posts($args)[0]->guid;
-    //$my_page = get_posts($args)[0];
     return $my_page;
 }
 
@@ -21,18 +20,20 @@ function posts_columns($defaults){
     $defaults['riv_post_thumbs'] = __('Miniatura');
     return $defaults;
 }
-
-add_filter('manage_posts_columns', 'posts_columns', 5);
+//add_filter('manage_posts_columns', 'posts_columns', 5);
 
 function posts_custom_columns($column_name, $id){
     if($column_name === 'riv_post_thumbs'){
         echo the_post_thumbnail( 'thumbnail' );
     }
 }
-add_action('manage_posts_custom_column', 'posts_custom_columns', 5, 2);
+//add_action('manage_posts_custom_column', 'posts_custom_columns', 5, 2);
+
+
 /**
 * CUSTOM FUNCTION: retrieve template if input="hidden" pressent in search or meta value
 **/
+/*
 function search_no_paging( $q ) {
   if ( isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' && is_search() ) {
       if ( $q->is_main_query() && $q->is_search() && ! is_admin() ) {
@@ -52,6 +53,7 @@ function advanced_search_template( $template ) {
     return $template;
 }
 add_action('template_include', 'advanced_search_template');
+*/
 
 /**
 * Search Within a Taxonomy
@@ -92,7 +94,7 @@ class WP_Query_Taxonomy_Search {
     }
 }
 
-new WP_Query_Taxonomy_Search();
+//new WP_Query_Taxonomy_Search();
 
 /**
 * CUSTOM FUNCTION, SEARCH image by slug (ej: "default")
@@ -115,32 +117,32 @@ function get_attachment_url_by_slug( $slug , $size) {
 function wpa_filter_home_query( $query ){
     $low  = $_GET['price_low'];
     $high = $_GET['price_high'];
-    $tax  = $_GET['operacion'];
+    //$tax  = $_GET['operacion'];
 
     $price_key  = '_prop_price_sale';
 
-    $dorm_key  = '_prop_dormrooms';
-    $dorms  = $_GET['dormitorios'];
+    //$dorm_key  = '_prop_dormrooms';
+    //$dorms  = $_GET['dormitorios'];
 
-    if($tax == 'alquiler'){
-        $price_key = '_prop_price_rent';
-    }
+    //if($tax == 'alquiler'){
+    //    $price_key = '_prop_price_rent';
+    //}
 
 if($query->is_main_query()) {
 
-        if(isset( $dorms ) && !empty($dorms) ){
-            $meta_query = array(
-                //'relation' => 'AND',
-                array(
-                    'key'     => $dorm_key,
-                    'value'   => $dorms,
-                    'type'    => 'numeric',
-                    'compare' => '='
-                    //'compare' => '<='
-                )
-            );
-            $query->set( 'meta_query', $meta_query );
-        }
+        //if(isset( $dorms ) && !empty($dorms) ){
+        //    $meta_query = array(
+        //        //'relation' => 'AND',
+        //        array(
+        //            'key'     => $dorm_key,
+        //            'value'   => $dorms,
+        //            'type'    => 'numeric',
+        //            'compare' => '='
+        //            //'compare' => '<='
+        //        )
+        //    );
+        //    $query->set( 'meta_query', $meta_query );
+        //}
 
         if(isset( $low ) || isset($high)){
             if(empty($high)){
@@ -183,15 +185,11 @@ if($query->is_main_query()) {
             $query->set( 'meta_query', $meta_query );
         }
     }
-    //pr($query);
-    //pr($meta_query);
-    //die();
 }
 add_action( 'pre_get_posts', 'wpa_filter_home_query' );
 
 /*
 * CUSTOM Function, get location (is a tax hierachy)
-*/
 function get_location($post){
 	foreach( wp_get_post_terms( $post->ID, 'location') as $terms ) {
 		if($terms->parent != 0){
@@ -208,19 +206,9 @@ function get_location($post){
 			$prop_loc = $child_term->name;
 		}
 	}
-
-    /*  OLD Version
-    foreach( wp_get_post_terms( $post->ID, 'location', array('parent' => 0 )) as $parent_term ) {
-        // display top level term name
-        $prop_loc = $parent_term->name . ' - ';
-        foreach(  wp_get_post_terms( $post->ID, 'location', array('parent' => $parent_term->term_id ) ) as $child_term ) {
-            // display name of all childs of the parent term
-            $prop_loc .= $child_term->name;
-        }
-    }
-    */
     return $prop_loc;
 }
+*/
 
 /**
 * CUSTOM FUNCTION: get page link by template name
@@ -284,7 +272,8 @@ function get_page_url($template_name){
 
 function filter_search($query) {
     if ($query->is_search) {
-         $query->set('post_type', array('propiedad'));
+        //$query->set('post_type', array('propiedad'));
+        $query->set('post_type', array('vehicle'));
     };
     return $query;
 };

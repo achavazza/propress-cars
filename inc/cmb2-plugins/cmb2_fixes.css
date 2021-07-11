@@ -34,3 +34,9 @@
 #side-sortables .cmb-row .cmb-td .cmb2-metabox-description {
     padding-bottom: 0;
 }
+
+#tagsdiv-condition,
+#tagsdiv-interior,
+#tagsdiv-additional{
+    display: none;
+}

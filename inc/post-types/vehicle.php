@@ -8,7 +8,7 @@ function vechicle_init() {
     $labels = array(
         'name'               => _x('Vehículos', 'post type general name'),
         'singular_name'      => _x('Vehículo', 'post type singular name'),
-        'add_new'            => _x('Agregar Nuevo', 'propiedades'),
+        'add_new'            => _x('Agregar Nuevo', 'vehicle'),
         'add_new_item'       => __('Agregar Nuevo vehículo'),
         'edit_item'          => __('Editar vehículo'),
         'new_item'           => __('Nueva vehículo'),
@@ -23,42 +23,24 @@ function vechicle_init() {
         'labels'             => $labels,
         'public'             => true,
         'publicly_queryable' => true,
+        'exclude_from_search'=> false,
         'show_ui'            => true,
         'show_in_menu'       => true,
         //'show_in_nav_menus'  => true,
         'query_var'          => true,
         'rewrite'            => true,
         'capability_type'    => 'post',
-        'has_archive'        => 'vehicle',
+        'has_archive'        => true,
+        //'has_archive'        => 'vehicle',
+        'can_export'         => true,
         'hierarchical'       => false,
         'menu_position'      => 8,
         'menu_icon'          => 'dashicons-car',
         'supports'           => array('title', 'editor', 'thumbnail'),
         //'show_in_rest'       => true,
-        'taxonomies'         => array('format', 'brand', 'status')
+        'taxonomies'         => array('format', 'brand', 'condition')
     );
     register_post_type('vehicle', $args);
-}
-
-/* Update galeria Messages */
-add_filter('post_updated_messages', 'propiedades_updated_messages');
-
-function propiedades_updated_messages($messages) {
-    global $post, $post_ID;
-    $messages['propiedad'] = array(
-        0 => '',
-        1 => sprintf(__('Vehículo actualizad.'), esc_url(get_permalink($post_ID))),
-        2 => __('Custom field actualizado.'),
-        3 => __('Custom field deleted.'),
-        4 => __('Vehículo actualizad.'),
-        5 => isset($_GET['revision']) ? sprintf(__('Vehículo restaurado de revisión desde %s'), wp_post_revision_title((int) $_GET['revision'], false)) : false,
-        6 => sprintf(__('Vehículo publicado.'), esc_url(get_permalink($post_ID))),
-        7 => __('Vehículo guardado.'),
-        8 => sprintf(__('Vehículo publicado.'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
-        9 => sprintf(__('Vehículo archivado para: <strong>%1$s</strong>. '), date_i18n(__('M j, Y @ G:i'), strtotime($post->post_date)), esc_url(get_permalink($post_ID))),
-        10 => sprintf(__('Vehículo actualizado en borrador.'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
-    );
-    return $messages;
 }
 
 /* Update galeria Help
@@ -109,7 +91,7 @@ function create_vehicle_taxonomies() {
     $args = array(
         'hierarchical'          => false,
         'labels'                => $labels,
-        'show_ui'               => false,
+        'show_ui'               => true,
         //'show_in_quick_edit'    => false,
         //'meta_box_cb'           => false,
         'show_admin_column'     => true,
@@ -120,7 +102,7 @@ function create_vehicle_taxonomies() {
         //'description'           => __('Definimos formatos como "en construccion", "apta credito", "en sucesion", etc.'),
     );
 
-    register_taxonomy( 'format', 'propiedad', $args );
+    register_taxonomy( 'format', 'vehicle', $args );
     /*
     $labels = array(
         'name'                       => _x( 'Tipo', 'taxonomy general name' ),
@@ -257,18 +239,18 @@ function create_vehicle_taxonomies() {
     $args = array(
         'hierarchical'          => false,
         'labels'                => $labels,
-        'show_ui'               => false,
+        'show_ui'               => true,
         //'show_in_quick_edit'    => false,
         //'meta_box_cb'           => false,
         'show_admin_column'     => true,
         'show_in_nav_menus'     => true,
         //'update_count_callback' => '_update_post_term_count',
         'query_var'             => true,
-        'rewrite'               => array( 'slug' => 'status' ),
+        'rewrite'               => array( 'slug' => 'condition' ),
         //'description'           => __('Definimos estados como "en construccion", "apta credito", "en sucesion", etc.'),
     );
 
-    register_taxonomy( 'status', 'vehicle', $args );
+    register_taxonomy( 'condition', 'vehicle', $args );
 
 
 
@@ -412,11 +394,11 @@ function create_vehicle_taxonomies() {
         'show_in_nav_menus'     => true,
         //'update_count_callback' => '_update_post_term_count',
         'query_var'             => true,
-        'rewrite'               => array( 'slug' => 'status' ),
+        'rewrite'               => array( 'slug' => 'condition' ),
         'description'           => __('Definimos estados como "en construccion", "apta credito", "en sucesion", etc.'),
     );
 
-    register_taxonomy( 'status', 'propiedad', $args );
+    register_taxonomy( 'condition', 'propiedad', $args );
     */
 
     /*
@@ -559,10 +541,10 @@ function cmb2_prop_base() {
         'title'         => __( 'Detalles de la publicación', 'tnb' ),
         'object_types'  => array( 'vehicle' ), // post type
         //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
-        'context'       => 'side',
-        //'context'       => 'normal',
-        'priority'      => 'default',
-        //'priority'      => 'high',
+        //'context'       => 'side',
+        'context'       => 'normal',
+        //'priority'      => 'default',
+        'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
@@ -606,8 +588,8 @@ function cmb2_prop_base() {
         //    'type' => 'number',
         //    'pattern' => '\d*',
         //),
-        //'sanitization_cb' => 'absint',
-        //'escape_cb'       => 'absint',
+        'sanitization_cb' => 'absint',
+        'escape_cb'       => 'absint',
         //'escape_cb'       => 'intval',
         'type'             => 'text_money',
         'before_field'     => 'U$D',
@@ -676,9 +658,9 @@ function cmb2_prop_details() {
     ));
     $cmb3->add_field( array(
         'name'              => 'Condición',
-        'id'                => $prefix .'status',
+        'id'                => $prefix .'condition',
         'desc'              => __('Nuevo, Usado, etc', 'tnb'),
-        'taxonomy'          => 'status',
+        'taxonomy'          => 'condition',
         'type'              => 'taxonomy_select',
         // Optional:
         'options' => array(
@@ -738,8 +720,9 @@ function cmb2_prop_details() {
         'id'          => $prefix . 'interior',
         //'type'        => 'tags_sortable',
         'taxonomy'    => 'interior',
-        'type'        => 'default_tags',
-        //'type'        => 'taxonomy_multicheck',
+        //'type'        => 'default_tags',
+        'select_all_button' => false,
+        'type'        => 'taxonomy_multicheck',
         //'type'        => 'text',
         //'repeatable'  => true,
         //'text' => array(
@@ -751,7 +734,9 @@ function cmb2_prop_details() {
         'name'        => 'Adicionales',
         'id'          => $prefix . 'additional',
         'taxonomy'    => 'additional',
-        'type'        => 'default_tags',
+        //'type'        => 'default_tags',
+        'select_all_button' => false,
+        'type'        => 'taxonomy_multicheck',
         //'type'        => 'textarea',
         //'repeatable'  => true,
         //'text' => array(
@@ -763,7 +748,7 @@ function cmb2_prop_details() {
     	'id'                => $prefix .'financiation',
         'taxonomy'          => 'financiation', //Enter Taxonomy Slug
     	'type'              => 'taxonomy_multicheck',
-        'select_all_button' => true,
+        //'select_all_button' => true,
         'text'              => array(
             'no_terms_text' => __('No encontramos ningún tipo de financiación') // Change default text. Default: "No terms"
         ),
@@ -883,10 +868,10 @@ function cmb2_prop_details() {
     ));
     $cmb3->add_field( array(
     	'name'              => 'Estado',
-    	'id'                => $prefix .'status',
+    	'id'                => $prefix .'condition',
     	'type'              => 'multicheck',
         'select_all_button' => false,
-        'options'           => status(),
+        'options'           => condition(),
         //'options' => array(
     	//	1 => 'En construcción',
     	//	2 => 'Apta crédito',
@@ -996,10 +981,10 @@ function get_service_list() {
   }
   return $taxonomy_list;
 }
-function get_status_list() {
+function get_condition_list() {
   $taxonomy_list = array();
   $taxonomy_query = get_terms(array(
-    'taxonomy'   => 'status',
+    'taxonomy'   => 'condition',
     'hide_empty' => false //you can change this if you need, chech get_terms() documentation
   ));
 

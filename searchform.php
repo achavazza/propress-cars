@@ -1,4 +1,5 @@
 <form action="<?php bloginfo('siteurl'); ?>" id="searchform" method="get" class="form">
+    <input type="hidden" name="s" value="<?= get_search_query() ?>" />
     <input type="hidden" name="post_type" value="vehicle" />
     <?php //if(!is_front_page()): ?>
         <?php /*
@@ -12,7 +13,7 @@
                 $inputContent  = '<label class="label" for="s">Buscar</label>';
                 $inputContent .= '<div class="control">';
                 $inputContent .= '<input class="input" type="text" id="s" name="s" value="'. get_search_query() .'" placeholder="Buscar"/>';
-                //$inputContent .= '<input type="hidden" name="post_type" value="propiedad" />';
+                $inputContent .= '<input type="hidden" name="post_type" value="vehicle" />';
                 //$inputContent .= '<input type="hidden" name="search" value="advanced">';
                 $inputContent .= '</div>';
             /*
@@ -23,7 +24,7 @@
 
             //echo sprintf('<li class="field field-search">%s</li>', $inputContent);
 
-            $taxonomies = array('status','brand','format');
+            $taxonomies = array('condition','brand','format');
             $args = array('order'=>'DESC','hide_empty'=>true);
             echo get_terms_dropdown($taxonomies, $args);
 
@@ -33,7 +34,7 @@
                     $thisQuery = get_query_var($taxonomy);
                     $terms     = get_terms($taxonomy, $args);
                     switch($taxonomy){
-                        case 'status';
+                        case 'condition';
                         $empty = 'Condicion';
                         $label = 'Condicion';
                         $plural = 'Condiciones';
@@ -91,14 +92,15 @@
                 <label>Rango de precios</label>
                 <div class="slider-container">
                     <?php
-                    $price_low  = $price_low ? $_GET['price_low'] : 0;
-                    $price_high = $price_high ? $_GET['price_high'] : 100000;
-                    $step = ($price_high - $price_low) / 50;
+                    $price_low  = $_GET['price_low'] ? $_GET['price_low'] : 0;
+                    $price_high = $_GET['price_high'] ? $_GET['price_high'] : 15000;
+                    $step = ($price_high - $price_low) / 20;
                     //echo $step;
+                    //pr($price_high);
                     ?>
                     <div id="range-slider"></div>
-        			<input name="price_low"  type="hidden" step="<?= $step  ?>" value="<?= $price_low  ?>" class="example-val" id="lower-value" />
-        			<input name="price_high" type="hidden" step="<?= $step  ?>" value="<?= $price_high ?>" class="example-val" id="upper-value" />
+        			<input value="<?= intval(round($price_low, 0))  ?>" name="price_low"  type="hidden" id="lower-value" />
+        			<input value="<?= intval(round($price_high, 0)) ?>" name="price_high" type="hidden" id="upper-value" />
                 </div>
             </li>
             <?php /*

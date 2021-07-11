@@ -28,7 +28,7 @@
 			<div class="column is-three-quarters">
 				<?php $i = 0; ?>
 				<?php while (have_posts()) : the_post(); ?>
-					<?php get_template_part('parts/post','list') ?>
+					<?php get_template_part('parts/post','loop') ?>
 					<?php /*
 					<div <?php post_class() ?>>
 

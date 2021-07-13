@@ -1,5 +1,4 @@
 <?php //pr(get_post_meta( get_the_ID(), 'extra_metabox', true )); ?>
-
 <?php
 $slider_id = get_post_meta( get_the_ID(), 'extra_slider', true  );
 $args = array(
@@ -15,6 +14,9 @@ $args = array(
 $slider_query = new WP_Query( $args );
 if( $slider_query->have_posts() ):
     $slider_props = get_term_meta($slider_id);
+    //$atts  = 'width:'.$slider_props['slider_term_w'][0].'px;';
+    //$atts .= 'height:'.$slider_props['slider_term_h'][0].'px;';
+
     if(empty((int)$slider_props['slider_term_w'][0])){
         $slider_props['slider_term_w'][0] = 1200;
         //$slider_props['slider_term_w'][0] = 1200;
@@ -25,34 +27,18 @@ if( $slider_query->have_posts() ):
     }
 
     $calc    = round(((int)$slider_props['slider_term_h'][0] * 100) / (int)$slider_props['slider_term_w'][0], 2);
-    //$padding = 'padding-bottom:'.$calc.'';
+    $padding = 'style="padding-bottom:'.$calc.'%"';
 
-    // Slider main container
-    echo '<div class="swiper-container">';
-        // Additional required wrapper
-        echo '<div class="swiper-wrapper">';
-            // Slides
-            while( $slider_query->have_posts() ) : $slider_query->the_post();
-                $content_align = (get_post_meta($post->ID)['slide_prop_align']) ? get_post_meta($post->ID)['slide_prop_align'][0] : '';
-                $bg      = get_the_post_thumbnail_url(get_the_ID(),'full');
-                $props   = 'background-image:url('.$bg.');'.'padding-bottom:'.$calc.'%;';
-                $content = sprintf('<div class="container"><div class="content %s">%s</div></div>', $content_align, get_the_content(get_the_ID()));
+    //echo '<div class="container">';
+    echo sprintf('<div id="main-slider" %s>', $padding);
+    while( $slider_query->have_posts() ) : $slider_query->the_post();
+        $content_align = (get_post_meta($post->ID)['slide_prop_align']) ? get_post_meta($post->ID)['slide_prop_align'][0] : '';
+        $bg      = get_the_post_thumbnail_url(get_the_ID(),'full');
+        $props   = 'background-image:url('.$bg.');';
+        $content = sprintf('<div class="container"><div class="content %s">%s</div></div>', $content_align, get_the_content(get_the_ID()));
 
-                echo sprintf('<div class="swiper-slide" style="%s">%s</div>', $props, $content);
-            endwhile;
-        echo '</div>';
-        // If we need pagination
-        echo '<div class="swiper-pagination"></div>';
-
-        // If we need navigation buttons
-        echo '<div class="swiper-button-prev"></div>';
-        echo '<div class="swiper-button-next"></div>';
-
-        // If we need scrollbar
-        echo '<div class="swiper-scrollbar"></div>';
-    echo '</div>';
-    //$atts  = 'width:'.$slider_props['slider_term_w'][0].'px;';
-    //$atts .= 'height:'.$slider_props['slider_term_h'][0].'px;';
+        echo sprintf('<div class="slide-item" style="%s">%s</div>', $props, $content);
+    endwhile;
     //echo '</div>';
     //pr($slider_query);
     //pr($slider_props);
@@ -70,11 +56,12 @@ if( $slider_query->have_posts() ):
         echo '<script>var time = '.intval($slider_props['slider_term_time'][0]).'</script>';
     };
     wp_enqueue_script('siema-init', true);
-    echo '</div>';
     */
-?>
-<?php
-wp_enqueue_script('swiperjs-init', true);
+    wp_enqueue_script('swiper', true);
+echo '</div>';
+
+
+
 
 else:
     echo '<div class="container">';

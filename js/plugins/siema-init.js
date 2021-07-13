@@ -11,9 +11,7 @@ if (typeof time !== 'undefined') {
     time = 5000
 }
 
-
 const mySiema = new Siema({
-
   selector: '#main-slider',
   duration: 400,
   easing: 'ease-out',
@@ -22,13 +20,16 @@ const mySiema = new Siema({
   draggable: true,
   multipleDrag: true,
   threshold: 20,
-  loop: loop,
+  loop: true,
   rtl: false,
   onInit: () => {},
   onChange: () => {},
 });
-
 if (typeof animated !== true) {
     // listen for keydown event
-    setInterval(() => mySiema.next(), time)
+    setInterval(() => mySiema.next(), time);
+}
+if (typeof destroy !== true) {
+    // listen for keydown event
+    mySiema.destroy();
 }

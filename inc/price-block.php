@@ -23,11 +23,11 @@ ob_start();
 <span class="price-block level">
         <?php if(!$price_sale):
             echo '<span class="level-item has-text-centered">';
-            printf('<span>%s</span>', __('Consultar'));
+            printf('<span class="title is-2">%s</span>', __('Consultar'));
             echo '</span>';
         else:
             echo '<span class="level-item has-text-centered">';
-            printf('<span class="sale-price" title="Precio de venta">%s</span>', $price_sale);
+            printf('<span class="title is-2" title="Precio de venta">$%s</span>', number_format($price_sale, 0, ',', '.'));
             echo '</span>';
         endif;
         ?>

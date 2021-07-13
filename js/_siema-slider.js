@@ -16,6 +16,7 @@
         rtl: false,
         onInit: () => {},
         onChange: () => {},
+        animated: false,
     });
 
     function myTimer() {

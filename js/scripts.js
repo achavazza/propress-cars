@@ -46,21 +46,24 @@ $(function(){
         el = ($(this).attr('data-target'));
         $(el).addClass('is-active');
 
-        console.log(el);
-
+        //console.log(el);
+        /*
         if(el == '#modal-lightbox'){
             init_map('gmap_lightbox');
         }
         if(el == '#modal-streetview'){
             init_street_view('gstreet_lightbox');
         }
+        */
     });
+    /*
     $('.delete').add('.modal-background').on('click',function() {
         $('.modal').removeClass('is-active');
     });
     $('#closebtn').on('click',function() {
         $('.modal').removeClass('is-active');
     });
+    */
 });
 
 /*

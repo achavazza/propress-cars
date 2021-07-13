@@ -82,23 +82,24 @@ $comb              = combustible()[$data['_prop_combustible'][0]];
         <div class="">
             <a href="<?php the_permalink() ?>">
                 <span class="has-text-centered">
-                    <span class="title is-block is-5">
+                    <span class="title is-5">
                         <?= $brand->name; ?>
                     </span>
-                    <span class="title is-block is-2">
+                    <span class="title is-bold is-2">
                         <?php echo get_the_title($post); ?>
                     </span>
                 </span>
                 <span class="level">
-                    <span class="level-item">
-                        <i class="icon">
-                        </i>
+                    <span class="level-item is-flex-direction-column">
+                        <i class="icon"></i>
                         <span><?= $cond->name  ?></span>
                     </span>
-                    <span class="level-item">
+                    <span class="level-item is-flex-direction-column">
+                        <i class="icon"></i>
                         <?= $tran ?>
                     </span>
-                    <span class="level-item">
+                    <span class="level-item is-flex-direction-column">
+                        <i class="icon"></i>
                         <?= $comb ?>
                     </span>
                 </span>

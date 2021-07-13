@@ -22,10 +22,14 @@
 
             $output .= "<div class='navbar-dropdown'>";
         }
-
         public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+            //pr($item->classes);
+            $classes = $withComma = implode(" ", $item->classes);
+            //pr($classes);
 
-            $liClasses = 'navbar-item '.$item->title;
+
+            $liClasses = 'navbar-item ' . $classes;
+            //$liClasses = 'navbar-item '.$item->title;
 
             $hasChildren = $args->walker->has_children;
             $liClasses .= $hasChildren? " has-dropdown is-hoverable": "";

@@ -35,7 +35,8 @@
 					echo ' - page '. $paged; }
 					?>
 			</title>
-
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 			<link rel="shortcut icon" href="<?php echo get_bloginfo('template_url').'/favicon.ico'; ?>" type="image/x-icon" />
 
 			<?php /*

@@ -280,15 +280,16 @@ function slider_taxonomy_metabox() {
 		'name'    => __( 'Animado', 'tnb' ),
 		'desc'    => __( 'Controla si el slide se anima o no', 'tnb' ),
 		'id'      => $prefix . 'animated',
+		//'id'      => $prefix . 'animated',
 		'type'    => 'checkbox',
-        'default' => true,
+        //'default' => true,
 	) );
     $cmb_term->add_field( array(
 		'name'    => __( 'Bucle', 'tnb' ),
 		'desc'    => __( 'Controla si el slide se anima indefinidamente en bucle', 'tnb' ),
 		'id'      => $prefix . 'loop',
 		'type'    => 'checkbox',
-        'default' => true,
+        //'default' => true,
 	) );
 
 

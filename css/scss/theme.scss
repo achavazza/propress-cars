@@ -1,6 +1,12 @@
 // compileCompressed: ../style.min.css
-$blue:         hsl(217, 71%,  53%);
-$primary: $blue;
+$blue:         hsl(225, 100%, 17%);
+$red:          hsl(10, 93%, 46%);
+$primary: $red;
+$secondary: $blue;
+
+$radius: 0;
+$card-radius: $radius;
+$control-height: 3rem;
 
 @charset "utf-8";
 @import "../../node_modules/bulma/bulma.sass";

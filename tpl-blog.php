@@ -4,27 +4,19 @@ Template Name: Blog
 Template Post Type: page
 */
 get_header(); ?>
-
-<div class="grid">
+<?php include('inc/slider.php'); ?>
+<div class="container">
 	<?php //the_breadcrumb(); ?>
 	<h2 class="h2 title"><?php the_title(); ?></h2>
-	<div class="row">
-		<div class="quad-3">
+	<div class="columns is-multiline">
+		<div class="column-three-quarters">
 			<?php if (have_posts()) : ?>
-				<?php $i = 0 ?>
-				<div class="row">
-					<?php while (have_posts()) : the_post(); ?>
-						<div class="quad-2">
-							<?php get_template_part('parts/post','loop') ?>
-						</div>
-						<?php if(++$i % 2 === 0): ?>
-						</div><div class="row">
-						<?php endif; ?>
-					<?php endwhile; ?>
-				</div>
+				<?php while (have_posts()) : the_post(); ?>
+					<?php get_template_part('parts/post','loop') ?>
+				<?php endwhile; ?>
 			<?php else : ?>
-				<div class="panel">
-					<h2 class="title">:( No encontramos propiedades</h2>
+				<div class="card">
+					<h2 class="card-content">:( No encontramos propiedades</h2>
 					<p>
 						Por favor, vuelva al inicio
 						<hr />
@@ -35,7 +27,7 @@ get_header(); ?>
 			<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
 
 		</div>
-		<div class="quad-1">
+		<div class="column-one-quarter">
 			<?php get_sidebar(); ?>
 		</div>
 	</div>

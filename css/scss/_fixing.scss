@@ -117,18 +117,32 @@ ul.is-unstyled {
     display: flex;
     align-items: center;
     //align-items: flex-end;
-    flex-wrap: wrap;
+
+    align-items: stretch;
+    flex-flow: column wrap;
+
+    @media (min-width: $desktop){
+        align-items: center;
+        flex-flow: row wrap;
+    }
+
     /*
     .label{
     display: none;
     }
     */
-    
+
     .slider-container{
         padding: .75rem 1rem 0;
     }
     .field{
-        padding-right: $field-distance;
+        padding-top: $field-distance;
+        padding-bottom: $field-distance;
+        @media (min-width: $desktop){
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-right: $field-distance;
+        }
         flex: 1;
 
 

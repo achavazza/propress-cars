@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php include('inc/slider.php'); ?>
 <div class="container">
     <div class="search-panel">
 		<?php echo get_search_form(); ?>

@@ -143,9 +143,9 @@ require_once 'inc/custom-functions.php';
         wp_script_add_data('fontawesome', array('crossorigin' ), array('anonymous' ) );
         wp_enqueue_script('fontawesome');
 
-        wp_register_script('photoswipe'        , get_template_directory_uri().'/js/plugins/photoswipe.min.js', array(), '4.1.3', true);
-        wp_register_script('photoswipe-ui'     , get_template_directory_uri().'/js/plugins/photoswipe-ui-default.min.js', array('photoswipe'), '4.1.3', true);
-        wp_register_script('photoswipe-init'   , get_template_directory_uri().'/js/photoswipe.init.js', array('photoswipe','photoswipe-ui','jquery'), '1.0.0', true);
+        wp_register_script('photoswipe'        , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe.min.js', array(), '4.1.3', true);
+        wp_register_script('photoswipe-ui'     , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe-ui-default.min.js', array('photoswipe'), '4.1.3', true);
+        wp_register_script('photoswipe-init'   , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe.init.js', array('photoswipe','photoswipe-ui','jquery'), '1.0.0', true);
         wp_register_script('validate'          , get_template_directory_uri().'/js/jquery.validate.min.js', array('jquery'), '1.0.0', true);
         wp_register_script('form'              , get_template_directory_uri().'/js/form.js', array('jquery','validate'), '1.0.0', true);
         //wp_register_script('siema'             , get_template_directory_uri().'/js/plugins/siema.min.js', array(), '1.5.1', true);
@@ -153,9 +153,11 @@ require_once 'inc/custom-functions.php';
         //wp_register_script('lity'              , get_template_directory_uri().'/js/plugins/lity.js', array('jquery'), '2.4.1', true);
 
         //https://swiperjs.com/
-        wp_enqueue_style( 'swiperjs', '//unpkg.com/swiper/swiper-bundle.min.css' );
-        wp_register_script('swiperjs' , 'https://unpkg.com/swiper/swiper-bundle.min.js', null, '6.7.5', true);
-        wp_register_script('swiper-init' , get_template_directory_uri().'/js/plugins/swiperjs/swiperjs-init.js', array('swiperjs'), '6.7.5', true);
+        wp_enqueue_style  ('swiperjs'    , get_template_directory_uri().'/js/plugins/swiperjs/swiper-bundle.min.css' );
+        wp_register_script('swiperjs'    , get_template_directory_uri().'/js/plugins/swiperjs/swiper-bundle.min.js', null, '6.7.5', true);
+        //wp_enqueue_style( 'swiperjs'     , '//unpkg.com/swiper/swiper-bundle.min.css' );
+        //wp_register_script('swiperjs'    , '//unpkg.com/swiper/swiper-bundle.min.js', null, '6.7.5', true);
+        wp_register_script('swiperjs-init' , get_template_directory_uri().'/js/plugins/swiperjs/swiperjs-init.js', array('swiperjs'), '6.7.5', true);
 
         //maps
         //wp_register_script('infobubble'   , (get_template_directory_uri().'/js/plugins/infobubble.js'), array(), null, true);
@@ -182,8 +184,8 @@ require_once 'inc/custom-functions.php';
     //wp_register_script('multitouchrange'   , get_template_directory_uri().'/js/multitouchrange.js', null, null, true);
     //wp_enqueue_script('multitouchrange');
 
-    wp_register_script('nouislider'        , get_template_directory_uri().'/js/plugins/nouislider.js', null, null, true);
-    wp_register_script('nouislider-init'   , get_template_directory_uri().'/js/plugins/nouislider-init.js', array('nouislider'), null, true);
+    wp_register_script('nouislider'        , get_template_directory_uri().'/js/plugins/nouislider/nouislider.js', null, null, true);
+    wp_register_script('nouislider-init'   , get_template_directory_uri().'/js/plugins/nouislider/nouislider-init.js', array('nouislider'), null, true);
     wp_enqueue_script('nouislider-init');
 
     /* bulma y cf7 */

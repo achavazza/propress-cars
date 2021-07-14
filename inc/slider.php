@@ -25,17 +25,22 @@ if( $slider_query->have_posts() ):
     }
 
     $calc    = round(((int)$slider_props['slider_term_h'][0] * 100) / (int)$slider_props['slider_term_w'][0], 2);
+
+    if($slider_props['slider_term_h'][0]){
+        $height = 'height:'.$slider_props['slider_term_h'][0].'px;';
+    }
     //$padding = 'padding-bottom:'.$calc.'';
 
+    //pr($slider_props);
     // Slider main container
-    echo '<div class="swiper-container">';
+    echo '<div class="swiper-container" style="'.$height.'">';
         // Additional required wrapper
         echo '<div class="swiper-wrapper">';
             // Slides
             while( $slider_query->have_posts() ) : $slider_query->the_post();
                 $content_align = (get_post_meta($post->ID)['slide_prop_align']) ? get_post_meta($post->ID)['slide_prop_align'][0] : '';
                 $bg      = get_the_post_thumbnail_url(get_the_ID(),'full');
-                $props   = 'background-image:url('.$bg.');'.'padding-bottom:'.$calc.'%;';
+                $props   = 'background-image:url('.$bg.');';
                 $content = sprintf('<div class="container"><div class="content %s">%s</div></div>', $content_align, get_the_content(get_the_ID()));
 
                 echo sprintf('<div class="swiper-slide" style="%s">%s</div>', $props, $content);
@@ -49,7 +54,7 @@ if( $slider_query->have_posts() ):
         echo '<div class="swiper-button-next"></div>';
 
         // If we need scrollbar
-        echo '<div class="swiper-scrollbar"></div>';
+        //echo '<div class="swiper-scrollbar"></div>';
     echo '</div>';
     //$atts  = 'width:'.$slider_props['slider_term_w'][0].'px;';
     //$atts .= 'height:'.$slider_props['slider_term_h'][0].'px;';
@@ -77,9 +82,10 @@ if( $slider_query->have_posts() ):
 wp_enqueue_script('swiperjs-init', true);
 
 else:
+    $bg = 'background: url('.get_attachment_url_by_slug('default', 'full').')';
+    echo sprintf('<div id="main-thumbnail" style="'.$bg.'">');
     echo '<div class="container">';
-    echo sprintf('<div id="main-thumbnail">');
-    echo get_the_post_thumbnail(get_the_ID(),'large');
+    //echo get_the_post_thumbnail(get_the_ID(),'large');
     echo '</div>';
     echo '</div>';
 endif;

@@ -13,8 +13,15 @@ $control-height: 3rem;
 
 @import "./plugins/photoswipe/_photoswipe.scss";
 @import "./plugins/photoswipe/_photoswipe-ui.scss";
+
+
+//swiper-vars.scss
+//$themeColor: $secondary !default;
+//@import "./plugins/swiperjs/swiper.scss";
+
 @import "./plugins/nouislider/_nouislider.base.scss";
 //@import "./plugins/nouislider/_nouislider.scss";
+
 //@import "_initial-variables";
 //@import "_derived-variables";
 @import "_slider";
@@ -34,3 +41,54 @@ $control-height: 3rem;
         background-image: url('./assets/img/bg/desktop.jpg')
     }
 */
+.swiper-button-next,
+.swiper-button-prev{
+    color: $white !important;
+    background: $primary !important;
+    padding: .75rem !important;
+    box-sizing: content-box;
+}
+.pswp__button {
+    &--arrow--left,
+    &--arrow--right{
+        width: unset;
+        height: unset;
+        color: $white !important;
+        background: $primary !important;
+        padding: .75rem !important;
+        margin: 0 10px;
+        /*box-sizing: content-box;*/
+    }
+    &--arrow--left:hover,
+    &--arrow--right:hover{
+        //transition: all .5s ease 0s;
+        //background: rgba(255,255,255,.9);
+    }
+    &--arrow--left:before,
+    &--arrow--right:before {
+        background: none !important;
+        background-size: none;
+        width: unset;
+        height: unset;
+        font-family: swiper-icons;
+        font-size: var(--swiper-navigation-size);
+        //color: var(--swiper-navigation-color,var(--swiper-theme-color));
+        text-transform: none !important;
+        letter-spacing: 0;
+        text-transform: none;
+        font-variant: initial;
+        line-height: 1;
+        position: static;
+        /*
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        */
+    }
+    &--arrow--left:before{
+        content: 'prev';
+    }
+    &--arrow--right:before{
+        content: 'next';
+    }
+}

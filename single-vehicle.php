@@ -59,6 +59,7 @@ $puertas           = $data['_prop_puertas'];
 
 $notification_form = get_option('tnb_extra_options')['tnb_options_notification_form'];
 ?>
+<?php include('inc/slider.php'); ?>
 <div class="container">
     <div class="search-panel">
 		<?php echo get_search_form(); ?>

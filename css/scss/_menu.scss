@@ -1,0 +1,136 @@
+//main: theme.scss
+
+.navbar, .navbar-menu, .navbar-start, .navbar-end{
+    //align-items: center;
+    align-items: flex-end;
+}
+
+.navbar-menu{
+    position:relative;
+    align-items: center;
+    padding: 0 1rem;
+    background: $secondary;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    //font-size: 1rem;
+    a{
+        color: $white;
+    }
+
+    .button{
+        margin: 0 1rem;
+        @media (max-width: $desktop){
+            height: auto;
+        }
+
+        &:before,
+        &:after{
+            content: "";
+            position: absolute;
+            background: inherit;
+            width: 20px;
+            top: 0;
+            bottom: 0;
+            margin: -1px 0;
+            transform: skew(-15deg);
+        }
+        &:before{
+            left: -10px;
+        }
+        &:after{
+            right: -10px;
+        }
+    }
+
+}
+
+
+.navbar-item, .navbar-link{
+    padding: 1.5rem .8rem;
+    //padding: 1rem 1.5rem;
+}
+
+@media (min-width: $desktop){
+    .navbar-menu:before{
+        content: "";
+        position: absolute;
+        background: $secondary;
+        width: 20px;
+        //height: 3.5rem;
+        top: 0;
+        bottom: 0;
+        transform: skew(-15deg);
+        left: -10px;
+    }
+    .navbar-menu:after{
+        content: "";
+        position: absolute;
+        background: $secondary;
+        width: 20vw;
+        //height: 3.5rem;
+        //transform: skew(-15deg);
+        right: -20vw;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+.navbar-burger {
+    display: flex;
+    @media (min-width: $desktop){
+        display: none;
+    }
+    width: 5rem;
+    height: auto;
+    span{
+        height: 2px;
+    }
+}
+
+
+/* prueba 2
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active,
+.navbar-item.button,
+.navbar-item.button:hover{
+    border: 0 none;
+    background: transparent;
+}
+.navbar-item {
+    position:relative;
+    z-index: 0;
+}
+.navbar-item:hover:after {
+    background: #fafafa;
+}
+.navbar-item.button:after {
+    background: $primary;
+}
+.navbar-item.button:after,
+.navbar-item:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: skew(-15deg);
+    z-index: -1
+}
+.navbar-item,.navbar-item.button, .navbar-link{
+    padding: 1.5rem;
+}
+
+.navbar-item.button{
+    padding: inherit;
+    line-height: inherit;
+    display: inherit;
+}
+*/

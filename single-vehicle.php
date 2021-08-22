@@ -70,9 +70,9 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
     <?php the_breadcrumb(); ?>
 </div>
 <div class="container">
-    <div class="columns">
+    <div class="columns is-vcentered">
         <div class="column is-three-quarters">
-            <h2 class="title is-2">
+            <h2 class="title is-1 is-bold is-color-secondary">
                 <?php echo get_the_title(); ?>
             </h2>
         </div>

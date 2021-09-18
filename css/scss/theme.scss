@@ -11,8 +11,18 @@ $card-radius: $radius;
 $control-height: 3rem;
 
 @charset "utf-8";
+// Update Bulma's variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+$navbar-breakpoint: $widescreen;
+//$navbar-breakpoint: $desktop !default;
+@media(max-width: $navbar-breakpoint - 1px){
+    .navbar-burger{
+        display: flex !important;
+    }
+}
 @import "../../node_modules/bulma/bulma.sass";
 
+//@import "../../node_modules/bulma/bulma.sass";
 @import "./plugins/photoswipe/_photoswipe.scss";
 @import "./plugins/photoswipe/_photoswipe-ui.scss";
 

@@ -111,11 +111,13 @@ class Ctheme_Admin {
 		    'type'     => 'text',
 			'repeatable' => true
 		));
+        /*
 		$cmb->add_field( array(
 		    'name'     => 'Fax',
 		    'id'       => $prefix.'fax',
 		    'type'     => 'text',
 		));
+        */
 
 		$cmb->add_field( array(
 		    'name'     => 'Dirección',
@@ -125,8 +127,9 @@ class Ctheme_Admin {
 		$cmb->add_field( array(
 		    'name'     => 'Localidad',
 		    'id'       => $prefix.'location',
-		    'type'     => 'textarea',
+		    'type'     => 'text',
 		));
+        /*
 		$cmb->add_field( array(
 			'name' => 'Mapa',
 			'desc' => 'Drag the marker to set the exact location',
@@ -135,6 +138,7 @@ class Ctheme_Admin {
 			'save_address' => true,
 			// 'split_values' => true, // Save latitude and longitude as two separate fields
 		));
+        */
 
 
 		/*

@@ -90,6 +90,10 @@ $comb              = combustible()[$data['_prop_combustible'][0]];
                     </span>
                 </span>
                 <span class="level">
+                    <?= $cond ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-estado"></i> %s</span>', $cond->name) : ''; ?>
+                    <?= $brand ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-modelo"></i> %s</span>', $brand->name) : ''; ?>
+                    <?= $comb ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-comb"></i> %s</span>', $comb) : ''; ?>
+                    <?php /*
                     <span class="level-item is-flex-direction-column">
                         <i class="icon"></i>
                         <span><?= $cond->name  ?></span>
@@ -102,6 +106,7 @@ $comb              = combustible()[$data['_prop_combustible'][0]];
                         <i class="icon"></i>
                         <?= $comb ?>
                     </span>
+                    */ ?>
                 </span>
             </a>
         </div>

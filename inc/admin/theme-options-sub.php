@@ -55,22 +55,25 @@ function tnb_main_options_metabox() {
  		'type'       => 'text',
  		'repeatable' => true
  	));
+    /*
  	$info_options->add_field( array(
  		'name'       => 'Fax',
  		'id'         => 'tnb_options_fax',
  		'type'       => 'text',
  	));
+    */
 
  	$info_options->add_field( array(
  		'name'      => 'Dirección',
  		'id'        => 'tnb_options_address',
- 		'type'      => 'textarea',
+ 		'type'      => 'text',
  	));
  	$info_options->add_field( array(
  		'name'      => 'Localidad',
  		'id'        => 'tnb_options_location',
- 		'type'      => 'textarea',
+ 		'type'      => 'text',
  	));
+    /*
  	$info_options->add_field( array(
  		'name'         => 'Mapa',
  		'desc'         => 'Mover el marcador a la localidad exacta',
@@ -79,6 +82,7 @@ function tnb_main_options_metabox() {
  		'save_address' => true,
  		// 'split_values' => true, // Save latitude and longitude as two separate fields
  	));
+    */
 
 	/**
 	 * Registers extra options page, and set main item as parent.

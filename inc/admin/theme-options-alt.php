@@ -54,12 +54,13 @@ function tnb_register_theme_options_metabox() {
  		'type'     => 'text',
  		'repeatable' => true
  	));
+    /*
  	$cmb->add_field( array(
  		'name'     => 'Fax',
  		'id'       => $prefix.'fax',
  		'type'     => 'text',
  	));
-
+    */
  	$cmb->add_field( array(
  		'name'     => 'Dirección',
  		'id'       => $prefix.'address',
@@ -68,8 +69,9 @@ function tnb_register_theme_options_metabox() {
  	$cmb->add_field( array(
  		'name'     => 'Localidad',
  		'id'       => $prefix.'location',
- 		'type'     => 'textarea',
+ 		'type'     => 'text',
  	));
+    /*
  	$cmb->add_field( array(
  		'name' => 'Mapa',
  		'desc' => 'Drag the marker to set the exact location',
@@ -78,6 +80,7 @@ function tnb_register_theme_options_metabox() {
  		'save_address' => true,
  		// 'split_values' => true, // Save latitude and longitude as two separate fields
  	));
+    */
 }
 
 /**

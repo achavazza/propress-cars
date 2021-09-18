@@ -51,11 +51,27 @@
 
 	</head>
 
+    <?php $options = get_option('tnb_main_options'); ?>
+
 	<body <?php body_class(''); ?>>
 
 		<div id="page-wrap">
-			<div id="header">
+            <div id="topbar" class="is-hidden-mobile">
+            <div class="container">
+                <?php $address = $options['tnb_options_address'] ?>
+                <?php $email   = $options['tnb_options_email'] ?>
+                <?php $phones  = $options['tnb_options_phone'] ?>
+                <div class="level is-mobile">
+                    <div class="level-left">
+                        <?= $address ? sprintf('<span class="level-item"><i class="icon-marker"></i> %s</span>', $address) : ''; ?>
+                        <?= $email   ? sprintf('<span class="level-item"><i class="icon-mail"></i> %s</span>', $email) : ''; ?>
+                        <?= $phones  ? sprintf('<span class="level-item"><i class="icon-phone"></i> %s</span>', $phones[0]) : ''; ?>
+                    </div>
+                </div>
+            </div>
+            </div>
 
+			<div id="header">
 			<nav class="navbar" role="navigation" aria-label="main navigation">
 				<div class="container">
     				<div class="navbar-brand">

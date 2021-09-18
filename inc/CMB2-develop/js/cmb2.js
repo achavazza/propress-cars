@@ -675,9 +675,9 @@ window.CMB2 = window.CMB2 || {};
 		$oldRow.after( $newRow );
 
 		cmb.afterRowInsert( $newRow );
-		cmb.makeRepeatableSortable( $newRow );
 
 		cmb.triggerElement( $table, { type: 'cmb2_add_row', group: true }, $newRow );
+
 	};
 
 	cmb.addAjaxRow = function( evt ) {
@@ -707,7 +707,7 @@ window.CMB2 = window.CMB2 || {};
 		var confirmation = $this.data('confirm');
 
 		// Process further only if deletion confirmation enabled and user agreed.
-		if ( ! cmb.resetRow.resetting && confirmation && ! window.confirm( confirmation ) ) {
+		if ( confirmation && ! window.confirm( confirmation ) ) {
 			return;
 		}
 
@@ -758,12 +758,10 @@ window.CMB2 = window.CMB2 || {};
 	};
 
 	cmb.resetRow = function( $addNewBtn, $removeBtn ) {
-		cmb.resetRow.resetting = true;
 		// Click the "add new" button followed by the "remove this" button
 		// in order to reset the repeat row to empty values.
 		$addNewBtn.trigger( 'click' );
 		$removeBtn.trigger( 'click' );
-		cmb.resetRow.resetting = false;
 	};
 
 	cmb.shiftRows = function( evt ) {
@@ -1020,8 +1018,8 @@ window.CMB2 = window.CMB2 || {};
 		}
 	};
 
-	cmb.makeRepeatableSortable = function( $row ) {
-		var $repeatables = ($row || cmb.metabox()).find( '.cmb-repeat-table .cmb-field-list' );
+	cmb.makeRepeatableSortable = function() {
+		var $repeatables = cmb.metabox().find( '.cmb-repeat-table .cmb-field-list' );
 
 		if ( $repeatables.length ) {
 			$repeatables.sortable({

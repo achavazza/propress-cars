@@ -38,7 +38,7 @@ function vechicle_init() {
         'menu_icon'          => 'dashicons-car',
         'supports'           => array('title', 'editor', 'thumbnail'),
         //'show_in_rest'       => true,
-        'taxonomies'         => array('format', 'brand', 'condition')
+        'taxonomies'         => array('type', 'brand', 'condition')
     );
     register_post_type('vehicle', $args);
 }
@@ -67,25 +67,25 @@ add_action( 'init', 'create_vehicle_taxonomies', 0 );
 
 function create_vehicle_taxonomies() {
 
-    // Formato: Camioneta, deportivo, auto, pickup
+    // Tipo: Camioneta, deportivo, auto, pickup
     $labels = array(
-        'name'                       => _x( 'Formato', 'taxonomy general name' ),
-        'singular_name'              => _x( 'Formato', 'taxonomy singular name' ),
-        'search_items'               => __( 'Buscar formatos' ),
-        'popular_items'              => __( 'Formatos populares' ),
-        'all_items'                  => __( 'Todas las formatos' ),
-        'parent_item'                => __( 'Formato padre' ),
-        'parent_item_colon'          => __( 'Formato padre:' ),
-        'edit_item'                  => __( 'Editar formato' ),
-        'update_item'                => __( 'Actualizar formato' ),
-        'add_new_item'               => __( 'Agregar formato' ),
-        'new_item_name'              => __( 'Nombre del formato' ),
-        'separate_items_with_commas' => __( 'Separar los formatos con comas' ),
-        'add_or_remove_items'        => __( 'Agregar o quitar formatos' ),
-        'choose_from_most_used'      => __( 'Elige de los formatos más populares' ),
-        'not_found'                  => __( 'No se encontraron formatos' ),
-        'menu_name'                  => __( 'Formatos' ),
-        'back_to_items'              => __( '← Volver a formatos', 'tnb' ),
+        'name'                       => _x( 'Tipo', 'taxonomy general name' ),
+        'singular_name'              => _x( 'Tipo', 'taxonomy singular name' ),
+        'search_items'               => __( 'Buscar tipos' ),
+        'popular_items'              => __( 'Tipos populares' ),
+        'all_items'                  => __( 'Todas las tipos' ),
+        'parent_item'                => __( 'Tipo padre' ),
+        'parent_item_colon'          => __( 'Tipo padre:' ),
+        'edit_item'                  => __( 'Editar tipo' ),
+        'update_item'                => __( 'Actualizar tipo' ),
+        'add_new_item'               => __( 'Agregar tipo' ),
+        'new_item_name'              => __( 'Nombre del tipo' ),
+        'separate_items_with_commas' => __( 'Separar los tipos con comas' ),
+        'add_or_remove_items'        => __( 'Agregar o quitar tipos' ),
+        'choose_from_most_used'      => __( 'Elige de los tipos más populares' ),
+        'not_found'                  => __( 'No se encontraron tipos' ),
+        'menu_name'                  => __( 'Tipos' ),
+        'back_to_items'              => __( '← Volver a tipos', 'tnb' ),
     );
 
     $args = array(
@@ -98,11 +98,11 @@ function create_vehicle_taxonomies() {
         'show_in_nav_menus'     => true,
         //'update_count_callback' => '_update_post_term_count',
         'query_var'             => true,
-        'rewrite'               => array( 'slug' => 'format' ),
-        //'description'           => __('Definimos formatos como "en construccion", "apta credito", "en sucesion", etc.'),
+        'rewrite'               => array( 'slug' => 'type' ),
+        //'description'           => __('Definimos tipos como "en construccion", "apta credito", "en sucesion", etc.'),
     );
 
-    register_taxonomy( 'format', 'vehicle', $args );
+    register_taxonomy( 'type', 'vehicle', $args );
     /*
     $labels = array(
         'name'                       => _x( 'Tipo', 'taxonomy general name' ),
@@ -215,25 +215,25 @@ function create_vehicle_taxonomies() {
 
 
 
-    // Condición Nuevo / Usado
+    // Estado Nuevo / Usado
     $labels = array(
-        'name'                       => _x( 'Condición', 'taxonomy general name' ),
-        'singular_name'              => _x( 'Condición', 'taxonomy singular name' ),
+        'name'                       => _x( 'Estado', 'taxonomy general name' ),
+        'singular_name'              => _x( 'Estado', 'taxonomy singular name' ),
         'search_items'               => __( 'Buscar estados' ),
-        'popular_items'              => __( 'Condiciones populares' ),
-        'all_items'                  => __( 'Todas las condiciones' ),
-        'parent_item'                => __( 'Condición padre' ),
-        'parent_item_colon'          => __( 'Condición padre:' ),
-        'edit_item'                  => __( 'Editar condición' ),
-        'update_item'                => __( 'Actualizar condición' ),
-        'add_new_item'               => __( 'Agregar condición' ),
-        'new_item_name'              => __( 'Nombre de condición' ),
-        'separate_items_with_commas' => __( 'Separar condiciones con comas' ),
-        'add_or_remove_items'        => __( 'Agregar o quitar condiciones' ),
-        'choose_from_most_used'      => __( 'Elige condiciones más populares' ),
-        'not_found'                  => __( 'No se encontraron condiciones' ),
-        'menu_name'                  => __( 'Condiciones' ),
-        'back_to_items'              => __( '← Volver a condiciones', 'tnb' ),
+        'popular_items'              => __( 'Estados populares' ),
+        'all_items'                  => __( 'Todas las estados' ),
+        'parent_item'                => __( 'Estado padre' ),
+        'parent_item_colon'          => __( 'Estado padre:' ),
+        'edit_item'                  => __( 'Editar estados' ),
+        'update_item'                => __( 'Actualizar estados' ),
+        'add_new_item'               => __( 'Agregar estados' ),
+        'new_item_name'              => __( 'Nombre de estados' ),
+        'separate_items_with_commas' => __( 'Separar estados con comas' ),
+        'add_or_remove_items'        => __( 'Agregar o quitar estados' ),
+        'choose_from_most_used'      => __( 'Elige estados más populares' ),
+        'not_found'                  => __( 'No se encontraron estados' ),
+        'menu_name'                  => __( 'Estados' ),
+        'back_to_items'              => __( '← Volver a estados', 'tnb' ),
     );
 
     $args = array(
@@ -254,7 +254,7 @@ function create_vehicle_taxonomies() {
 
 
 
-    // Condición Nuevo / Usado
+    // Estado Nuevo / Usado
     $labels = array(
         'name'                       => _x( 'Interior', 'taxonomy general name' ),
         'singular_name'              => _x( 'Interior', 'taxonomy singular name' ),
@@ -291,7 +291,8 @@ function create_vehicle_taxonomies() {
 
     register_taxonomy( 'interior', 'vehicle', $args );
 
-    // Condición Nuevo / Usado
+    /*
+    // Estado Nuevo / Usado
     $labels = array(
         'name'                       => _x( 'Adicionales', 'taxonomy general name' ),
         'singular_name'              => _x( 'Adicionales', 'taxonomy singular name' ),
@@ -327,27 +328,28 @@ function create_vehicle_taxonomies() {
     );
 
     register_taxonomy( 'additional', 'vehicle', $args );
+    */
 
     /*
-    // Formato: Camioneta, deportivo, auto, pickup
+    // Tipo: Camioneta, deportivo, auto, pickup
     $labels = array(
-        'name'                       => _x( 'Formato', 'taxonomy general name' ),
-        'singular_name'              => _x( 'Formato', 'taxonomy singular name' ),
-        'search_items'               => __( 'Buscar formatos' ),
-        'popular_items'              => __( 'Formatos populares' ),
-        'all_items'                  => __( 'Todas las formatos' ),
-        'parent_item'                => __( 'Formato padre' ),
-        'parent_item_colon'          => __( 'Formato padre:' ),
-        'edit_item'                  => __( 'Editar formato' ),
-        'update_item'                => __( 'Actualizar formato' ),
-        'add_new_item'               => __( 'Agregar formato' ),
-        'new_item_name'              => __( 'Nombre del formato' ),
-        'separate_items_with_commas' => __( 'Separar los formatos con comas' ),
-        'add_or_remove_items'        => __( 'Agregar o quitar formatos' ),
-        'choose_from_most_used'      => __( 'Elige de los formatos más populares' ),
-        'not_found'                  => __( 'No se encontraron formatos' ),
-        'menu_name'                  => __( 'Formatos' ),
-        'back_to_items'              => __( '← Volver a formatos', 'tnb' ),
+        'name'                       => _x( 'Tipo', 'taxonomy general name' ),
+        'singular_name'              => _x( 'Tipo', 'taxonomy singular name' ),
+        'search_items'               => __( 'Buscar tipos' ),
+        'popular_items'              => __( 'Tipos populares' ),
+        'all_items'                  => __( 'Todas las tipos' ),
+        'parent_item'                => __( 'Tipo padre' ),
+        'parent_item_colon'          => __( 'Tipo padre:' ),
+        'edit_item'                  => __( 'Editar tipo' ),
+        'update_item'                => __( 'Actualizar tipo' ),
+        'add_new_item'               => __( 'Agregar tipo' ),
+        'new_item_name'              => __( 'Nombre del tipo' ),
+        'separate_items_with_commas' => __( 'Separar los tipos con comas' ),
+        'add_or_remove_items'        => __( 'Agregar o quitar tipos' ),
+        'choose_from_most_used'      => __( 'Elige de los tipos más populares' ),
+        'not_found'                  => __( 'No se encontraron tipos' ),
+        'menu_name'                  => __( 'Tipos' ),
+        'back_to_items'              => __( '← Volver a tipos', 'tnb' ),
     );
 
     $args = array(
@@ -358,11 +360,11 @@ function create_vehicle_taxonomies() {
         'show_in_nav_menus'     => true,
         //'update_count_callback' => '_update_post_term_count',
         'query_var'             => true,
-        'rewrite'               => array( 'slug' => 'format' ),
-        //'description'           => __('Definimos formatos como "en construccion", "apta credito", "en sucesion", etc.'),
+        'rewrite'               => array( 'slug' => 'tipo' ),
+        //'description'           => __('Definimos tipos como "en construccion", "apta credito", "en sucesion", etc.'),
     );
 
-    register_taxonomy( 'format', 'propiedad', $args );
+    register_taxonomy( 'tipo', 'propiedad', $args );
     */
 
     /*
@@ -578,7 +580,27 @@ function cmb2_prop_base() {
         'options' => array(
             'no_terms_text' => __('Agregue una marca')
         ),
+        'attributes'         => array(
+            'required'      => 'required',
+        )
     ) );
+    $cmb->add_field( array(
+        'name'              => 'Modelo',
+        'id'                => $prefix .'model',
+        'type'              => 'text',
+        'attributes'         => array(
+            'required'      => 'required',
+        )
+    ));
+    $cmb->add_field( array(
+        'name'              => 'Año',
+        'id'                => $prefix .'year',
+        'type'              => 'text_small',
+        'attributes'         => array(
+            'required'      => 'required',
+            'placeholder'   => '2021',
+        )
+    ));
     $cmb->add_field( array(
         'name'     => 'Valor Venta',
         //'desc'     => '(Solo se muestra en caso de que la operación sea venta)',
@@ -657,25 +679,25 @@ function cmb2_prop_details() {
         // 'closed'     => true, // Keep the metabox closed by default
     ));
     $cmb3->add_field( array(
-        'name'              => 'Condición',
+        'name'              => 'Estado',
         'id'                => $prefix .'condition',
         'desc'              => __('Nuevo, Usado, etc', 'tnb'),
         'taxonomy'          => 'condition',
         'type'              => 'taxonomy_select',
         // Optional:
         'options' => array(
-            'no_terms_text' => __('No encontramos condiciones de venta, agregue una', 'tnb') // Change default text. Default: "No terms"
+            'no_terms_text' => __('No encontramos estados de venta, agregue una', 'tnb') // Change default text. Default: "No terms"
         ),
     ) );
     $cmb3->add_field( array(
-        'name'     => 'Formato',
+        'name'     => 'Tipo',
         'desc'     => 'Auto, Camioneta, Deportivo, Pick-Up, etc.',
-        'id'       => $prefix .'format',
-        'taxonomy' => 'format',
+        'id'       => $prefix .'type',
+        'taxonomy' => 'type',
         'type'     => 'taxonomy_select',
         // Optional:
         'options' => array(
-            'no_terms_text' => __('No encontramos ningun formato, agregue uno', 'tnb')
+            'no_terms_text' => __('No encontramos ningun tipo, agregue uno', 'tnb')
         ),
     ) );
     $cmb3->add_field( array(
@@ -684,25 +706,22 @@ function cmb2_prop_details() {
         //'id'                => $prefix .'motor',
         'type'              => 'text_small',
         'after_field'       => ' cm<sup>3</sup>',
-        'attibutes'         => array(
+        'attributes'         => array(
             'placeholder' => '1600',
         )
     ));
     $cmb3->add_field( array(
-        'name'              => 'Año',
-        'id'                => $prefix .'año',
+        'name'              => 'Kilometraje',
+        'id'                => $prefix .'km',
         'type'              => 'text_small',
-        'attibutes'         => array(
-            'placeholder'   => '2019',
-        )
     ));
     $cmb3->add_field( array(
-    	'name'              => 'Transmisión',
-    	'id'                => $prefix .'transmision',
-    	'type'              => 'select',
+        'name'              => 'Transmisión',
+        'id'                => $prefix .'transmision',
+        'type'              => 'select',
         'select_all_button' => true,
         //'default'         => set_default_transmision(true),
-    	'options'           => transmision(),
+        'options'           => transmision(),
         //'default_cb'        => 'set_default_services',
     ));
     $cmb3->add_field( array(
@@ -714,193 +733,142 @@ function cmb2_prop_details() {
     	'options'           => combustible(),
         //'default_cb'        => 'set_default_services',
     ));
-
     $cmb3->add_field( array(
-        'name'        => 'Interior',
-        'id'          => $prefix . 'interior',
-        //'type'        => 'tags_sortable',
-        'taxonomy'    => 'interior',
-        //'type'        => 'default_tags',
-        'select_all_button' => false,
-        'type'        => 'taxonomy_multicheck',
-        //'type'        => 'text',
-        //'repeatable'  => true,
-        //'text' => array(
-        //    'add_row_text' => 'Agregar',
-        //),
-    ) );
-
-    $cmb3->add_field( array(
-        'name'        => 'Adicionales',
-        'id'          => $prefix . 'additional',
-        'taxonomy'    => 'additional',
-        //'type'        => 'default_tags',
-        'select_all_button' => false,
-        'type'        => 'taxonomy_multicheck',
-        //'type'        => 'textarea',
-        //'repeatable'  => true,
-        //'text' => array(
-        //    'add_row_text' => 'Agregar',
-        //),
-    ) );
-    $cmb3->add_field( array(
-    	'name'              => 'Financiación',
-    	'id'                => $prefix .'financiation',
-        'taxonomy'          => 'financiation', //Enter Taxonomy Slug
-    	'type'              => 'taxonomy_multicheck',
-        //'select_all_button' => true,
-        'text'              => array(
-            'no_terms_text' => __('No encontramos ningún tipo de financiación') // Change default text. Default: "No terms"
-        ),
-        'remove_default' => 'true',
-        //'default'           => set_default_services(true),
-    	//'options'           => services(),
-        //'options_cb'        => 'get_service_list'
-        //'default_cb'        => 'set_default_services',
-    ));
-    /*
-    AMBIENTES
-    $cmb3->add_field( array(
-        'name'        => 'Ambientes',
-        'id'          => $prefix . 'rooms',
-        'type'        => 'text',
-        'sanitization_cb' => 'sanitize_int',
-        'attributes'  => array(
-            'type'    => 'number',
-            'pattern' => '\d*',
-        ),
-    ) );
-    $cmb3->add_field( array(
-        'name'        => 'Superficie',
-        'desc'        => 'en Metros Cuadrados',
-        'id'          => $prefix . 'sup',
-        'type'        => 'text',
-        'sanitization_cb' => 'sanitize_int',
-        'attributes'  => array(
-            'type'    => 'number',
-            'pattern' => '\d*',
-        ),
-    ) );
-    $cmb3->add_field( array(
-        'name'        => 'Antigüedad',
-        'desc'        => 'Antiguedad de la propiedad (en años)',
-        'id'          => $prefix . 'time',
-        'type'        => 'text',
-        'sanitization_cb' => 'sanitize_int',
-        'attributes'  => array(
-            'type'    => 'number',
-            'pattern' => '\d*',
-        ),
-    ) );
-    $cmb3->add_field( array(
-        'name'        => 'Dormitorios',
-        'id'          => $prefix . 'dormrooms',
-        'type'        => 'text',
-        'default'     => 1,
-        'sanitization_cb' => 'sanitize_int',
-        'attributes'  => array(
-            'type'    => 'number',
-            'pattern' => '\d*',
-        ),
-    ) );
-    $cmb3->add_field( array(
-        'name'        => 'Baños',
-        'id'          => $prefix . 'bathrooms',
-        'type'        => 'text',
-        'default'     => 1,
-        'sanitization_cb' => 'sanitize_int',
-        'attributes'  => array(
-            'type'    => 'number',
-            'pattern' => '\d*',
-        ),
-    ) );
-    $cmb3->add_field( array(
-        'name'        => 'Garage',
-        'id'          => $prefix . 'garage',
-        'type'        => 'text',
-        'sanitization_cb' => 'sanitize_int',
-        'attributes'  => array(
-            'type'    => 'number',
-            'pattern' => '\d*',
-        ),
-    ) );
-    $cmb3->add_field( array(
-        'name'           => 'Prestaciones',
-        'id'             => $prefix .'features',
-        'taxonomy'       => 'features', //Enter Taxonomy Slug
-	    'type'           => 'taxonomy_multicheck',
-        //'select_all_button' => false,
-        'text'           => array(
-            'no_terms_text' => __('Lo sentimos, no encontramos ninguna prestación, agregue una') // Change default text. Default: "No terms"
-        ),
-	    'remove_default' => 'true', // Removes the default metabox provided by WP core.
-	    // Optionally override the args sent to the WordPress get_terms function.
-        'query_args' => array(
-		// 'orderby' => 'slug',
-		// 'hide_empty' => true,
-	    ),
-        'options_cb' => 'get_service_list'
+        'name'              => 'Color',
+        'id'                => $prefix .'color',
+        'type'              => 'text',
     ));
     $cmb3->add_field( array(
-    	'name'              => 'Servicios',
-    	'id'                => $prefix .'services',
-    	'type'              => 'multicheck',
-        'select_all_button' => true,
-        //'default'           => set_default_services(true),
-    	'options'           => services(),
-        'default_cb'        => 'set_default_services',
-    ));*/
-
-    /*
-    $cmb3->add_field( array(
-    	'name'              => 'Servicios',
-    	'id'                => $prefix .'services',
-        'taxonomy'          => 'services', //Enter Taxonomy Slug
-    	'type'              => 'taxonomy_multicheck',
-        'select_all_button' => true,
-        'text'              => array(
-            'no_terms_text' => __('Lo sentimos, no encontramos ningún servicio cargado, agregue una') // Change default text. Default: "No terms"
-        ),
-        //'default'           => set_default_services(true),
-    	//'options'           => services(),
-        'options_cb'        => 'get_service_list'
-        //'default_cb'        => 'set_default_services',
+        'name'              => 'Tapizado',
+        'id'                => $prefix .'tapizado',
+        'type'              => 'text',
     ));
     $cmb3->add_field( array(
-    	'name'              => 'Estado',
-    	'id'                => $prefix .'condition',
-    	'type'              => 'multicheck',
-        'select_all_button' => false,
-        'options'           => condition(),
-        //'options' => array(
-    	//	1 => 'En construcción',
-    	//	2 => 'Apta crédito',
-    	//	3 => 'En Sucesión',
-    	//),
+        'name'              => 'Dirección',
+        'id'                => $prefix .'direccion',
+        'type'              => 'text',
     ));
-    */
-
-    /*
     $cmb3->add_field( array(
-    	'name'              => 'Orientación',
-    	'id'                => $prefix .'orientation',
+        'name'              => 'Tracción',
+        'id'                => $prefix .'traccion',
+        'type'              => 'text',
+    ));
+    $cmb3->add_field( array(
+        'name'              => 'Placa',
+        'id'                => $prefix .'placa',
+        'type'              => 'text_small',
+    ));
+    $cmb3->add_field( array(
+    	'name'              => 'Calefacción',
+    	'id'                => $prefix .'calefaccion',
     	'type'              => 'select',
-        'show_option_none'  => true,
-        'options'           => orientation(),
+        'show_option_none'  => false,
+        'options'           => yesno(),
     ));
     $cmb3->add_field( array(
-    	'name'              => 'Ubicación',
-    	'id'                => $prefix .'front',
+    	'name'              => 'Aire Acondicionado',
+    	'id'                => $prefix .'aire',
     	'type'              => 'select',
-        'show_option_none'  => true,
-        'options'           => front(),
+        'show_option_none'  => false,
+        'options'           => array(
+            'yes' => __('Si', 'tnb'),
+            'no'  => __('No', 'tnb')
+        )
     ));
-    */
+    $cmb3->add_field( array(
+        'name'              => 'Vidrios',
+        'id'                => $prefix .'vidrios',
+        'type'              => 'text',
+    ));
 
 
 }
-
 add_action( 'cmb2_init', 'cmb2_prop_details' );
+
+
+function cmb2_add_details() {
+
+    $prefix = '_prop_';
+
+    /* CMB3 ==================================== */
+
+    $cmb5 = new_cmb2_box( array(
+        'id'            => 'additionals_metabox',
+        'title'         => __( 'Adicionales del vehículo', 'tnb' ),
+        'object_types'  => array( 'vehicle' ), // post type
+        //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        // 'cmb_styles' => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+    $cmb5->add_field( array(
+        'name'              => 'Adicionales',
+        'id'                => $prefix .'additional',
+        'type'              => 'text',
+        'repeatable'        => true
+    ));
+
+}
+
+add_action( 'cmb2_init', 'cmb2_add_details' );
+
+
+function cmb2_finance() {
+
+    $prefix = '_prop_';
+
+    /* CMB3 ==================================== */
+
+    $cmb5 = new_cmb2_box( array(
+        'id'            => 'finance_metabox',
+        'title'         => __( 'Opciones de financiacion', 'tnb' ),
+        'object_types'  => array( 'vehicle' ), // post type
+        //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        // 'cmb_styles' => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+    /*
+    $cmb5->add_field( array(
+        'name'              => 'Financiación',
+        'id'                => $prefix .'options',
+        'type'    => 'multicheck',
+        'options' => array(
+            'op1' => 'Calculamos tu cuota en el acto por teléfono o Whatsapp',
+            'op2' => 'Tasa desde 14,5%. Regulado por el banco central',
+            'op3' => 'Plazo hasta 72 meses *',
+            'op4' => 'Hasta el xxx de financiamento*',
+        ),
+    ));
+    $cmb5->add_field( array(
+        'name'              => 'Financiación',
+        'id'                => $prefix .'options2',
+        'type'    => 'text_small',
+        'default'           => '100',
+        'after_field'       => ' %',
+
+    ));
+    */
+    $cmb5->add_field( array(
+        'name'              => 'Financiación',
+        'id'                => $prefix .'finance',
+        'type'              => 'text',
+        'default'           => array(
+            'Calculamos tu cuota en el acto por teléfono o Whatsapp',
+            'Tasa desde 14,5%. Regulado por el banco central',
+            'Plazo hasta 72 meses *',
+            'Hasta el 100% de financiamento *',
+        ),
+        'repeatable'        => true
+    ));
+
+}
+
+add_action( 'cmb2_init', 'cmb2_finance' );
 
 function cmb2_gallery() {
     $prefix = '_prop_';
@@ -1043,5 +1011,4 @@ function brand_taxonomy_metabox() {
     ) );
 }
 add_action( 'cmb2_admin_init', 'brand_taxonomy_metabox' );
-
 ?>

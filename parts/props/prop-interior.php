@@ -1,17 +1,17 @@
-<div class="card block">
-    <div class="card-header">
-        <h3 class="card-header-title">
+<div class="block">
+    <div class="block-title">
+        <h3 class="title is-4">
             <?php echo __('Interior', 'tnb'); ?>
         </h3>
     </div>
-    <div class="card-content">
+    <div class="block-content">
         <?php $ints = get_the_terms($post, 'interior'); ?>
         <?php
         //pr($ints);
         if($ints){
-            echo '<ul class="list-unstyled">';
+            echo '<ul class="list-unstyled list-2-cols">';
             foreach ( $ints as $int ) {
-                printf('<li>%s</li>', $int->name);
+                echo $int ? sprintf('<li><i class="icon-star"></i> %s</li>', $int->name) : '';
             }
             echo '</ul>';
         }

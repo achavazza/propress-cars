@@ -1,32 +1,26 @@
-<div class="card block">
-    <div class="card-header">
-        <h3 class="card-header-title">
-            <?php echo __('Adicionales', 'tnb'); ?>
+<?php
+$elems = get_post_meta($post->ID,'_prop_additional', true);
+//pr($elems);
+if($elems):
+?>
+<div class="block">
+    <div class="block-title">
+        <h3 class="title is-4">
+            <?php echo __('Extras', 'tnb'); ?>
         </h3>
     </div>
-    <div class="card-content">
-        <?php $ints = get_the_terms($post, 'additional'); ?>
+    <div class="block-content">
+
         <?php
-        //pr($ints);
-        if($ints){
-            echo '<ul class="list-unstyled">';
-            foreach ( $ints as $int ) {
-                printf('<li>%s</li>', $int->name);
+        //pr($elems);
+        if($elems):
+            echo '<ul class="list-unstyled list-2-cols">';
+            foreach ( $elems as $elem ) {
+                echo $elem ? sprintf('<li><i class="icon-star"></i> %s</li>', $elem) : '';
             }
             echo '</ul>';
-        }
-         ?>
-        <?php /*
-        <?php
-        $tasks = explode( ';', get_post_meta( get_the_ID(), '_prop_interior', true ) );
-        if($tasks){
-            echo '<ul class="list-unstyled">';
-            foreach ( $tasks as $task ) {
-                printf('<li>%s</li>', $task);
-            }
-            echo '</ul>';
-        }
+        endif;
         ?>
-        */ ?>
     </div>
 </div>
+<?php endif; ?>

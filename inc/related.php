@@ -1,21 +1,21 @@
 <?php
 $args = array(
-	'post_type'  	 => 'propiedad',
+	'post_type'  	 => 'vehicle',
 	'posts_per_page' => 2,
 	'order'			 => 'DESC',
 	'orderby'		 => 'ID',
 	'post__not_in'   => array($post->ID),
 	'tax_query'      => array(
-		array(
-			'taxonomy'     => 'operacion',
-			'field'        => 'id',
-			'terms'        => wp_get_post_terms($post->ID, 'operacion')[0]->term_id,
-		),
-		array(
-			'taxonomy'     => 'location',
-			'field'        => 'id',
-			'terms'        => wp_get_post_terms($post->ID, 'location')[0]->term_id,
-		),
+		//array(
+		//	'taxonomy'     => 'operacion',
+		//	'field'        => 'id',
+		//	'terms'        => wp_get_post_terms($post->ID, 'operacion')[0]->term_id,
+		//),
+		//array(
+		//	'taxonomy'     => 'location',
+		//	'field'        => 'id',
+		//	'terms'        => wp_get_post_terms($post->ID, 'location')[0]->term_id,
+		//),
 		/*array(
 			'taxonomy'     => 'tipo',
 			'field'        => 'id',
@@ -53,7 +53,7 @@ $args = array(
 $related = new WP_Query( $args );
 //pr($related);
 if ( $related->have_posts()) {
-	echo '<h2 class="h3 title">Propiedades Similares</h2>';
+	echo '<h3 class="title is-4 is-normal">Los compradores tambien vieron</h3>';
 	echo '<div class="colums is-same-height">';
 	while ($related->have_posts()): $related->the_post();
 		echo '<div class="columns is-one-third">';

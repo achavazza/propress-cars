@@ -71,29 +71,30 @@
         display: flex;
         flex-flow: row;
         justify-content: center;
+
         //justify-content: flex-start;
         /*
         &-left{
             justify-content: left;
         }
         */
+        margin-right: -1em;
 
-
-        figure{
+        figure,
+        figure a{
+            flex: 1;
             display: flex;
-            margin: 1em 1em 0 0;
             //margin: 5px 5px 0 0;
             //border: 1px solid rgba(0,0,0,.05);
-
-            &:last-child{
-                margin-right: 0;
-            }
+        }
+        figure{
+            margin: 1em 1em 0 0;
         }
         img {
             border-radius: 0.25rem;
             //width: 100px;
             //width: 80px;
-            height: 100px;
+            height: 150px;
             object-fit: cover;
             flex: 1;
         }
@@ -105,17 +106,33 @@
 
     }
     .img-limit{
+        border-radius: 0.25rem;
+        overflow: hidden;
+
+        .limit:after{
+            content:"";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.7);
+            z-index: 0;
+        }
         a{
             position: relative;
             display:flex;
             text-align: center;
-            font-weight: bold;
-            font-style: italic;
+            //font-weight: bold;
+            //font-style: italic;
 
+            /*
             img{
                 opacity: .2;
             }
+            */
             span{
+                color: $white;
                 position: absolute;
                 width: auto;
                 max-width: 100%;
@@ -125,6 +142,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 transform: translate(-50%, -50%);
+                z-index: 1;
 
             }
         }

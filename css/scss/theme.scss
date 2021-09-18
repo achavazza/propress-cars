@@ -4,6 +4,8 @@ $red:          hsl(10, 93%, 46%);
 $primary: $red;
 $secondary: $blue;
 
+$text: #808080;
+
 $radius: 0;
 $card-radius: $radius;
 $control-height: 3rem;
@@ -32,6 +34,7 @@ $control-height: 3rem;
 //@import "_multitouchrange";
 @import "_fixing";
 @import "_menu";
+@import "../../icons/jirocar/jirocar-icons.scss";
 @import "_style";
 
 /*

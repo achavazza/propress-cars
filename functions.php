@@ -270,11 +270,19 @@ require_once 'inc/custom-functions.php';
     function combustible(){
         global $combustible;
         $combustible = array(
-            1 => __('Nafta', 'tnb' ),
+            1 => __('Gasolina', 'tnb' ),
             2 => __('Diesel', 'tnb' ),
             3 => __('Eléctrico', 'tnb' ),
         );
         return $combustible;
+    }
+    function yesno(){
+        global $yesno;
+        $yesno = array(
+            'yes' => __('Si', 'tnb' ),
+             'no' => __('No', 'tnb' ),
+        );
+        return $yesno;
     }
     /*
     function orientation(){
@@ -345,8 +353,8 @@ require_once 'inc/custom-functions.php';
             'after_title'   => '</h2>'
         ));
         register_sidebar(array(
-            'name' => 'Sidebar Propiedad Widgets',
-            'id'   => 'sidebar-propiedad-widgets',
+            'name' => 'Sidebar de los vehiculos',
+            'id'   => 'sidebar-vehicle-widgets',
             'description'   => 'Estos son los widgets del sidebar de la propiedad.',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
@@ -401,10 +409,10 @@ require_once 'inc/custom-functions.php';
      }
     add_action('widgets_init', 'unregister_default_wp_widgets', 1);
 
-    require_once ('inc/widgets/widget-example.php');
+    //require_once ('inc/widgets/widget-example.php');
     require_once ('inc/widgets/viewed-properties.php');
-    require_once ('inc/widgets/widget-agent.php');
-    require_once 'inc/renderMap.php';
+    //require_once ('inc/widgets/widget-agent.php');
+    //require_once 'inc/renderMap.php';
 
 
     /*
@@ -427,3 +435,81 @@ require_once 'inc/custom-functions.php';
     }
     */
 ?>
+
+
+<?php
+function admin_js() { ?>
+    <script>
+    (function( $ ) {
+    $(function() {
+        /* fix porque el repeteable no anda bien*/
+        $('.cmb-repeat-table').each(function(){
+    	//if ( el.parent().hasClass( 'cmb2-options-page' ) ) {
+
+            var el = $( this );
+            //console.log(el);
+    		// Find hidden rows in repeatable groups
+    		el.find( '.cmb-row.hidden' ).each( function() {
+
+    			// Disable selects
+                //console.log($(this));
+                var input = $( this ).find( 'input' );
+    			input.val('');
+                //console.log(input);
+                //alert('stop!');
+
+    		});
+
+    	//}
+        })
+    /*
+    // More code using $ as alias to jQuery
+    $( 'body' ).on( 'submit', '#post', function() {
+    //$( 'body' ).on( 'submit', 'form.cmb-form', function() {
+
+    	// Init
+    	//var el = $( this );
+        //console.log(el);
+
+    	// Options page?
+        //console.log($('.cmb-repeat-table'));
+        $('.cmb-repeat-table').each(function(){
+    	//if ( el.parent().hasClass( 'cmb2-options-page' ) ) {
+
+            var el = $( this );
+            //console.log(el);
+    		// Find hidden rows in repeatable groups
+    		el.find( '.cmb-row.hidden' ).each( function() {
+
+    			// Disable selects
+                //console.log($(this));
+                var input = $( this ).find( 'input' );
+    			input.prop( 'disabled', true );
+    			input.value(false);
+                //console.log(input);
+                //alert('stop!');
+
+    		});
+
+    	//}
+        })
+
+    });
+    */
+    });
+    })(jQuery);
+    </script>
+<?php }
+add_action('admin_head', 'admin_js');
+
+
+
+/* Disable Gutemberg Block Editor */
+add_filter( 'use_block_editor_for_post', '__return_false' );
+/*
+add_filter( 'use_block_editor_for_post_type', function( $enabled, $post_type ) {
+    return 'your_post_type' === $post_type ? false : $enabled;
+}, 10, 2 );
+*/
+/* Disable Widgets Block Editor */
+add_filter( 'use_widgets_block_editor', '__return_false' );

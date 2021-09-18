@@ -14,10 +14,21 @@ body, button, input, optgroup, select, textarea{
     padding: 1rem 0;
 }
 
+.button.is-secondary{
+    background-color: $blue;
+    border-color: transparent;
+    color: #fff;
+}
+
+.widget{
+    margin: .75rem 0;
+}
+
 .title{
     display: block;
     margin-bottom: 0;
-    font-weight: 400;
+    /*font-weight: 400;*/
+    font-weight: 600;
     text-transform: uppercase;
     &.is-5{
         font-size: 16px;
@@ -33,8 +44,74 @@ body, button, input, optgroup, select, textarea{
     }
     &.is-bold{
         font-weight: bold;
+        font-weight: 600;
+    }
+    &.is-normal{
+        font-weight: 400;
     }
 }
+
+.title-secondary{
+    background: $secondary;
+    color: $white;
+    padding: .75rem;
+    margin-bottom: .75rem;
+    text-align: center;
+}
+
+.entry{
+    font-size: 16px;
+}
+.block-title{
+    color: $secondary;
+    border-bottom: 1px solid #ccc;
+    padding: 1em 0;
+    .title{
+        color: inherit;
+    }
+}
+.block-content{
+    padding: 1em 0;
+}
+
+.list-2-cols{
+    display: flex;
+    flex-flow: row wrap;
+    li{
+        flex: 0 1 50%;
+        line-height: 3em;
+    }
+
+    &.caract{
+        flex-direction: column;
+        height: calc( 3em * 9 );
+        li{
+            flex: 0;
+            line-height: 3em;
+        }
+    }
+
+}
+
+/*
+.list-2-cols{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 20em;
+
+    li{
+        width: 50%;
+        height: 1em;
+        margin: .5em;
+    }
+
+}
+*/
 
 /*
 .navbar{

@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Jirocar';
+  src:  url('../icons/jirocar/Jirocar.eot?37gg5z');
+  src:  url('../icons/jirocar/Jirocar.eot?37gg5z#iefix') format('embedded-opentype'),
+    url('../icons/jirocar/Jirocar.ttf?37gg5z') format('truetype'),
+    url('../icons/jirocar/Jirocar.woff?37gg5z') format('woff'),
+    url('../icons/jirocar/Jirocar.svg?37gg5z#Jirocar') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Jirocar' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 24px;
+  vertical-align: middle;
+
+  display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-aire:before {
+  content: "\e900";
+}
+.icon-ano:before {
+  content: "\e901";
+}
+.icon-calefaccion:before {
+  content: "\e902";
+}
+.icon-call:before {
+  content: "\e903";
+}
+.icon-check:before {
+  content: "\e904";
+}
+.icon-color:before {
+  content: "\e905";
+}
+.icon-comb:before {
+  content: "\e906";
+}
+.icon-direccion:before {
+  content: "\e907";
+}
+.icon-estado:before {
+  content: "\e908";
+}
+.icon-facebook:before {
+  content: "\e909";
+}
+.icon-instagram:before {
+  content: "\e90a";
+}
+.icon-km:before {
+  content: "\e90b";
+}
+.icon-vidrios:before {
+  content: "\e90c";
+}
+.icon-mail:before {
+  content: "\e90d";
+}
+.icon-marker:before {
+  content: "\e90e";
+}
+.icon-auto:before,
+.icon-modelo:before {
+  content: "\e90f";
+}
+.icon-modelo-alt:before {
+  content: "\e910";
+}
+.icon-motor-alt:before {
+  content: "\e911";
+}
+.icon-motor:before {
+  content: "\e912";
+}
+.icon-phone:before {
+  content: "\e913";
+}
+.icon-placa:before {
+  content: "\e914";
+}
+.icon-search:before {
+  content: "\e915";
+}
+.icon-share:before {
+  content: "\e916";
+}
+.icon-star:before {
+  content: "\e917";
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: 4px;
+}
+.icon-tapizado:before {
+  content: "\e918";
+}
+.icon-tipo:before {
+  content: "\e919";
+}
+.icon-traccion:before {
+  content: "\e91a";
+}
+.icon-trans-alt:before {
+  content: "\e91b";
+}
+.icon-trans:before {
+  content: "\e91c";
+}

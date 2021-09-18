@@ -24,7 +24,7 @@
 
             //echo sprintf('<li class="field field-search">%s</li>', $inputContent);
 
-            $taxonomies = array('condition','brand','format');
+            $taxonomies = array('condition','brand','type');
             $args = array('order'=>'DESC','hide_empty'=>true);
             echo get_terms_dropdown($taxonomies, $args);
 
@@ -46,10 +46,10 @@
                         $plural = 'Marcas';
                         break;
 
-                        case 'format';
-                        $empty = 'Formato';
-                        $label = 'Formato';
-                        $plural = 'Formatos';
+                        case 'type';
+                        $empty = 'Tipo';
+                        $label = 'Tipo';
+                        $plural = 'Tipos';
                         break;
                     }
 

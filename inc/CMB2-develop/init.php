@@ -53,7 +53,7 @@
  * ***********************************************************************
  */
 
-if ( ! class_exists( 'CMB2_Bootstrap_290_Develop', false ) ) {
+if ( ! class_exists( 'CMB2_Bootstrap_290', false ) ) {
 
 	/**
 	 * Handles checking for and loading the newest version of CMB2
@@ -66,7 +66,7 @@ if ( ! class_exists( 'CMB2_Bootstrap_290_Develop', false ) ) {
 	 * @license   GPL-2.0+
 	 * @link      https://cmb2.io
 	 */
-	class CMB2_Bootstrap_290_Develop {
+	class CMB2_Bootstrap_290 {
 
 		/**
 		 * Current version number
@@ -86,17 +86,17 @@ if ( ! class_exists( 'CMB2_Bootstrap_290_Develop', false ) ) {
 		const PRIORITY = 9959;
 
 		/**
-		 * Single instance of the CMB2_Bootstrap_290_Develop object
+		 * Single instance of the CMB2_Bootstrap_290 object
 		 *
-		 * @var CMB2_Bootstrap_290_Develop
+		 * @var CMB2_Bootstrap_290
 		 */
 		public static $single_instance = null;
 
 		/**
-		 * Creates/returns the single instance CMB2_Bootstrap_290_Develop object
+		 * Creates/returns the single instance CMB2_Bootstrap_290 object
 		 *
 		 * @since  2.0.0
-		 * @return CMB2_Bootstrap_290_Develop Single instance object
+		 * @return CMB2_Bootstrap_290 Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$single_instance ) {
@@ -193,6 +193,6 @@ if ( ! class_exists( 'CMB2_Bootstrap_290_Develop', false ) ) {
 	}
 
 	// Make it so...
-	CMB2_Bootstrap_290_Develop::initiate();
+	CMB2_Bootstrap_290::initiate();
 
 }// End if().

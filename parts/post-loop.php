@@ -41,7 +41,7 @@ $data            = wp_parse_args(get_post_meta($post->ID), array(
 
 $brand             = get_the_terms($post->ID, 'brand')[0];
 $cond              = get_the_terms($post->ID, 'condition')[0];
-$tran              = transmision()[$data['_prop_transmision'][0]];
+$trans             = transmision()[$data['_prop_transmision'][0]];
 $comb              = combustible()[$data['_prop_combustible'][0]];
 //$ops             = get_the_terms($post->ID, 'operacion');
 //$prop_loc        = get_location($post);
@@ -89,9 +89,9 @@ $comb              = combustible()[$data['_prop_combustible'][0]];
                         <?php echo get_the_title($post); ?>
                     </span>
                 </span>
-                <span class="level">
-                    <?= $cond ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-estado"></i> %s</span>', $cond->name) : ''; ?>
-                    <?= $brand ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-modelo"></i> %s</span>', $brand->name) : ''; ?>
+                <span class="level is-mobile">
+                    <?= $cond ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-modelo"></i> %s</span>', $cond->name) : ''; ?>
+                    <?= $trans ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-trans-alt"></i> %s</span>', $trans) : ''; ?>
                     <?= $comb ? sprintf('<span class="level-item is-flex-direction-column"><i class="icon-comb"></i> %s</span>', $comb) : ''; ?>
                     <?php /*
                     <span class="level-item is-flex-direction-column">

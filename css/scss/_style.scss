@@ -12,6 +12,12 @@ body, button, input, optgroup, select, textarea{
 .section {
     padding: 1.5rem;
 }
+.section-mobile{padding: 0;}
+@media(max-width:($desktop - 1px)){
+    .section-mobile{
+        padding: 1.5rem;
+    }
+}
 
 .breadcrumb{
     padding: 1rem 0;
@@ -153,13 +159,15 @@ background: $white
     box-shadow: unset;
 }
 .card-header-title{
-    padding: 1.5rem 1.5rem .75rem;
+    padding: 1rem;
+    //padding: 1.5rem 1.5rem .75rem;
     font-size: 1.25rem;
     font-weight: 600;
 }
 
 .card-footer-padding{
-    padding: .75rem 1.5rem .75rem;
+    padding: 1rem;
+    //padding: .75rem 1.5rem .75rem;
     //padding: .75rem 1.5rem;
 }
 .price-block{
@@ -210,4 +218,8 @@ background: $white
     color: #D62A08;
     font-size: 20px;
     margin-right: .25rem;
+}
+
+.widget .wpcf7-form label {
+    padding: 0 2% 2%;
 }

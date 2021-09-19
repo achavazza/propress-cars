@@ -253,7 +253,7 @@ function create_vehicle_taxonomies() {
     register_taxonomy( 'condition', 'vehicle', $args );
 
 
-
+    /*
     // Estado Nuevo / Usado
     $labels = array(
         'name'                       => _x( 'Interior', 'taxonomy general name' ),
@@ -290,6 +290,7 @@ function create_vehicle_taxonomies() {
     );
 
     register_taxonomy( 'interior', 'vehicle', $args );
+     */
 
     /*
     // Estado Nuevo / Usado

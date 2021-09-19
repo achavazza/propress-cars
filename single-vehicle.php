@@ -40,14 +40,14 @@ $data            = wp_parse_args(get_post_meta($post->ID), array(
 //$cur_symbol      = $prop_currency ? '$' : 'U$S';
 
 $brand             = get_the_terms($post->ID, 'brand')[0];
-$model             = $data['_prop_model'];
-$year              = $data['_prop_year'];
+$model             = isset($data['_prop_model']) ? $data['_prop_model'] : '';
+$year              = isset($data['_prop_year']) ? $data['_prop_year'] : '';
 
 $cond              = get_the_terms($post->ID, 'condition')[0];
 
 
 $motor             = $data['_prop_motor'];
-$km                = $data['_prop_km'];
+$km                = isset($data['_prop_km']) ? $data['_prop_km'] : '';
 
 $type              = get_the_terms($post->ID, 'type')[0];
 //$format            = get_the_terms($post->ID, 'type')[0];
@@ -58,14 +58,14 @@ $trans             = transmision()[$data['_prop_transmision'][0]];
 $comb              = combustible()[$data['_prop_combustible'][0]];
 
 
-$color             = $data['_prop_color'][0];
-$tapizado          = $data['_prop_tapizado'][0];
-$direccion         = $data['_prop_direccion'][0];
-$traccion          = $data['_prop_traccion'][0];
-$placa             = $data['_prop_placa'][0];
-$calefaccion       = yesno()[$data['_prop_calefaccion'][0]];
-$aire              = yesno()[$data['_prop_aire'][0]];
-$vidrios           = $data['_prop_vidrios'][0];
+$color             = isset( $data['_prop_color'][0] ) ? $data['_prop_color'][0] : '';
+$tapizado          = isset( $data['_prop_tapizado'][0] ) ? $data['_prop_tapizado'][0] : '';
+$direccion         = isset( $data['_prop_direccion'][0] ) ? $data['_prop_direccion'][0] : '';
+$traccion          = isset( $data['_prop_traccion'][0] ) ? $data['_prop_traccion'][0] : '';
+$placa             = isset( $data['_prop_placa'][0] ) ? $data['_prop_placa'][0] : '';
+$calefaccion       = isset( $data['_prop_calefaccion'][0] ) ? yesno()[$data['_prop_calefaccion'][0]] : '';
+$aire              = isset( $data['_prop_aire'][0] ) ? yesno()[$data['_prop_aire'][0]] : '';
+$vidrios           = isset( $data['_prop_vidrios'][0] ) ? $data['_prop_vidrios'][0] : '';
 //$ops             = get_the_terms($post->ID, 'operacion');
 //$prop_loc        = get_location($post);
 //$statuses        = get_the_terms($post->ID, 'status')[0];
@@ -91,12 +91,12 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
 </div>
 */ ?>
 
-<div class="container column">
-	<div class="columns">
-		<div class="column is-three-quarters">
-
+<div class="container">
+	<div class="columns is-multiline">
+		<div class="column is-12 is-9-desktop">
+            <div class="section">
             <div class="columns is-vcentered">
-                <div class="column is-three-quarters-desktop">
+                <div class="column is-8-desktop">
                     <h2 class="title is-1 is-bold is-color-secondary mb-0">
                         <?php
                         /*
@@ -116,7 +116,7 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
                         <?= $km   ? sprintf('| %s km', $km[0])   : ''; ?>
                     </span>
                 </div>
-                <div class="column is-one-quarter-desktop">
+                <div class="column is-4-desktop">
                     <?php
                     //$args = $data;
                     //pase todos los contenidos a un template
@@ -141,8 +141,6 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
 			<?php if (have_posts()) :?>
 			<?php while (have_posts()) : the_post(); ?>
 				<div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-
-
                     <?php
                     // caracteristicas de la propiedad
                     //get_template_part('parts/props/prop','features')  ?>
@@ -169,13 +167,19 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
                                 <?php endif; ?>
 							</div>
                             <ul class="list-unstyled list-2-cols caract">
+                                <?= $cond ? sprintf('<li><i class="icon-modelo"></i> %s</li>', $cond->name) : ''; ?>
+                                <?php /*
                                 <?= $cond ? sprintf('<li><i class="icon-estado"></i> %s</li>', $cond->name) : ''; ?>
+                                */ ?>
                                 <?= $brand ? sprintf('<li><i class="icon-modelo"></i> %s</li>', $brand->name) : ''; ?>
                                 <?= $model ? sprintf('<li><i class="icon-modelo"></i> %s</li>', $model[0]) : ''; ?>
                                 <?= $year ? sprintf('<li><i class="icon-ano"></i> %s</li>', $year[0]) : ''; ?>
                                 <?= $km ? sprintf('<li><i class="icon-km"></i> %s</li>', $km[0]) : ''; ?>
                                 <?= $motor ? sprintf('<li><i class="icon-motor"></i> %s</li>', $motor[0]) : ''; ?>
+                                <?php /*
                                 <?= $trans ? sprintf('<li><i class="icon-trans"></i> %s</li>', $trans) : ''; ?>
+                                */ ?>
+                                <?= $trans ? sprintf('<li><i class="icon-trans-alt"></i> %s</li>', $trans) : ''; ?>
                                 <?= $comb ? sprintf('<li><i class="icon-comb"></i> %s</li>', $comb) : ''; ?>
                                 <?= $color ? sprintf('<li><i class="icon-color"></i> %s</li>', $color) : ''; ?>
                                 <?= $tapizado ? sprintf('<li><i class="icon-tapizado"></i> %s</li>', $tapizado) : ''; ?>
@@ -203,45 +207,29 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
                     get_template_part('parts/props/prop','finance')
                     ?>
 
-				</div>
-			</div>
-		<?php endwhile;?>
-	<?php endif; ?>
-		<div class="column is-one-quarter sticky-container">
-            <?php //pr($data) ?>
-            <?php /*
-            <table class="table is-fullwidth">
-                <tr>
-                    <th><?php echo __('Tamaño motor', 'tnb') ?></th>
-                    <td><?php printf('%s <span>cm<sup>3</sup></span>', $motor[0]); ?></td>
-                </tr>
-                <tr>
-                    <th><?php echo __('Carrocería', 'tnb') ?></th>
-                    <td><?php printf('%s', $format->name); ?></td>
-                </tr>
-                <tr>
-                    <th><?php echo __('Puertas', 'tnb') ?></th>
-                    <td><?php printf('%s', $puertas); ?></td>
-                </tr>
-            </table>
+                    <?php if ( is_active_sidebar( 'vehicle-foot-widgets' ) ) : ?>
+                            <?php dynamic_sidebar( 'vehicle-foot-widgets' ); ?>
+                    <?php endif; ?>
+                    <?php // if (function_exists('dynamic_sidebar') && dynamic_sidebar('Pie de vehiculo')) : else : endif; ?>
 
-            <?php
-            if($notification_form):
-                echo '<a class="button is-fullwidth is-primary modal-button" data-target="#notificacion">Solicitar información</a>';
-                //echo '<a class="btn btn-primary" data-lity="" href="#notificacion" style="padding:7px">Avisarme si baja el precio</a>';
-            endif;
-            ?>
-            <?php //include (TEMPLATEPATH . '/inc/agents.php' ); ?>
-            */ ?>
+				</div>
+            <?php endwhile;?>
+            <?php endif; ?>
+            </div>
+        </div>
+		<div class="column is-12 is-3-desktop sticky-container">
 			<?php get_sidebar('vehicle'); ?>
 		</div>
 	</div>
 </div>
-<div class="container column">
+<div class="container">
 	<div class="columns">
-		<div class="column is-three-quarters">
+		<div class="column is-12 is-9-desktop">
+		<div class="section-mobile">
             <?php include (TEMPLATEPATH . '/inc/related.php' ); ?>
         </div>
+        </div>
+        <div class="column is-12 is-3-desktop"></div>
     </div>
 </div>
 

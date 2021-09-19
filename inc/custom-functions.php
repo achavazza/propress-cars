@@ -115,8 +115,12 @@ function get_attachment_url_by_slug( $slug , $size) {
 * CUSTOM FUNCTION, SEARCH BY META_VALUE
 */
 function wpa_filter_home_query( $query ){
-    $low  = $_GET['price_low'];
-    $high = $_GET['price_high'];
+    if(isset($_GET['price_low'])){
+        $low  = $_GET['price_low'];
+    }
+    if(isset($_GET['price_high'])){
+        $high = $_GET['price_high'];
+    }
     //$tax  = $_GET['operacion'];
 
     $price_key  = '_prop_price_sale';
@@ -128,7 +132,7 @@ function wpa_filter_home_query( $query ){
     //    $price_key = '_prop_price_rent';
     //}
 
-if($query->is_main_query()) {
+    if($query->is_main_query()) {
 
         //if(isset( $dorms ) && !empty($dorms) ){
         //    $meta_query = array(

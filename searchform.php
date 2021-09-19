@@ -71,7 +71,7 @@
                     $inputContent .= '</select>';
                     $inputContent .= '</span>';
                     $inputContent .= '</div>';
-                    echo sprintf('<li class="field flex-1">%s</li>', $inputLabel.$inputContent);
+                    echo sprintf('<li class="field flex-1">%s</li>', $inputContent);
 
                 }
             }
@@ -92,8 +92,8 @@
                 <label>Rango de precios</label>
                 <div class="slider-container">
                     <?php
-                    $price_low  = $_GET['price_low'] ? $_GET['price_low'] : 0;
-                    $price_high = $_GET['price_high'] ? $_GET['price_high'] : 15000;
+                    $price_low  = isset($_GET['price_low']) ? $_GET['price_low'] : 0;
+                    $price_high = isset($_GET['price_high']) ? $_GET['price_high'] : 15000;
                     $step = ($price_high - $price_low) / 20;
                     //echo $step;
                     //pr($price_high);
@@ -165,14 +165,15 @@
                 </span>
             </li>
         </ul>
+        <?php
+        /*
         <div class="field-body is-align-items-flex-end">
-            <?php
-            /*wp_nav_menu( array(
+            wp_nav_menu( array(
             'theme_location'  => 'search-menu',
             'container'       => false,
             'menu_class'      => 'flush',
             'fallback_cb'     => false,
-        ));*/
+        ));
         $i = 0;
         $menuName = get_term(get_nav_menu_locations()['search-menu'], 'nav_menu')->name;
         $items   = wp_get_nav_menu_items($menuName);
@@ -193,5 +194,6 @@
                 </ul>
             <?php endif; ?>
         <?php endif; ?>
-    </div>
+        </div>
+        */ ?>
 </form>

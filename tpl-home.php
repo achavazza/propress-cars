@@ -113,8 +113,8 @@ if ( $loop->have_posts() ) : ?>
 
         <div class="columns is-mobile is-centered">
     		<div class="column is-one-third">
-    				<a href="<?php echo get_bloginfo('tpl-featured').'/?s=' ?>" class="button is-primary is-medium is-fullwidth">
-    					<?php echo _e('Ver propiedades destacadas') ?>
+    				<a href="<?php echo get_bloginfo('tpl-featured').'/?s=' ?>" class="button is-primary is-fullwidth">
+    					<?php echo _e('Ver más unidades destacadas  destacadas') ?>
     				</a>
     		</div>
     	</div>
@@ -154,8 +154,8 @@ if ( $loop->have_posts() ) :
 
         <div class="columns is-mobile is-centered">
             <div class="column is-one-third">
-                <a href="<?php echo get_bloginfo('home').'/?s=' ?>" class="button is-primary is-medium is-fullwidth">
-                    <?php echo _e('Ver Todas las propiedades') ?>
+                <a href="<?php echo get_bloginfo('home').'/?s=' ?>" class="button is-primary is-fullwidth">
+                    <?php echo _e('Ver todas las unidades') ?>
                 </a>
             </div>
         </div>

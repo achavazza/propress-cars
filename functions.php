@@ -104,7 +104,6 @@ require_once 'inc/custom-functions.php';
         print_r($out);
         echo '</pre>';
     }
-
     function check($out){
         if(isset($out) && !empty($out)){
             return true;
@@ -356,6 +355,15 @@ require_once 'inc/custom-functions.php';
             'name' => 'Sidebar de los vehiculos',
             'id'   => 'sidebar-vehicle-widgets',
             'description'   => 'Estos son los widgets del sidebar de la propiedad.',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
+        register_sidebar(array(
+            'name' => 'Pie de vehiculo',
+            'id'   => 'vehicle-foot-widgets',
+            'description'   => '(Donde poner publiciad y detalles)',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2>',

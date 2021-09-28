@@ -419,6 +419,7 @@ require_once 'inc/custom-functions.php';
 
     //require_once ('inc/widgets/widget-example.php');
     require_once ('inc/widgets/viewed-properties.php');
+    require_once ('inc/widgets/steps.php');
     //require_once ('inc/widgets/widget-agent.php');
     //require_once 'inc/renderMap.php';
 

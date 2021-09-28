@@ -223,3 +223,50 @@ background: $white
 .widget .wpcf7-form label {
     padding: 0 2% 2%;
 }
+
+
+$stepSize: 150px;
+
+.steps{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+
+    &:after{
+        content: '';
+        height: 4px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        background: $red;
+        top: $stepSize / 2;
+        z-index: -1;
+    }
+    li{
+        width: $stepSize;
+        text-align: center;
+        font-weight: bold;
+
+        div{
+            background: $red;
+            border: 4px solid $white;
+            box-sizing: content-box;
+            width: $stepSize;
+            height: $stepSize;
+            border-radius: $stepSize;
+            margin-bottom: 1em;
+
+            img{
+                width: $stepSize;
+                height: $stepSize;
+                margin: 0;
+                display: block;
+            }
+        }
+        span{
+            line-height: 1.2
+        }
+
+    }
+}

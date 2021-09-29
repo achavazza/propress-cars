@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Home - Solo propiedades
+Template Name: Home - Solo vehículos
 */
 get_header();
 ?>
@@ -57,7 +57,7 @@ if ( $loop->have_posts() ) :
 
 		<div class="columns is-same-height is-multiline">
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-			<div class="column is-one-third">
+			<div class="column is-4">
 				<?php get_template_part('parts/blog','loop') ?>
 			</div>
 			<?php //$i++; ?>
@@ -65,7 +65,7 @@ if ( $loop->have_posts() ) :
 		<?php endwhile; ?>
 		</div>
         <div class="columns is-mobile is-centered">
-            <div class="column is-one-third">
+            <div class="column is-4">
                 <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) )  ?>" class="button is-primary is-medium is-fullwidth">
                     <?php echo _e('Ver Todas las noticias') ?>
                 </a>
@@ -113,7 +113,7 @@ if ( $loop->have_posts() ) : ?>
 		</div>
 
         <div class="columns is-mobile is-centered">
-    		<div class="column is-one-third">
+    		<div class="column is-4">
     				<a href="<?php echo get_bloginfo('tpl-featured').'/?s=' ?>" class="button is-primary is-fullwidth">
     					<?php echo _e('Ver más unidades destacadas') ?>
     				</a>
@@ -142,7 +142,7 @@ if ( $loop->have_posts() ) :
 
     	<div class="columns is-same-height is-multiline">
     		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-    			<div class="column is-one-third">
+    			<div class="column is-4">
     				<?php get_template_part('parts/post','loop') ?>
     			</div>
 
@@ -154,7 +154,7 @@ if ( $loop->have_posts() ) :
        </div>
 
         <div class="columns is-mobile is-centered">
-            <div class="column is-one-third">
+            <div class="column is-4">
                 <a href="<?php echo get_bloginfo('home').'/?s=' ?>" class="button is-primary is-fullwidth">
                     <?php echo _e('Ver todas las unidades') ?>
                 </a>

@@ -45,16 +45,7 @@
 				<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
 
 			<?php else : ?>
-
-				<div class="card">
-					<h2 class="title">:( No encontramos vehículos</h2>
-					<p>
-						Por favor, vuelva al inicio
-						<hr />
-						<a class="btn btn-primary" href="<?php echo get_bloginfo('home') ?>">< Volver al Inicio</a>
-					</p>
-				</div>
-
+				<?php include('inc/notfound.php') ?>
 			<?php endif; ?>
 		</div>
 		<div class="column is-one-quarter sticky-container">

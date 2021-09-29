@@ -9,7 +9,7 @@ get_header(); ?>
 <?php //the_breadcrumb(); ?>
 	<?php
 		$args = array(
-			'post_type'           => 'propiedad',
+			'post_type'           => 'vehicle',
 			//'category_name'       => 'current',
 			//'ignore_sticky_posts' => 1,
 			//'paged'               => $paged

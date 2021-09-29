@@ -44,16 +44,16 @@ function pagenavi( $p = 2 ) { // pages will be show before and after current pag
     echo '</ul>';
 
     // echo '<span class="pages">Page: ' . $paged . ' of ' . $max_page . ' </span> '; // pages
-    //if ( $paged > $p + 1 ){
+    if ( $paged > $p + 1 ){
         $paged = 1;
         echo '<a class="pagination-previous" href="'.esc_html( get_pagenum_link( $paged , true ) ).'" title="'.$title.'">'.$labelFirst.'</a> ';
         //p_link( 1, $labelFirst );
-    //}
-    //if ( $paged < $max_page - $p ){
+    }
+    if ( $paged < $max_page - $p ){
         $paged = $max_page;
         echo '<a class="pagination-next" href="'.esc_html( get_pagenum_link( $paged ) ).'" title="'.$title.'">'.$labelLast.'</a> ';
         //p_link( $max_page, $labelLast );
-    //}
+    }
 
 }
 function p_link( $i, $title = '' ) {

@@ -22,14 +22,14 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 	 *
 	 * @var string
 	 */
-	protected $widget_slug = 'viewed-properties';
+	protected $widget_slug = 'viewed-prop';
 
 	/**
 	 * Shortcode name for this widget
 	 *
 	 * @var string
 	 */
-	protected static $shortcode = 'viewed-properties';
+	protected static $shortcode = 'viewed-prop';
 
 	/**
 	 * This widget's CMB2 instance.
@@ -46,7 +46,7 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 	protected static $defaults = array();
 
 	/**
-	 * Store the instance properties as property
+	 * Store the instance prop as property
 	 *
 	 * @var array
 	 */
@@ -66,11 +66,11 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
 
 		parent::__construct(
 			$this->widget_slug,
-			esc_html__( 'Propiedades vistas', 'tnb' ),
+			esc_html__( 'Recientemente vistos', 'tnb' ),
 			array(
 				'classname' => $this->widget_slug,
 				'customize_selective_refresh' => true,
-				'description' => esc_html__( 'Lista las propiedades vistas', 'tnb' ),
+				'description' => esc_html__( 'Lista vistos recientemente', 'tnb' ),
 			)
 		);
 
@@ -204,9 +204,9 @@ class CMB2_Widget_Viewed_Prop extends WP_Widget {
             $widget = '';
             $values = explode(";", $_COOKIE['wpb_visited_props']);
             $post_num = intval($instance['posts_num']);
-            
+
         	$widget_query = new WP_Query([
-				'post_type'           => 'propiedad',
+				'post_type'           => 'vehicle',
         		'posts_per_page'      => $post_num,
         		'ignore_sticky_posts' => 1,
                 'post__in'            => $values,

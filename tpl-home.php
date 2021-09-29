@@ -80,7 +80,7 @@ if ( $loop->have_posts() ) :
 
 <?php
 $args = array(
-'post_type'      => 'propiedad',
+'post_type'      => 'vehicle',
 'posts_per_page' => 3,
 'meta_query'  => array(
         array(
@@ -127,7 +127,7 @@ if ( $loop->have_posts() ) : ?>
 $args = array(
 	//'ignore_sticky_posts' => 1,
 	//'paged'               => $paged
-	'post_type'      => 'propiedad',
+	'post_type'      => 'vehicle',
 	'posts_per_page' => 12,
 	'post__not_in'   => $featPosts
 );

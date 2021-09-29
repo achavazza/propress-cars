@@ -49,7 +49,7 @@
 			<?php else : ?>
 
 				<div class="panel">
-					<h2 class="title">:( No encontramos propiedades</h2>
+					<h2 class="title">:( No encontramos vehículos</h2>
 					<p>
 						Por favor, vuelva al inicio
 						<hr />

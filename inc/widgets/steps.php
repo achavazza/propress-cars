@@ -237,7 +237,6 @@ class CMB2_Widget_Req_Steps extends WP_Widget {
 
 			$widget .= '</div>';
 			$widget .= '</div>';
-			$widget .= '</div>';
 
 			// After widget hook
 			$widget .= $atts['after_widget'];

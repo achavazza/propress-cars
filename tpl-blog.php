@@ -16,7 +16,7 @@ get_header(); ?>
 				<?php endwhile; ?>
 			<?php else : ?>
 				<div class="card">
-					<h2 class="card-content">:( No encontramos propiedades</h2>
+					<h2 class="card-content">:( No encontramos vehículos</h2>
 					<p>
 						Por favor, vuelva al inicio
 						<hr />

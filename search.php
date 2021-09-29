@@ -18,16 +18,15 @@
         <?php if (have_posts()) : ?>
             <div class="columns is-same-height is-multiline">
             <?php while (have_posts()) : the_post(); ?>
-                <div class="column is-one-half">
+                <div class="column is-6">
                     <?php get_template_part('parts/post','loop') ?>
                 </div>
-				<?php //echo ($i % 2 == 0) ? '</div><div class="row">':'' ?>
             <?php endwhile; ?>
             </div>
         <?php else : ?>
             <div class="card mb-5">
             <div class="card-content">
-                <h2 class="title is-2">:( No encontramos propiedades</h2>
+                <h2 class="title is-2">:( No encontramos vehículos</h2>
                 <p>
                     Por favor, vuelva al inicio
                     <hr />

@@ -102,7 +102,7 @@ if ( $loop->have_posts() ) : ?>
         <div class="columns is-same-height is-multiline">
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
             <?php array_push($featPosts, get_the_ID()); ?>
-			<div class="column is-one-third">
+			<div class="column is-4">
 				<?php get_template_part('parts/post','loop') ?>
 			</div>
 

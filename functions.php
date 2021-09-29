@@ -170,9 +170,17 @@ require_once 'inc/custom-functions.php';
         wp_register_script('scripts'      , get_template_directory_uri().'/js/scripts.js', array('jquery'), null, true);
         //wp_register_script('scripts'      , get_template_directory_uri().'/js/scripts.js', array('jquery', 'bootstrap'), null, true);
 
+
         wp_enqueue_script('scripts');
     }
     add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+
+    function no_uislider() {
+        wp_register_script('nouislider'        , get_template_directory_uri().'/js/plugins/nouislider/nouislider.js', null, null, true);
+        wp_register_script('nouislider-init'   , get_template_directory_uri().'/js/plugins/nouislider/nouislider-init.js', array('nouislider'), null, true);
+        wp_enqueue_script('nouislider-init');
+    }
+    add_action( 'wp_enqueue_scripts', 'no_uislider' );
 
     //wp_register_script('multirange'   , get_template_directory_uri().'/js/multirange.js', null, null, true);
     //wp_enqueue_script('multirange');
@@ -183,9 +191,6 @@ require_once 'inc/custom-functions.php';
     //wp_register_script('multitouchrange'   , get_template_directory_uri().'/js/multitouchrange.js', null, null, true);
     //wp_enqueue_script('multitouchrange');
 
-    wp_register_script('nouislider'        , get_template_directory_uri().'/js/plugins/nouislider/nouislider.js', null, null, true);
-    wp_register_script('nouislider-init'   , get_template_directory_uri().'/js/plugins/nouislider/nouislider-init.js', array('nouislider'), null, true);
-    wp_enqueue_script('nouislider-init');
 
     /* bulma y cf7 */
     /*

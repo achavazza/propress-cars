@@ -98,7 +98,7 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
             <div class="section">
             <div class="columns is-vcentered">
                 <div class="column is-8-desktop">
-                    <h2 class="title is-1 is-bold is-color-secondary mb-0">
+                    <h2 class="title is-primary is-1 is-bold is-color-secondary mb-0">
                         <?php
                         /*
                         if ($brand && $model){
@@ -134,7 +134,7 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
                         echo '</span>';
                     endif;
                     ?>
-                    <?php echo sharethis_inline_buttons(); ?>
+                    <?php echo function_exists('sharethis_inline_buttons') ?  sharethis_inline_buttons(): ''; ?>
                 </div>
             </div>
 

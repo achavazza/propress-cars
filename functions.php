@@ -357,6 +357,15 @@ require_once 'inc/custom-functions.php';
             'after_title'   => '</h2>'
         ));
         register_sidebar(array(
+            'name' => 'Contacto de los vehiculos',
+            'id'   => 'sidebar-contact-vehicle-widgets',
+            'description'   => 'Widget de contacto',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
+        register_sidebar(array(
             'name' => 'Sidebar de los vehiculos',
             'id'   => 'sidebar-vehicle-widgets',
             'description'   => 'Estos son los widgets del sidebar de la propiedad.',

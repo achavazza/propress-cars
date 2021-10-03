@@ -159,7 +159,8 @@
             <li class="field flex-1 field-button">
                 <span class="control">
                 <button type="submit" id="searchsubmit" class="button is-primary is-fullwidth">
-                    <i class="qs-icon icon-search"></i>
+                    <i class="icon-zoom"></i>
+                    &nbsp;
                     <?php echo __('Buscar') ?>
                 </button>
                 </span>

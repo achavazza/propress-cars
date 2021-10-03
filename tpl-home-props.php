@@ -98,7 +98,7 @@ if ( $loop->have_posts() ) : ?>
     <div class="section">
         <div class="container">
 
-        <h3 class="title is-3"><?php echo _e('Unidades destacadas','tnb') ?></h3>
+        <h3 class="title is-normal is-secondary is-3"><?php echo _e('Unidades destacadas','tnb') ?></h3>
         <div class="columns is-same-height is-multiline">
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
             <?php array_push($featPosts, get_the_ID()); ?>
@@ -114,7 +114,7 @@ if ( $loop->have_posts() ) : ?>
 
         <div class="columns is-mobile is-centered">
     		<div class="column is-4">
-    				<a href="<?php echo get_bloginfo('tpl-featured').'/?s=' ?>" class="button is-primary is-fullwidth">
+    				<a href="<?php echo getTplPageURL('tpl-featured.php') ?>" class="button is-primary is-fullwidth">
     					<?php echo _e('Ver más unidades destacadas') ?>
     				</a>
     		</div>
@@ -138,7 +138,7 @@ if ( $loop->have_posts() ) :
     ?>
     <div class="section">
         <div class="container">
-        <h3 class="title is-3"><?php echo _e('Últimas unidades incorporadas','tnb') ?></h3>
+        <h3 class="title is-normal is-secondary is-3"><?php echo _e('Últimas unidades incorporadas','tnb') ?></h3>
 
     	<div class="columns is-same-height is-multiline">
     		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>

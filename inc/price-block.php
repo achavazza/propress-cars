@@ -20,14 +20,14 @@ ob_start();
 ?>
 <?php //echo esc_html($price_sale['currency'] ); ?>
 <?php //echo esc_html($price_sale['value'] ); ?>
-<span class="price-block level">
+<span class="price-block level mb-3">
         <?php if(!$price_sale):
             echo '<span class="level-item has-text-centered">';
-            printf('<span class="title is-2">%s</span>', __('Consultar'));
+            printf('<span class="title is-primary is-2">%s</span>', __('Consultar'));
             echo '</span>';
         else:
             echo '<span class="level-item has-text-centered">';
-            printf('<span class="title is-2" title="Precio de venta">$%s</span>', number_format($price_sale, 0, ',', '.'));
+            printf('<span class="title is-primary is-2" title="Precio de venta">$%s</span>', number_format($price_sale, 0, ',', '.'));
             echo '</span>';
         endif;
         ?>

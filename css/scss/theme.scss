@@ -10,6 +10,15 @@ $radius: 0;
 $card-radius: $radius;
 $control-height: 3rem;
 
+$grey-darkest:  #0B0B0B;
+$grey-darker:   hsl(0, 0%, 21%) !default
+$grey-dark:     #1A1A19;
+$grey:          hsl(0, 0%, 48%) !default
+$grey-light:    hsl(0, 0%, 71%) !default
+$grey-lighter:  hsl(0, 0%, 86%) !default
+$grey-lightest: #f0f0f0;
+
+
 @charset "utf-8";
 // Update Bulma's variables
 @import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
@@ -46,6 +55,7 @@ $navbar-breakpoint: $widescreen;
 @import "_menu";
 @import "../../icons/jirocar/jirocar-icons.scss";
 @import "_style";
+@import "_widgets";
 
 /*
     @include until($tablet) {
@@ -55,6 +65,9 @@ $navbar-breakpoint: $widescreen;
         background-image: url('./assets/img/bg/desktop.jpg')
     }
 */
+.is-light-gray{
+    background: $grey-lightest;
+}
 .swiper-button-next,
 .swiper-button-prev{
     color: $white !important;
@@ -104,5 +117,20 @@ $navbar-breakpoint: $widescreen;
     }
     &--arrow--right:before{
         content: 'next';
+    }
+    &--close:before{
+        font-family: jirocar;
+        color: #fff;
+        content: "\e91f";
+    }
+    &--fs:before{
+        font-family: jirocar;
+        color: #fff;
+        content: "\e921";
+    }
+    &--zoom:before{
+        font-family: jirocar;
+        color: #fff;
+        content: "\e920";
     }
 }

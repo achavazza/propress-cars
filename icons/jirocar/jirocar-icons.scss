@@ -1,10 +1,11 @@
+//main: ../../css/scss/theme.scss
 @font-face {
   font-family: 'Jirocar';
-  src:  url('../icons/jirocar/Jirocar.eot?37gg5z');
-  src:  url('../icons/jirocar/Jirocar.eot?37gg5z#iefix') format('embedded-opentype'),
-    url('../icons/jirocar/Jirocar.ttf?37gg5z') format('truetype'),
-    url('../icons/jirocar/Jirocar.woff?37gg5z') format('woff'),
-    url('../icons/jirocar/Jirocar.svg?37gg5z#Jirocar') format('svg');
+  src:  url('../icons/jirocar/Jirocar.eot?mfin4d');
+  src:  url('../icons/jirocar/Jirocar.eot?mfin4d#iefix') format('embedded-opentype'),
+    url('../icons/jirocar/Jirocar.ttf?mfin4d') format('truetype'),
+    url('../icons/jirocar/Jirocar.woff?mfin4d') format('woff'),
+    url('../icons/jirocar/Jirocar.svg?mfin4d#Jirocar') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -74,14 +75,13 @@
 .icon-marker:before {
   content: "\e90e";
 }
-.icon-auto:before,
 .icon-modelo:before {
   content: "\e90f";
 }
 .icon-modelo-alt:before {
   content: "\e910";
 }
-.icon-motor-alt:before {
+.icon-morot-alt:before {
   content: "\e911";
 }
 .icon-motor:before {
@@ -121,4 +121,19 @@
 }
 .icon-trans:before {
   content: "\e91c";
+}
+.icon-prev:before {
+  content: "\e91d";
+}
+.icon-next:before {
+  content: "\e91e";
+}
+.icon-cross:before {
+  content: "\e91f";
+}
+.icon-zoom:before {
+  content: "\e920";
+}
+.icon-fullscreen:before {
+  content: "\e921";
 }

@@ -91,7 +91,6 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
 </div>
 */ ?>
 
-<div class="is-light-gray">
 <div class="container">
 	<div class="columns is-multiline">
 		<div class="column is-12 is-9-desktop">
@@ -134,102 +133,88 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
                         echo '</span>';
                     endif;
                     ?>
-                    <?php echo sharethis_inline_buttons(); ?>
                 </div>
             </div>
 
             <?php include('inc/featured-image.php'); ?>
-            </div>
-        </div>
-		<div class="column is-12 is-3-desktop sticky-container">
-			<?php get_sidebar('vehicle-contact'); ?>
-		</div>
-	</div>
-</div>
-</div>
-<div class="container">
-	<div class="columns is-multiline">
-		<div class="column is-12 is-9-desktop">
-            <div class="section">
 
-                <?php if (have_posts()) :?>
-                <?php while (have_posts()) : the_post(); ?>
-                    <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-                        <?php
-                        // caracteristicas de la propiedad
-                        //get_template_part('parts/props/prop','features')  ?>
+			<?php if (have_posts()) :?>
+			<?php while (have_posts()) : the_post(); ?>
+				<div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+                    <?php
+                    // caracteristicas de la propiedad
+                    //get_template_part('parts/props/prop','features')  ?>
 
-                        <div class="block">
-                            <div class="block-title">
-                                <h3 class="title is-4">
-                                    <?php echo __('Descripción') ?>
-                                </h3>
-                            </div>
-                            <?php
-                            // contenido de la page
-                            // lo que se tipee aparece aqui
-                            $content = get_the_content();
-                            $content_desktop = apply_filters("the_content", $content);
-
-
-                            ?>
-                            <div class="block-content">
-                                <div class="entry">
-                                    <?php if($content): ?>
-                                    <?php echo wpautop($content_desktop); ?>
-                                    <br />
-                                    <?php endif; ?>
-                                </div>
-                                <ul class="list-unstyled list-2-cols caract">
-                                    <?= $cond ? sprintf('<li><i class="icon-modelo"></i> <b>Estado:</b> %s</li>', $cond->name) : ''; ?>
-                                    <?php /*
-                                    <?= $cond ? sprintf('<li><i class="icon-estado"></i> %s</li>', $cond->name) : ''; ?>
-                                    */ ?>
-                                    <?= $brand ? sprintf('<li><i class="icon-modelo"></i> <b>Marca:</b> %s</li>', $brand->name) : ''; ?>
-                                    <?= $model ? sprintf('<li><i class="icon-modelo"></i> <b>Modelo:</b> %s</li>', $model[0]) : ''; ?>
-                                    <?= $year ? sprintf('<li><i class="icon-ano"></i> <b>Año:</b> %s</li>', $year[0]) : ''; ?>
-                                    <?= $km ? sprintf('<li><i class="icon-km"></i> <b>Kilometraje:</b> %s Kms</li>', $km[0]) : ''; ?>
-                                    <?= $motor ? sprintf('<li><i class="icon-motor"></i> <b>Motor:</b> %s cm<sup>3</sup></li>', $motor[0]) : ''; ?>
-                                    <?php /*
-                                    <?= $trans ? sprintf('<li><i class="icon-trans"></i> %s</li>', $trans) : ''; ?>
-                                    */ ?>
-                                    <?= $trans ? sprintf('<li><i class="icon-trans-alt"></i> <b>Transmisión:</b> %s</li>', $trans) : ''; ?>
-                                    <?= $comb ? sprintf('<li><i class="icon-comb"></i> <b>Combustible:</b> %s</li>', $comb) : ''; ?>
-                                    <?= $color ? sprintf('<li><i class="icon-color"></i> <b>Color:</b> %s</li>', $color) : ''; ?>
-                                    <?= $tapizado ? sprintf('<li><i class="icon-tapizado"></i> <b>Tapizado:</b> %s</li>', $tapizado) : ''; ?>
-                                    <?= $direccion ? sprintf('<li><i class="icon-direccion"></i> <b>Dirección:</b> %s</li>', $direccion) : ''; ?>
-                                    <?= $traccion ? sprintf('<li><i class="icon-traccion"></i> <b>Tracción:</b> %s</li>', $traccion) : ''; ?>
-                                    <?= $type ? sprintf('<li><i class="icon-tipo"></i> <b>Tipo:</b> %s</li>', $type->name) : ''; ?>
-                                    <?= $placa ? sprintf('<li><i class="icon-placa"></i> <b>Placa:</b> %s</li>', $placa) : ''; ?>
-                                    <?= $aire ? sprintf('<li><i class="icon-aire"></i> <b>Aire Acondicionado:</b> %s</li>', $aire) : ''; ?>
-                                    <?= $calefaccion ? sprintf('<li><i class="icon-calefaccion"></i> <b>Calefacción:</b> %s</li>', $calefaccion) : ''; ?>
-                                    <?= $vidrios ? sprintf('<li><i class="icon-vidrios"></i> <b>Vidrios:</b> %s</li>', $vidrios) : ''; ?>
-                                </ul>
-                                <?php // pr($data) ?>
-                            </div>
+                    <div class="block">
+                        <div class="block-title">
+                            <h3 class="title is-4">
+                                <?php echo __('Descripción') ?>
+                            </h3>
                         </div>
+    					<?php
+                        // contenido de la page
+                        // lo que se tipee aparece aqui
+                        $content = get_the_content();
+                        $content_desktop = apply_filters("the_content", $content);
 
-                        <?php
-                        // detalles
-                        // descripcion de servicios y detalles de la propieadd
-                        //get_template_part('parts/props/prop','details')
-                        get_template_part('parts/props/prop','additionals')
-                        ?>
-                        <?php
-                        // detalles
-                        // descripcion de servicios y detalles de la propieadd
-                        get_template_part('parts/props/prop','finance')
-                        ?>
 
-                        <?php if ( is_active_sidebar( 'vehicle-foot-widgets' ) ) : ?>
-                                <?php dynamic_sidebar( 'vehicle-foot-widgets' ); ?>
-                        <?php endif; ?>
-                        <?php // if (function_exists('dynamic_sidebar') && dynamic_sidebar('Pie de vehiculo')) : else : endif; ?>
-
+    					?>
+						<div class="block-content">
+							<div class="entry">
+                                <?php if($content): ?>
+								<?php echo wpautop($content_desktop); ?>
+                                <br />
+                                <?php endif; ?>
+							</div>
+                            <ul class="list-unstyled list-2-cols caract">
+                                <?= $cond ? sprintf('<li><i class="icon-modelo"></i> <b>Estado:</b> %s</li>', $cond->name) : ''; ?>
+                                <?php /*
+                                <?= $cond ? sprintf('<li><i class="icon-estado"></i> %s</li>', $cond->name) : ''; ?>
+                                */ ?>
+                                <?= $brand ? sprintf('<li><i class="icon-modelo"></i> <b>Marca:</b> %s</li>', $brand->name) : ''; ?>
+                                <?= $model ? sprintf('<li><i class="icon-modelo"></i> <b>Modelo:</b> %s</li>', $model[0]) : ''; ?>
+                                <?= $year ? sprintf('<li><i class="icon-ano"></i> <b>Año:</b> %s</li>', $year[0]) : ''; ?>
+                                <?= $km ? sprintf('<li><i class="icon-km"></i> <b>Kilometraje:</b> %s Kms</li>', $km[0]) : ''; ?>
+                                <?= $motor ? sprintf('<li><i class="icon-motor"></i> <b>Motor:</b> %s cm<sup>3</sup></li>', $motor[0]) : ''; ?>
+                                <?php /*
+                                <?= $trans ? sprintf('<li><i class="icon-trans"></i> %s</li>', $trans) : ''; ?>
+                                */ ?>
+                                <?= $trans ? sprintf('<li><i class="icon-trans-alt"></i> <b>Transmisión:</b> %s</li>', $trans) : ''; ?>
+                                <?= $comb ? sprintf('<li><i class="icon-comb"></i> <b>Combustible:</b> %s</li>', $comb) : ''; ?>
+                                <?= $color ? sprintf('<li><i class="icon-color"></i> <b>Color:</b> %s</li>', $color) : ''; ?>
+                                <?= $tapizado ? sprintf('<li><i class="icon-tapizado"></i> <b>Tapizado:</b> %s</li>', $tapizado) : ''; ?>
+                                <?= $direccion ? sprintf('<li><i class="icon-direccion"></i> <b>Dirección:</b> %s</li>', $direccion) : ''; ?>
+                                <?= $traccion ? sprintf('<li><i class="icon-traccion"></i> <b>Tracción:</b> %s</li>', $traccion) : ''; ?>
+                                <?= $type ? sprintf('<li><i class="icon-tipo"></i> <b>Tipo:</b> %s</li>', $type->name) : ''; ?>
+                                <?= $placa ? sprintf('<li><i class="icon-placa"></i> <b>Placa:</b> %s</li>', $placa) : ''; ?>
+                                <?= $aire ? sprintf('<li><i class="icon-aire"></i> <b>Aire Acondicionado:</b> %s</li>', $aire) : ''; ?>
+                                <?= $calefaccion ? sprintf('<li><i class="icon-calefaccion"></i> <b>Calefacción:</b> %s</li>', $calefaccion) : ''; ?>
+                                <?= $vidrios ? sprintf('<li><i class="icon-vidrios"></i> <b>Vidrios:</b> %s</li>', $vidrios) : ''; ?>
+                            </ul>
+                            <?php // pr($data) ?>
+						</div>
                     </div>
-                <?php endwhile;?>
-                <?php endif; ?>
 
+                    <?php
+                    // detalles
+                    // descripcion de servicios y detalles de la propieadd
+                    //get_template_part('parts/props/prop','details')
+                    get_template_part('parts/props/prop','additionals')
+                    ?>
+                    <?php
+                    // detalles
+                    // descripcion de servicios y detalles de la propieadd
+                    get_template_part('parts/props/prop','finance')
+                    ?>
+
+                    <?php if ( is_active_sidebar( 'vehicle-foot-widgets' ) ) : ?>
+                            <?php dynamic_sidebar( 'vehicle-foot-widgets' ); ?>
+                    <?php endif; ?>
+                    <?php // if (function_exists('dynamic_sidebar') && dynamic_sidebar('Pie de vehiculo')) : else : endif; ?>
+
+				</div>
+            <?php endwhile;?>
+            <?php endif; ?>
             </div>
         </div>
 		<div class="column is-12 is-3-desktop sticky-container">

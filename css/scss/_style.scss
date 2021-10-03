@@ -23,14 +23,19 @@ body, button, input, optgroup, select, textarea{
     padding: 1rem 0;
 }
 
+.title{
+    &.is-primary{
+        color: $blue;
+    }
+    &.is-secondary{
+        color: $red;
+    }
+}
+
 .button.is-secondary{
     background-color: $blue;
     border-color: transparent;
     color: #fff;
-}
-
-.widget{
-    margin: .75rem 0;
 }
 
 .title{
@@ -87,8 +92,22 @@ body, button, input, optgroup, select, textarea{
     display: flex;
     flex-flow: column;
     li{
-        line-height: 2em;
+        //line-height: 2.5em;
+        //flex: 1;
+        line-height: 1em;
+        flex: 0 1 50%;
+        text-indent: -1em;
+        padding-left: 2em;
+        margin-bottom: 1em;
     }
+    @media(min-width:($tablet)){
+        flex-flow: row wrap;
+        li{
+            //line-height: 2em;
+            flex: 0 1 50%;
+        }
+    }
+    /*
     @media(min-width:($tablet)){
         flex-flow: row wrap;
         li{
@@ -105,6 +124,7 @@ body, button, input, optgroup, select, textarea{
             }
         }
     }
+    */
 
 
 }
@@ -201,10 +221,10 @@ background: $white
     &:empty{
         display: none;
     }
-    padding: .75rem 0;
+    padding: 1.5rem 0;
     margin-top: 1.5rem;
     margin-bottom: -1.5rem;
-    background: $grey-light;
+    background: $grey-dark;
     color: #fff;
     .loungelogo img{
         line-height: 40px;
@@ -225,73 +245,4 @@ background: $white
     color: #D62A08;
     font-size: 20px;
     margin-right: .25rem;
-}
-
-.widget .wpcf7-form label {
-    padding: 0 2% 2%;
-}
-
-
-$stepSize: 150px;
-
-.steps{
-    display: flex;
-    position: relative;
-    z-index: 1;
-    flex-wrap: wrap;
-    justify-content: center;
-    @media(min-width:($tablet)){
-        justify-content: space-between;
-    }
-    @media(min-width:($tablet)){
-        &:after{
-            content: '';
-            height: 4px;
-            position: absolute;
-            left: 0;
-            right: 0;
-            background: $red;
-            top: $stepSize / 2;
-            z-index: -1;
-        }
-    }
-    li{
-        flex-basis: $stepSize;
-        //width: $stepSize;
-        text-align: center;
-        font-weight: bold;
-        margin-bottom:1em;
-
-        @media(min-width:($tablet)){
-            margin-bottom:0;
-        }
-
-        div{
-            background: $red;
-            border: 4px solid $white;
-            box-sizing: border-box;
-            //width: $stepSize;
-            //height: $stepSize;
-            //border-radius: $stepSize;
-            border-radius: 6em;
-            margin-bottom: 1em;
-            display:flex;
-            justify-items:center;
-            align-items: center;
-            padding: 30px;
-
-            img{
-                //width: $stepSize;
-                //height: $stepSize;
-                margin: 0;
-                max-width: 100%;
-                max-height: 100%;
-                //display: block;
-            }
-        }
-        span{
-            line-height: 1.2
-        }
-
-    }
 }

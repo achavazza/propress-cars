@@ -104,7 +104,7 @@ function cmb2_steps() {
     ) );
     // Id's for group's fields only need to be unique for the group. Prefix is not needed.
     $cmb->add_group_field( $group_field_id, array(
-        'name' => 'Texto',
+        'name'  => 'Enlace',
         'id'    => 'step_link',
         'idkey' => 'step_link',
         'type'  => 'text',

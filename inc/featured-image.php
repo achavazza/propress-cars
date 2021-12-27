@@ -73,6 +73,8 @@
 
         echo '<span class="img-list">';
             foreach ( $gallery_images as $gallery_image ) :
+                //pr($gallery_image);
+                //die();
                 $image = wp_get_attachment_image_src( attachment_url_to_postid($gallery_image), 'large');
                 $thumb = wp_get_attachment_image(attachment_url_to_postid( $gallery_image), 'thumbnail' );
                 //$thumb = wp_get_attachment_image( $gallery_image, 'thumbnail' );
@@ -81,6 +83,7 @@
                 if($postThumbnailID == $gallery_image){
                     continue;
                 }
+                $style = '';
                 if($i > $limit){
                     $block  = '<figure class="img-limit">';
                     $block .= '<a class="thumb limit" data-index="'.$i.'" href="'.$image[0].'" itemprop="contentUrl" data-size="'.$image[1].'x'.$image[2].'">';

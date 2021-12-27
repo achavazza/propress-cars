@@ -57,16 +57,15 @@ class CMB2_Widget_Req_Steps extends WP_Widget {
 	 *
 	 * @var array
 	 */
-	protected $cmb2_fields = array();
+	protected $fields = array();
 
 	/**
 	 * Contruct widget.
 	 */
 	public function __construct() {
-
 		parent::__construct(
 			$this->widget_slug,
-			esc_html__( 'Requisitos en pasos', 'tnb' ),
+			esc_html__( 'Jirocar Requisitos en pasos', 'tnb' ),
 			array(
 				'classname' => $this->widget_slug,
 				'customize_selective_refresh' => true,
@@ -85,30 +84,39 @@ class CMB2_Widget_Req_Steps extends WP_Widget {
 		);
         */
 
-		$this->cmb2_fields = array(
-			array(
-				'name'   => __( 'Título', 'tnb' ),
-				'id_key' => 'step_title',
-				'id'     => 'step_title',
-                'id'     => 'widget-steps-title',
-                //'default' => '',
+        $this->fields = array(
+            array(
+				'name'   => 'Título',
+                'id'     => 'steps_title',
+				'id_key' => 'steps_title',
 				'type'   => 'text',
 			),
-			array(
-				'name'       => __('Pasos', 'tnb'),
-				'id_key'     => 'step_desc',
-				'id'         => 'step_desc',
-				'type'       => 'text',
-                //'default' => '',
-                'repeatable' => true,
-			),
-			array(
-				'name'       => __('Iconos pasos', 'tnb'),
-				'id_key'     => 'step_icon',
-				'id'         => 'step_icon',
-				'type'       => 'file_list',
-                //'default' => '',
-                'repeatable' => true,
+            array(
+                'name'    => 'Pasos',
+                'id'      => 'steps',
+                'id_key'  => 'steps',
+                'type'    => 'group',
+                'fields'  => array(
+                    array(
+                        'name'   => 'Ícono',
+        				'id' => 'step_icon',
+        				'id_key' => 'step_icon',
+        				'type'   => 'file',
+                        'options' => array(
+                            'url' => false, // Hide the text input for the url
+                        ),
+                        'text'    => array(
+                            'add_upload_file_text' => 'Agregar o editar' // Change upload button text. Default: "Add or Upload File"
+                        ),
+                        'preview_size' => 'thumbnail',
+                    ),
+                    array(
+                        'name'   => 'Texto',
+                        'id'     => 'step_desc',
+        				'id_key' => 'step_desc',
+        				'type'   => 'text',
+                    ),
+                ),
 			),
 		);
 
@@ -185,13 +193,14 @@ class CMB2_Widget_Req_Steps extends WP_Widget {
 			$atts['cache_id'] = md5( serialize( $atts ) );
 		}
 
-		// Get from cache unless being requested not to
-		$widget = ! $atts['flush_cache']
-		? wp_cache_get( $atts['cache_id'], 'widget' )
-		: '';
+        // Get from cache unless being requested not to
+		$widget = ! $atts['flush_cache'] ? wp_cache_get( $atts['cache_id'], 'widget' ) : '';
+
+        $instance = $atts['instance'];
 
         // If $widget is empty, rebuild our cache
 		if ( empty( $widget ) ) {
+            /*
             $arr1 = array();
             $arr2 = array();
             //$elems = array_combine( $instance['step_icon'], $instance['step_desc'] );
@@ -214,27 +223,34 @@ class CMB2_Widget_Req_Steps extends WP_Widget {
             foreach($arr2 as $k2 => $v2) {
                 $elems[$k2][] = $v2 ;
             }
+            */
 
 			$widget = '';
 
 			// Before widget hook
+            //pr($atts);
 			$widget .= $atts['before_widget'];
 
-			$widget .= '<div class="block">';
-			//$widget .= '<div style="background-color:'. esc_attr( $instance['color'] ) .'">';
-
-            pr($instance['step_title']);
+			$widget .= '<div class="block column is-half">';
+			//$widget .= '<div class="block">';
 			// Title
-			$widget .= sprintf('<div class="block-title"><h3 class="title is-4">%s</h3></div>', $instance['step_title']);
+			//$widget .= $instance['steps_title'];
+            $widget .= sprintf('<div class="block-title"><h3 class="title has-text-centered is-4">%s</h3></div>', $instance['steps_title']);
             $widget .= '<div class="block-content">';
-			//$widget .= ( $instance['title'] ) ? $atts['before_title'] . esc_html( $instance['title'] ) . $atts['after_title'] : '';
+			//$widget .= ( $instance['steps_title'] ) ? $atts['before_title'] . esc_html( $instance['title'] ) . $atts['after_title'] : '';
+
+            $elems = $instance['steps'];
 
             $widget .= '<ul class="steps">';
-            //pr($elems);
             foreach($elems as $elem) {
                 $widget .= '<li>';
-                $widget .= sprintf('<div><img src="%s" /></div>', array_values($elem)[0]);
-                $widget .= sprintf('<span>%s</span>', array_values($elem)[1]);
+                $widget .= sprintf('<div><img src="%s" /></div>', $elem['step_icon']);
+                /*
+                foreach($elem['step_icon'] as $image) {
+                    $widget .= sprintf('<div><img src="%s" /></div>', $image);
+                }
+                */
+                $widget .= sprintf('<span>%s</span>', $elem['step_desc']);
                 $widget .= '</li>';
             }
             $widget .= '</ul>';
@@ -275,64 +291,88 @@ class CMB2_Widget_Req_Steps extends WP_Widget {
 	 *
 	 * @param  array  $instance  Current settings.
 	 */
-	public function form( $instance ) {
-		// If there are no settings, set up defaults
-		$this->_instance = wp_parse_args( (array) $instance, self::$defaults );
+     public function form( $instance ) {
+         add_filter( 'cmb2_override_meta_value', array( $this, 'cmb2_override_meta_value' ), 11, 4 );
 
-		$cmb2 = $this->cmb2();
+         // If there are no settings, set up defaults
+         $this->_instance = wp_parse_args( (array) $instance, self::$defaults );
 
-		$cmb2->object_id( $this->option_name );
-		CMB2_hookup::enqueue_cmb_css();
-		CMB2_hookup::enqueue_cmb_js();
-		$cmb2->show_form();
-	}
+         $cmb2 = $this->cmb2();
 
-	/**
-	 * Creates a new instance of CMB2 and adds some fields
-	 * @since  0.1.0
-	 * @return CMB2
-	 */
-	public function cmb2( $saving = false ) {
+         $cmb2->object_id( $this->option_name );
+         CMB2_hookup::enqueue_cmb_css();
+         CMB2_hookup::enqueue_cmb_js();
+         $cmb2->show_form();
 
-		// Create a new box in the class
-		$cmb2 = new CMB2( array(
-			'id'      => $this->option_name .'_box', // Option name is taken from the WP_Widget class.
-			'hookup'  => false,
-			'show_on' => array(
-				'key'   => 'options-page', // Tells CMB2 to handle this as an option
-				'value' => array( $this->option_name )
-			),
-		), $this->option_name );
+         remove_filter( 'cmb2_override_meta_value', array( $this, 'cmb2_override_meta_value' ) );
+     }
 
-		foreach ( $this->cmb2_fields as $field ) {
+ public function cmb2_override_meta_value( $value, $object_id, $args, $field ) {
+         if ( $field->group || 'group' === $field->type() ) {
+             if ( isset( $field->args['id_key'] ) ) {
+                 $id_key = $field->args['id_key'];
 
-			if ( ! $saving ) {
-				$field['id'] = $this->get_field_name( $field['id'] );
-			}
+                 if ( isset( $this->_instance[$id_key] ) ) {
+                     $value = $this->_instance[$id_key];
+                 }
+             }
+         }
 
-			$field['default_cb'] = array( $this, 'default_cb' );
+         return $value;
+     }
+  public function cmb2( $saving = false ) {
 
-			$cmb2->add_field( $field );
-		}
+             // Create a new box in the class
+             $cmb2 = new CMB2( array(
+                 'id'      => $this->option_name .'_box', // Option name is taken from the WP_Widget class.
+                 'hookup'  => false,
+                 'show_on' => array(
+                     'key'   => 'options-page', // Tells CMB2 to handle this as an option
+                     'value' => array( $this->option_name )
+                 ),
+             ), $this->option_name );
 
-		return $cmb2;
-	}
+             foreach ( $this->fields as $field ) {
+                 if ( ! $saving ) {
+                     $field['id'] = $this->get_field_name( $field['id'] );
+                 }
 
-	/**
-	 * Sets the field default, or the field value.
-	 *
-	 * @param  array      $field_args CMB2 field args array
-	 * @param  CMB2_Field $field CMB2 Field object.
-	 *
-	 * @return mixed      Field value.
-	 */
-	public function default_cb( $field_args, $field ) {
-		return isset( $this->_instance[ $field->args( 'id_key' ) ] )
-			? $this->_instance[ $field->args( 'id_key' ) ]
-			: null;
-	}
+                 if( $field['type'] == 'group' ) {
+                     // Update group fields default_cb
+                     foreach( $field['fields'] as $group_field_index => $group_field ) {
+                         $group_field['default_cb'] = array( $this, 'default_cb' );
 
-}
+                         $field['fields'][$group_field_index] = $group_field;
+                     }
+                 }
+
+                 $field['default_cb'] = array( $this, 'default_cb' );
+
+                 $cmb2->add_field( $field );
+             }
+
+             return $cmb2;
+         }
+
+  public function default_cb( $field_args, $field ) {
+             if( $field->group ) {
+                 if( isset( $this->_instance[ $field->group->args( 'id_key' ) ] ) ) {
+                     $data = $this->_instance[ $field->group->args( 'id_key' ) ];
+
+                     return is_array( $data ) && isset( $data[ $field->group->index ][ $field->args( 'id_key' ) ] )
+                         ? $data[ $field->group->index ][ $field->args( 'id_key' ) ]
+                         : null;
+                 } else {
+                     return null;
+                 }
+             }
+
+             return isset( $this->_instance[ $field->args( 'id_key' ) ] )
+                 ? $this->_instance[ $field->args( 'id_key' ) ]
+                 : null;
+         }
+
+ }
 
 /**
  * Register this widget with WordPress.

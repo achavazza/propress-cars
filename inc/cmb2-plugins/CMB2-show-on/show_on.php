@@ -36,6 +36,6 @@ function be_metabox_show_on_template( $display, $meta_box ) {
 add_filter( 'cmb2_show_on', 'be_metabox_show_on_template', 10, 2 );
 
 // custom metaboxes
-add_action( 'cmb2_init', 'cmb2_contact' );
+//add_action( 'cmb2_init', 'cmb2_contact' );
 
  ?>

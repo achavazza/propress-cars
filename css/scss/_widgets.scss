@@ -36,8 +36,9 @@ $stepSize: 150px;
         }
     }
     li{
-        flex-basis: $stepSize;
-        //width: $stepSize;
+        //flex-basis: $stepSize;
+        //flex-basis: $stepSize;
+        max-width: $stepSize;
         text-align: center;
         font-weight: bold;
         margin-bottom:1em;

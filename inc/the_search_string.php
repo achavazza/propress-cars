@@ -68,7 +68,7 @@ function get_search_string($wp_query){
     if(isset($tipo) && !empty($tipo)){
         $tipoLabel = plural($count, $tipo, $tipo.'s');
     }else{
-        $tipoLabel = plural($count, 'Propiedad', 'Propiedades');
+        $tipoLabel = plural($count, 'Vehhículo', 'Vehículos');
     }
     //if(in_array ($tipoTax, $termFem) || in_array ('Propiedad', $termFem)){
     if($tipoTax){

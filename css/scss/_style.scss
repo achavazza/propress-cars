@@ -72,6 +72,20 @@ body, button, input, optgroup, select, textarea{
     margin-bottom: .75rem;
     text-align: center;
 }
+.title-alt{
+    font-weight: normal
+}
+
+#sidebar .widget > h2{
+    @extend .title-secondary;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#sidebar .widget:first-of-type{
+    margin-top:0
+}
+
 
 .entry{
     font-size: 16px;

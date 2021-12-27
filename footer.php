@@ -1,4 +1,4 @@
-		<footer id="footer">
+		<footer id="footer" class="mt-5">
 			<div class="container">
 				<div class="columns is-multiline">
 					<div class="column is-3">

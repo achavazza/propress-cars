@@ -4,7 +4,11 @@ if (typeof(rangeSlider) != 'undefined' && rangeSlider != null){
 
 var lowerValue  = document.getElementById('lower-value');
 var upperValue  = document.getElementById('upper-value');
+var maxValue    = document.getElementById('max-value');
 var step        = parseInt(lowerValue.getAttribute('step'));
+
+var max = parseInt(maxValue.value);
+
 
 noUiSlider.create(rangeSlider, {
     //connect: true,
@@ -20,7 +24,8 @@ noUiSlider.create(rangeSlider, {
         'min': [0],
         //'10%': [500, 500],
         //'50%': [4000, 1000],
-        'max': [10000]
+        //'max': [1000000]
+        'max': [max ? max : 1000000]
     }
 });
 

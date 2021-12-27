@@ -1,8 +1,5 @@
 <?php
 
-// custom metaboxes
-add_action( 'cmb2_init', 'cmb2_contact' );
-
 /**
  * Define the metabox and field configurations.
  */
@@ -63,6 +60,6 @@ function cmb2_contact() {
         // 'on_front'        => false, // Optionally designate a field to wp-admin only
         // 'repeatable'      => true,
     ) );
-
 }
+add_action( 'cmb2_init', 'cmb2_contact' );
  ?>

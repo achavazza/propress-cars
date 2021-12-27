@@ -33,7 +33,7 @@ if( $slider_query->have_posts() ):
 
     //pr($slider_props);
     // Slider main container
-    echo '<div class="swiper-container" style="'.$height.'">';
+    echo '<div class="swiper-main-container" style="'.$height.'">';
         // Additional required wrapper
         echo '<div class="swiper-wrapper">';
             // Slides
@@ -92,6 +92,7 @@ endif;
 
 //wp_enqueue_script('slider');
 ?>
+<?php wp_reset_postdata(); ?>
 <?php //pr(get_post_meta( get_the_ID(), 'extra_image_position', true )); ?>
 <?php //pr(get_post_meta( get_the_ID())); ?>
 <?php //pr(get_the_id()); ?>

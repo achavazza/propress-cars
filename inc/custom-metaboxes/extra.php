@@ -17,7 +17,7 @@ function cmb2_extra() {
         'object_types'  => array( 'post','page' ), // post type
         //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
         'context'       => 'normal',
-        //'priority'      => 'high',
+        'priority'      => 'low',
         'show_names'    => true, // Show field names on the left
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default

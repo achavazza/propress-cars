@@ -35,22 +35,22 @@ function posts_custom_columns($column_name, $id){
 **/
 /*
 function search_no_paging( $q ) {
-  if ( isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' && is_search() ) {
-      if ( $q->is_main_query() && $q->is_search() && ! is_admin() ) {
-        $q->set('posts_per_page', -1);
-      }
-  }
+if ( isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' && is_search() ) {
+if ( $q->is_main_query() && $q->is_search() && ! is_admin() ) {
+$q->set('posts_per_page', -1);
+}
+}
 }
 add_action('pre_get_posts', 'search_no_paging');
 function advanced_search_template( $template ) {
-    if ( isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' && is_search() ) {
-        $t = locate_template('map-search.php');
-        //$t = locate_template('map-search.php');
-        if ( ! empty($t) ) {
-            $template = $t;
-        }
-    }
-    return $template;
+if ( isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' && is_search() ) {
+$t = locate_template('map-search.php');
+//$t = locate_template('map-search.php');
+if ( ! empty($t) ) {
+$template = $t;
+}
+}
+return $template;
 }
 add_action('template_include', 'advanced_search_template');
 */
@@ -195,22 +195,22 @@ add_action( 'pre_get_posts', 'wpa_filter_home_query' );
 /*
 * CUSTOM Function, get location (is a tax hierachy)
 function get_location($post){
-	foreach( wp_get_post_terms( $post->ID, 'location') as $terms ) {
-		if($terms->parent != 0){
-			$child_term  = $terms;
-			$parent_term = get_term_by('id', $terms->parent, 'location');
+foreach( wp_get_post_terms( $post->ID, 'location') as $terms ) {
+if($terms->parent != 0){
+$child_term  = $terms;
+$parent_term = get_term_by('id', $terms->parent, 'location');
 
-			$prop_loc = $child_term->name . ' - ';
-            $prop_loc .= $parent_term->name;
-            //$prop_loc .= $parent_term->name . ' - ';
-            //$prop_loc = $child_term->name;
-            break;
-		}else{
-			$child_term  = $terms;
-			$prop_loc = $child_term->name;
-		}
-	}
-    return $prop_loc;
+$prop_loc = $child_term->name . ' - ';
+$prop_loc .= $parent_term->name;
+//$prop_loc .= $parent_term->name . ' - ';
+//$prop_loc = $child_term->name;
+break;
+}else{
+$child_term  = $terms;
+$prop_loc = $child_term->name;
+}
+}
+return $prop_loc;
 }
 */
 
@@ -237,41 +237,39 @@ function get_page_url($template_name){
     }
     return get_bloginfo('url');
 }
-?>
 
-<?php
-    /**
-     * Sample template tag function for outputting a cmb2 file_list
-     *
-     * @param  string  $file_list_meta_key The field meta key. ('wiki_test_file_list')
-     * @param  string  $img_size           Size of image to show
-     */
-    function cmb2_output_file_list( $file_list_meta_key, $img_size = 'medium' ) {
+/**
+* Sample template tag function for outputting a cmb2 file_list
+*
+* @param  string  $file_list_meta_key The field meta key. ('wiki_test_file_list')
+* @param  string  $img_size           Size of image to show
+*/
+function cmb2_output_file_list( $file_list_meta_key, $img_size = 'medium' ) {
 
-    	// Get the list of files
-    	$files = get_post_meta( get_the_ID(), $file_list_meta_key, 1 );
+    // Get the list of files
+    $files = get_post_meta( get_the_ID(), $file_list_meta_key, 1 );
 
-    	echo '<div class="file-list-wrap">';
-    	// Loop through them and output an image
-    	foreach ( (array) $files as $attachment_id => $attachment_url ) {
-    		echo '<div class="file-list-image">';
-    		echo wp_get_attachment_image( $attachment_id, $img_size );
-    		echo '</div>';
-    	}
-    	echo '</div>';
+    echo '<div class="file-list-wrap">';
+    // Loop through them and output an image
+    foreach ( (array) $files as $attachment_id => $attachment_url ) {
+        echo '<div class="file-list-image">';
+        echo wp_get_attachment_image( $attachment_id, $img_size );
+        echo '</div>';
     }
-    function cmb2_get_file_list( $file_list_meta_key, $img_size = 'medium' ) {
+    echo '</div>';
+}
+function cmb2_get_file_list( $file_list_meta_key, $img_size = 'medium' ) {
 
-    	// Get the list of files
-        $out = array();
-    	$files = get_post_meta( get_the_ID(), $file_list_meta_key, 1 );
-        pr($files);
+    // Get the list of files
+    $out = array();
+    $files = get_post_meta( get_the_ID(), $file_list_meta_key, 1 );
+    pr($files);
 
-    	foreach ( (array) $files as $attachment_id => $attachment_url ) {
-    		$out[] = wp_get_attachment_image( $attachment_id, $img_size );
-    	}
-        return $out;
+    foreach ( (array) $files as $attachment_id => $attachment_url ) {
+        $out[] = wp_get_attachment_image( $attachment_id, $img_size );
     }
+    return $out;
+}
 
 
 function filter_search($query) {
@@ -289,7 +287,7 @@ function wpb_cookies_ID() {
     // Time of user's visit
     $visit_time = date('F j, Y g:i a');
     $value ='';
-    $values = explode(";", $_COOKIE['wpb_visited_props']);
+    $value = '';
     $time   = time()+2628000;
     //$time   = time()+2628000;
     $domain = get_home_url();
@@ -300,6 +298,7 @@ function wpb_cookies_ID() {
     if(!isset($_COOKIE['wpb_visited_props'])){
         setcookie('wpb_visited_props', $value, $time, COOKIEPATH, COOKIE_DOMAIN, false);
     }else{
+        $values = explode(";", $_COOKIE['wpb_visited_props']);
         if(!in_array($value, $values)){
             setcookie('wpb_visited_props', $_COOKIE['wpb_visited_props'].';'.$value, $time, COOKIEPATH, COOKIE_DOMAIN, false);
         }
@@ -314,7 +313,6 @@ function wrap_embed_with_div($html, $url, $attr) {
     return '<div class="youtube-wrap">' . $html . '</div>';
 }
 add_filter('embed_oembed_html', 'wrap_embed_with_div', 10, 3);
-
 
 /* levatantar template part pero no imprimirla
 ====================================
@@ -340,4 +338,36 @@ function getTplPageURL($TEMPLATE_NAME){
     return $url;
 }
 
-?>
+function admin_js() {
+    echo '<script>'.file_get_contents(get_template_directory_uri().'/js/admin_js.js').'</script>';
+}
+add_action('admin_head', 'admin_js');
+
+
+/**
+ * Gets a number of terms and displays them as options
+ * @param  CMB2_Field $field
+ * @return array An array of options that matches the CMB2 options array
+ */
+function cmb2_get_term_options( $field ) {
+	$args = $field->args( 'get_terms_args' );
+	$args = is_array( $args ) ? $args : array();
+
+	$args = wp_parse_args( $args, array( 'taxonomy' => 'category' ) );
+
+	$taxonomy = $args['taxonomy'];
+
+	$terms = (array) cmb2_utils()->wp_at_least( '4.5.0' )
+		? get_terms( $args )
+		: get_terms( $taxonomy, $args );
+
+	// Initate an empty array
+	$term_options = array();
+	if ( ! empty( $terms ) ) {
+		foreach ( $terms as $term ) {
+			$term_options[ $term->term_id ] = $term->name;
+		}
+	}
+
+	return $term_options;
+}

@@ -26,9 +26,9 @@
 
             $taxonomies = array('condition','brand','type');
             $args = array('order'=>'DESC','hide_empty'=>true);
-            echo get_terms_dropdown($taxonomies, $args);
+            //echo get_terms_dropdown($taxonomies, $args);
 
-            function get_terms_dropdown($taxonomies, $args){
+            //function get_terms_dropdown($taxonomies, $args){
                 foreach($taxonomies as $taxonomy){
                     $label     = '';
                     $thisQuery = get_query_var($taxonomy);
@@ -58,7 +58,7 @@
                     $inputContent .= '<div class="control">';
                     $inputContent .= '<span class="select is-fullwidth">';
                     $inputContent .= '<select id="'.$taxonomy.'" name="'.$taxonomy.'">';
-                    $inputContent .= '<option value="" disabled selected>'.$label.'</option>';
+                    $inputContent .= '<option value="" selected>'.$label.'</option>';
                     //$inputContent .= '<option value="">Todas las '.$plural.'</option>';
                     //<option value="">'.$empty.'</option>';
                     foreach($terms as $term){
@@ -74,7 +74,7 @@
                     echo sprintf('<li class="field flex-1">%s</li>', $inputContent);
 
                 }
-            }
+            //}
             ?>
             <?php /*
             <li class="field">
@@ -93,14 +93,16 @@
                 <div class="slider-container">
                     <?php
                     $price_low  = isset($_GET['price_low']) ? $_GET['price_low'] : 0;
-                    $price_high = isset($_GET['price_high']) ? $_GET['price_high'] : 15000;
+                    $price_high = isset($_GET['price_high']) ? $_GET['price_high'] : 100000;
+                    $max_high   = 100000;
                     $step = ($price_high - $price_low) / 20;
                     //echo $step;
                     //pr($price_high);
                     ?>
                     <div id="range-slider"></div>
-        			<input value="<?= intval(round($price_low, 0))  ?>" name="price_low"  type="hidden" id="lower-value" />
-        			<input value="<?= intval(round($price_high, 0)) ?>" name="price_high" type="hidden" id="upper-value" />
+        			<input value="<?= intval(round($price_low))  ?>" name="price_low"  type="hidden" id="lower-value" />
+        			<input value="<?= intval(round($price_high)) ?>" name="price_high" type="hidden" id="upper-value" />
+        			<input value="<?= $max_high ?>" name="max_high" type="hidden" id="max-value" />
                 </div>
             </li>
             <?php /*

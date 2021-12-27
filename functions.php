@@ -4,6 +4,10 @@
  * ========================================================================================================
  */
 
+ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+
 //$base_path    = str_replace('\\', '/', dirname( __FILE__ ) ."/inc/cmb2");
 $base_path    = str_replace('\\', '/', dirname( __FILE__ ) ."/inc/CMB2-develop");
 $plugins_path = str_replace('\\', '/', dirname( __FILE__ ) ."/inc/cmb2-plugins");
@@ -20,7 +24,7 @@ if ( file_exists(CMB_PATH . '/init.php' ) ) {
     require_once (CMB_PLUGINS . '/CMB2-grid-master/Cmb2GridPlugin.php');
 
     //custom show_on
-    //include(CMB_PLUGINS . '/CMB2-show-on/show_on.php');
+    require_once(CMB_PLUGINS . '/CMB2-show-on/show_on.php');
 
     //custom post search field
     //include(CMB_PLUGINS . '/CMB2-post-search-field/cmb2_post_search_field.php');
@@ -72,6 +76,7 @@ require_once ('inc/post-types/agents.php');
 //include('inc/custom-metaboxes/propiedad.php');
 require_once ('inc/custom-metaboxes/gallery.php');
 require_once ('inc/custom-metaboxes/extra.php');
+require_once ('inc/custom-metaboxes/home-alt.php');
 
 
 // theme settings
@@ -157,6 +162,7 @@ require_once 'inc/custom-functions.php';
         //wp_enqueue_style( 'swiperjs'     , '//unpkg.com/swiper/swiper-bundle.min.css' );
         //wp_register_script('swiperjs'    , '//unpkg.com/swiper/swiper-bundle.min.js', null, '6.7.5', true);
         wp_register_script('swiperjs-init' , get_template_directory_uri().'/js/plugins/swiperjs/swiperjs-init.js', array('swiperjs'), '6.7.5', true);
+        wp_register_script('swiperjscarousel-init' , get_template_directory_uri().'/js/plugins/swiperjs/swiperjscarousel-init.js', array('swiperjs'), '6.7.5', true);
 
         //maps
         //wp_register_script('infobubble'   , (get_template_directory_uri().'/js/plugins/infobubble.js'), array(), null, true);
@@ -386,7 +392,7 @@ require_once 'inc/custom-functions.php';
         register_sidebar(array(
             'name' => 'Footer 1',
             'id'   => 'footer-1-widgets',
-            'description'   => 'Estos son los widgets de la columna 1 del footer.',
+            'description'   => 'Columna 1 del footer.',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2>',
@@ -395,7 +401,7 @@ require_once 'inc/custom-functions.php';
         register_sidebar(array(
             'name' => 'Footer 2',
             'id'   => 'footer-2-widgets',
-            'description'   => 'Estos son los widgets de la columna 2 del footer.',
+            'description'   => 'Columna 2 del footer.',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2>',
@@ -404,13 +410,21 @@ require_once 'inc/custom-functions.php';
         register_sidebar(array(
             'name' => 'Footer 3',
             'id'   => 'footer-3-widgets',
-            'description'   => 'Estos son los widgets de la columna 3 del footer.',
+            'description'   => 'Columna 3 del footer.',
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2>',
             'after_title'   => '</h2>'
         ));
-
+        register_sidebar(array(
+            'name' => 'Sidebar Home Alternativa',
+            'id'   => 'sidebar-home-alt',
+            'description'   => 'En la home alternativa',
+            'before_widget' => '<div id="%1$s" class="widget column %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
     }
 
 
@@ -433,7 +447,10 @@ require_once 'inc/custom-functions.php';
 
     //require_once ('inc/widgets/widget-example.php');
     //require_once ('inc/widgets/viewed-prop.php');
-    require_once ('inc/widgets/steps.php');
+    //require_once ('inc/widgets/steps.php');
+    //require_once ('inc/widgets/widget-steps.php');
+    //require_once ('inc/widgets/widget-reviews.php');
+    //require_once ('inc/widgets/widget-example.php');
     //require_once ('inc/widgets/widget-agent.php');
     //require_once 'inc/renderMap.php';
 
@@ -457,75 +474,6 @@ require_once 'inc/custom-functions.php';
         require_once('elementor-widgets/my-widgets.php');
     }
     */
-?>
-
-
-<?php
-function admin_js() { ?>
-    <script>
-    (function( $ ) {
-    $(function() {
-        /* fix porque el repeteable no anda bien*/
-        $('.cmb-repeat-table').each(function(){
-    	//if ( el.parent().hasClass( 'cmb2-options-page' ) ) {
-
-            var el = $( this );
-            //console.log(el);
-    		// Find hidden rows in repeatable groups
-    		el.find( '.cmb-row.hidden' ).each( function() {
-
-    			// Disable selects
-                //console.log($(this));
-                var input = $( this ).find( 'input' );
-    			input.val('');
-                //console.log(input);
-                //alert('stop!');
-
-    		});
-
-    	//}
-        })
-    /*
-    // More code using $ as alias to jQuery
-    $( 'body' ).on( 'submit', '#post', function() {
-    //$( 'body' ).on( 'submit', 'form.cmb-form', function() {
-
-    	// Init
-    	//var el = $( this );
-        //console.log(el);
-
-    	// Options page?
-        //console.log($('.cmb-repeat-table'));
-        $('.cmb-repeat-table').each(function(){
-    	//if ( el.parent().hasClass( 'cmb2-options-page' ) ) {
-
-            var el = $( this );
-            //console.log(el);
-    		// Find hidden rows in repeatable groups
-    		el.find( '.cmb-row.hidden' ).each( function() {
-
-    			// Disable selects
-                //console.log($(this));
-                var input = $( this ).find( 'input' );
-    			input.prop( 'disabled', true );
-    			input.value(false);
-                //console.log(input);
-                //alert('stop!');
-
-    		});
-
-    	//}
-        })
-
-    });
-    */
-    });
-    })(jQuery);
-    </script>
-<?php }
-add_action('admin_head', 'admin_js');
-
-
 
 /* Disable Gutemberg Block Editor */
 add_filter( 'use_block_editor_for_post', '__return_false' );

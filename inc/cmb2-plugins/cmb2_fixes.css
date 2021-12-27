@@ -1,9 +1,16 @@
 
+.cmb-group-title{
+    background-color: #f6f7f7 !important;
+}
+.widget-content .cmb-row{
+    padding: 0 !important;
+}
 .widget-content .cmb-th, .widget-content .cmb-td{
-    float: none;
-    padding: 0;
+    float: none !important;
+    padding: 0 !important;
     width: auto !important;
 }
+
 .widget-content label{
     padding: 0;
     font-weight: normal
@@ -13,6 +20,32 @@
 }
 .widget-content .cmb2-wrap .regular-text{
     width: 400px;
+}
+.widget-content .cmb2-nested .cmb-row{
+    display: flex;
+}
+/*
+.widget-content .cmb-type-group .cmb-td,
+.cmb-repeatable-group .cmb2-upload-button
+*/
+.widget-content .cmb2-upload-button{
+    float: none !important;
+    margin-bottom: 10px;
+}
+.widget-content .cmb-remove-field-row{
+    display: none;
+}
+.widget-content .inside{
+    padding: 0 10px !important;
+}
+.widget-content .cmb-repeatable-group .cmb-group-title{
+    margin:0 !important;
+}
+.widget-content .cmb-group-title{
+    min-height:40px!important;
+}
+.widget-content .cmbhandle{
+    right: unset!important;
 }
 
 .cmb2-wrap .cmb2_select {

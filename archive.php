@@ -26,8 +26,10 @@
 
 		<div class="columns">
 			<div class="column is-three-quarters">
+                <div class="columns is-same-height is-multiline">
 				<?php $i = 0; ?>
 				<?php while (have_posts()) : the_post(); ?>
+                    <div class="column is-6">
 					<?php get_template_part('parts/post','loop') ?>
 					<?php /*
 					<div <?php post_class() ?>>
@@ -41,7 +43,9 @@
 					</div>
 					*/ ?>
 					<?php $i++; ?>
+                    </div>
 				<?php endwhile; ?>
+                </div>
 				<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
 
 			<?php else : ?>

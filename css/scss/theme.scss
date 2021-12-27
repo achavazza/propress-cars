@@ -54,6 +54,7 @@ $navbar-breakpoint: $widescreen;
 @import "_fixing";
 @import "_menu";
 @import "../../icons/jirocar/jirocar-icons.scss";
+@import "_reviews";
 @import "_style";
 @import "_widgets";
 
@@ -133,4 +134,9 @@ $navbar-breakpoint: $widescreen;
         color: #fff;
         content: "\e920";
     }
+}
+
+
+.z1{
+    z-index: 1
 }

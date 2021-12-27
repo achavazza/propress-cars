@@ -612,7 +612,7 @@ function cmb2_prop_details() {
         'id'                => $prefix .'condition',
         'desc'              => __('Nuevo, Usado, etc', 'tnb'),
         'taxonomy'          => 'condition',
-        'type'              => 'taxonomy_select',
+        'type'              => 'taxonomy_multicheck',
         // Optional:
         'options' => array(
             'no_terms_text' => __('No encontramos estados de venta, agregue una', 'tnb') // Change default text. Default: "No terms"

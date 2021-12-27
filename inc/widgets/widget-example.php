@@ -139,15 +139,11 @@ class CMB2_Widget_Boilerplate extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-        //pr($instance);
-        //pr($this->id);
-
 		echo self::get_widget( array(
 			'args'     => $args,
 			'instance' => $instance,
 			'cache_id' => $this->id, // whatever the widget id is
 		) );
-
 
 	}
 
@@ -158,12 +154,10 @@ class CMB2_Widget_Boilerplate extends WP_Widget {
 	 * @return string       Widget output
 	 */
 	public static function get_widget( $atts ) {
-        //pr($atts);
-        //pr($this->id);
 		$widget = '';
 
 		// Set up default values for attributes
-		$attribs = shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				// Ensure variables
 				'instance'      => array(),
@@ -174,16 +168,13 @@ class CMB2_Widget_Boilerplate extends WP_Widget {
 				'cache_id'      => '',
 				'flush_cache'   => isset( $_GET['delete-trans'] ), // Check for cache-buster
 			),
-			isset( $atts['args'] ) ? (array) $atts['args'] : (array) $attribs['args'],
-			//isset( $atts['args'] ) ? (array) $atts['args'] : array(),
+			isset( $atts['args'] ) ? (array) $atts['args'] : array(),
 			self::$shortcode
 		);
 
-        //pr($attribs);
 		$instance = shortcode_atts(
 			self::$defaults,
-			! empty( $atts['instance'] ) ? (array) $atts['instance'] : $attribs['args'],
-			//! empty( $atts['instance'] ) ? (array) $atts['instance'] : array(),
+			! empty( $atts['instance'] ) ? (array) $atts['instance'] : array(),
 			self::$shortcode
 		);
 
@@ -202,7 +193,7 @@ class CMB2_Widget_Boilerplate extends WP_Widget {
 
 		// If $widget is empty, rebuild our cache
 		if ( empty( $widget ) ) {
-            //pr($instance);
+
 			$widget = '';
 
 			// Before widget hook

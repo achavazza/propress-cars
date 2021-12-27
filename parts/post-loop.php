@@ -39,10 +39,10 @@ $data            = wp_parse_args(get_post_meta($post->ID), array(
 //$prop_currency     = currency()[$data['_prop_currency'][0]];
 //$cur_symbol      = $prop_currency ? '$' : 'U$S';
 
-$brand             = get_the_terms($post->ID, 'brand')[0];
-$cond              = get_the_terms($post->ID, 'condition')[0];
-$trans             = transmision()[$data['_prop_transmision'][0]];
-$comb              = combustible()[$data['_prop_combustible'][0]];
+$brand             = (get_the_terms($post->ID, 'brand')) ? get_the_terms($post->ID, 'brand')[0] : '';
+$cond              = (get_the_terms($post->ID, 'condition')) ? get_the_terms($post->ID, 'condition')[0] : '';
+$trans             = isset($data['_prop_transmision']) ? transmision()[$data['_prop_transmision'][0]] : '';
+$comb              = isset($data['_prop_combustible']) ? combustible()[$data['_prop_combustible'][0]] : '';
 //$ops             = get_the_terms($post->ID, 'operacion');
 //$prop_loc        = get_location($post);
 //$statuses        = get_the_terms($post->ID, 'status')[0];

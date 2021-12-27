@@ -49,11 +49,14 @@ var_dump($prop_sale);
             <span class="title is-4">
              <?php the_title(); ?>
             </span>
+            <?php the_excerpt(); ?>
         </a>
     </div>
+    <?php /*
      <div class="card-footer card-footer-padding is-justify-content-end">
         <a class="button is-primary" href="<?php the_permalink() ?>">
             <?php echo __('Ver Más') ?>
         </a>
     </div>
+    */ ?>
 </div>

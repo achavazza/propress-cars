@@ -838,6 +838,48 @@ add_action( 'cmb2_init', 'cmb2_gallery' );
 
 
 
+function cmb2_gallery_alt() {
+    $prefix = '_prop_';
+    $cmb6 = new_cmb2_box( array(
+        'id'            => 'vehicle_details',
+        'title'         => __( 'Imperfecciones', 'tnb' ),
+        'object_types'  => array( 'vehicle' ), // post type
+        //'show_on'       => array( 'key' => 'page-template', 'value' => 'page-products.php' ),
+        //'context'       => 'normal',
+        //'priority'      => 'low',
+        //'context'       => 'side',
+        'context'       => 'normal',
+        'priority'      => 'low',
+        //'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        // 'cmb_styles' => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ) );
+    $cmb6->add_field( array(
+        'name'              => 'Detalles',
+        'id'                => '_prop_images_alt_details',
+        'type'              => 'WYSIWYG',
+    ));
+    $cmb6->add_field( array(
+        'name' => 'Imágenes',
+        'desc' => 'Subir y administrar imágenes',
+        'id'   => '_prop_images_alt',
+        //'id'   => $prefix . 'images',
+        'type' => 'file_list',
+        // 'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+        'query_args' => array( 'type' => 'image' ), // Only images attachment
+        // Optional, override default text strings
+        'text' => array(
+	           'add_upload_files_text' => 'Agregar Imágenes', // default: "Add or Upload Files"
+	            'remove_image_text' => 'Eliminar', // default: "Remove Image"
+	            'file_text' => 'Archivo:', // default: "File:"
+	            'file_download_text' => 'Descarga', // default: "Download"
+	            'remove_text' => 'Eliminar', // default: "Remove"
+        ),
+    ));
+}
+add_action( 'cmb2_init', 'cmb2_gallery_alt' );
+
 
 
 /*

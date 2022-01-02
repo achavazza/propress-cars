@@ -150,6 +150,7 @@ require_once 'inc/custom-functions.php';
         wp_register_script('photoswipe'        , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe.min.js', array(), '4.1.3', true);
         wp_register_script('photoswipe-ui'     , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe-ui-default.min.js', array('photoswipe'), '4.1.3', true);
         wp_register_script('photoswipe-init'   , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe.init.js', array('photoswipe','photoswipe-ui','jquery'), '1.0.0', true);
+        wp_register_script('photoswipe-init-alt' , get_template_directory_uri().'/js/plugins/photoswipe/photoswipe.init.alt.js', array('photoswipe','photoswipe-ui','jquery'), '1.0.0', true);
         wp_register_script('validate'          , get_template_directory_uri().'/js/jquery.validate.min.js', array('jquery'), '1.0.0', true);
         wp_register_script('form'              , get_template_directory_uri().'/js/form.js', array('jquery','validate'), '1.0.0', true);
         //wp_register_script('siema'             , get_template_directory_uri().'/js/plugins/siema.min.js', array(), '1.5.1', true);

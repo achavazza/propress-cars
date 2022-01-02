@@ -215,6 +215,15 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
                         //get_template_part('parts/props/prop','details')
                         get_template_part('parts/props/prop','additionals')
                         ?>
+
+
+                        <?php
+                        // imperfecciones
+                        get_template_part('parts/props/prop','gallery-alt');
+                        include('inc/photoswipe-gallery-alt.php');
+                        ?>
+
+
                         <?php
                         // detalles
                         // descripcion de servicios y detalles de la propieadd

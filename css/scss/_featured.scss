@@ -148,3 +148,44 @@
         }
     }
 }
+
+#gallery-alt{
+    .img-list{
+        display: flex;
+        flex-flow: row;
+        justify-content: left;
+
+        //justify-content: flex-start;
+        /*
+        &-left{
+            justify-content: left;
+        }
+        */
+        margin-right: -1em;
+
+        figure,
+        figure a{
+            flex: 0 1 auto;
+            display: flex;
+            //margin: 5px 5px 0 0;
+            //border: 1px solid rgba(0,0,0,.05);
+        }
+        figure{
+            margin: 1em 1em 0 0;
+        }
+        img {
+            border-radius: 0.25rem;
+            //width: 100px;
+            //width: 80px;
+            max-height: 150px;
+            object-fit: cover;
+            flex: 1;
+        }
+        &-big{
+            img {
+                width: 150px;
+            }
+        }
+
+    }
+}

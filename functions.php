@@ -77,6 +77,7 @@ require_once ('inc/post-types/agents.php');
 require_once ('inc/custom-metaboxes/gallery.php');
 require_once ('inc/custom-metaboxes/extra.php');
 require_once ('inc/custom-metaboxes/home-alt.php');
+require_once ('inc/custom-metaboxes/page-finance.php');
 
 
 // theme settings
@@ -121,6 +122,7 @@ require_once 'inc/custom-functions.php';
     }
     define('GMAPS_KEY', get_option('tnb_setup_options')['tnb_setup_API']);
     */
+    define('GMAPS_KEY', get_option('tnb_setup_options')['tnb_setup_API']);
 
     /*
      * Properly enqueue of styles and scripts
@@ -420,6 +422,15 @@ require_once 'inc/custom-functions.php';
         register_sidebar(array(
             'name' => 'Sidebar Home Alternativa',
             'id'   => 'sidebar-home-alt',
+            'description'   => 'En la home alternativa',
+            'before_widget' => '<div id="%1$s" class="widget column %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
+        register_sidebar(array(
+            'name' => 'Page Financiacion',
+            'id'   => 'sidebar-page-financiacion',
             'description'   => 'En la home alternativa',
             'before_widget' => '<div id="%1$s" class="widget column %2$s">',
             'after_widget'  => '</div>',

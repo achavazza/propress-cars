@@ -141,19 +141,27 @@ class Ctheme_Admin {
         */
 
 
-		/*
+        $cmb->add_field( array(
+            'name'     => 'WhatsApp',
+            'id'       => $prefix.'whatsapp',
+            'type'     => 'text_url',
+        ));
 		$cmb->add_field( array(
 		    'name'     => 'Facebook',
-		    'desc'     => 'Agrega un link a facebook en la cabecera (opcional)',
 		    'id'       => $prefix.'facebook',
 		    'type'     => 'text_url',
 		));
 		$cmb->add_field( array(
 		    'name'     => 'Twitter',
-		    'desc'     => 'Agrega un link a twitter en la cabecera (opcional)',
 		    'id'       => $prefix.'twitter',
 		    'type'     => 'text_url',
 		));
+		$cmb->add_field( array(
+		    'name'     => 'Instagram',
+		    'id'       => $prefix.'instagram',
+		    'type'     => 'text_url',
+		));
+        /*
 		$cmb->add_field( array(
 		    'name'     => 'Horarios',
 		    'id'       => 'site_hours',

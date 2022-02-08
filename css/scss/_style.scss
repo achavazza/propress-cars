@@ -254,9 +254,21 @@ background: $white
 #topbar .level{
     padding: 0 .75rem;
 }
+#topbar .fab,
+#topbar .fas,
 #topbar [class^="icon-"],
 #topbar [class*=" icon-"]{
     color: #D62A08;
     font-size: 20px;
     margin-right: .25rem;
+}
+
+
+.st-right{
+    text-align:left !important;
+}
+@media(min-width:$tablet){
+    .st-right{
+        text-align:right !important;
+    }
 }

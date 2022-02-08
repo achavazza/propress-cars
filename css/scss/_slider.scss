@@ -102,8 +102,20 @@
     }
 }
 .swiper-main-container{
+    background-color: $blue;
+    position:relative;
+}
+/*
+.home .swiper-main-container{
     margin-bottom: -2.5rem;
 }
+*/
+
+
+.search-overlap{
+    margin-top: -2.5rem;
+}
+
 .search-panel{
     position: relative;
     z-index: 1;

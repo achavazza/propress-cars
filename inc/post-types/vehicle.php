@@ -794,6 +794,14 @@ function cmb2_finance() {
         ),
         'repeatable'        => true
     ));
+    $cmb5->add_field( array(
+        'name'              => 'Legales',
+        'id'                => $prefix .'legal',
+        'type'              => 'textarea',
+        'default'           => array(
+            '* Aplican condiciones',
+        ),
+    ));
 
 }
 

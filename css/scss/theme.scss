@@ -55,6 +55,7 @@ $navbar-breakpoint: $widescreen;
 @import "_menu";
 @import "../../icons/jirocar/jirocar-icons.scss";
 @import "_reviews";
+@import "_entry";
 @import "_style";
 @import "_widgets";
 
@@ -66,6 +67,9 @@ $navbar-breakpoint: $widescreen;
         background-image: url('./assets/img/bg/desktop.jpg')
     }
 */
+.swiper-main-container{
+  overflow: hidden;
+}
 .is-light-gray{
     background: $grey-lightest;
 }

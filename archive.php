@@ -25,11 +25,17 @@
 		} ?>
 
 		<div class="columns">
-			<div class="column is-three-quarters">
+            <?php /*
+            <div class="column is-three-quarters">
+            */ ?>
+			<div class="column">
                 <div class="columns is-same-height is-multiline">
 				<?php $i = 0; ?>
 				<?php while (have_posts()) : the_post(); ?>
+                    <?php /*
                     <div class="column is-6">
+                    */ ?>
+                    <div class="column is-4">
 					<?php get_template_part('parts/post','loop') ?>
 					<?php /*
 					<div <?php post_class() ?>>
@@ -52,9 +58,11 @@
 				<?php include('inc/notfound.php') ?>
 			<?php endif; ?>
 		</div>
+        <?php /*
 		<div class="column is-one-quarter sticky-container">
 			<?php get_sidebar(); ?>
 		</div>
+        */ ?>
 	</div>
 </div>
 <?php get_footer(); ?>

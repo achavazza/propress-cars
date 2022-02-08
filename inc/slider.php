@@ -82,8 +82,18 @@ if( $slider_query->have_posts() ):
 wp_enqueue_script('swiperjs-init', true);
 
 else:
-    $bg = 'background: url('.get_attachment_url_by_slug('default', 'full').')';
-    echo sprintf('<div id="main-thumbnail" style="'.$bg.'">');
+    $url = get_attachment_url_by_slug('default', 'full');
+    $height = '';
+    $bpos = '';
+    //$bg = 'background: url('.get_attachment_url_by_slug('default', 'full').')';
+    //pr(get_the_post_thumbnail($post->ID));
+    if(get_the_post_thumbnail_url($post->ID) && is_page()){
+        $url = get_the_post_thumbnail_url($post->ID, 'full');
+        $height = 'height:500px;max-width:100%;';
+        $bpos = 'background-position: center center;background-size:cover;';
+    }
+    $bg = sprintf('background: url(%s);', $url);
+    echo sprintf('<div id="main-thumbnail" style="%s %s %s">',$bg,$height,$bpos);
     echo '<div class="container">';
     //echo get_the_post_thumbnail(get_the_ID(),'large');
     echo '</div>';

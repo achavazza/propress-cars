@@ -1,18 +1,21 @@
 		<footer id="footer" class="mt-5">
+			<div class="section">
 			<div class="container">
 				<div class="columns is-multiline">
-					<div class="column is-3">
+					<div class="column is-4 is-12-mobile">
 						<?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('Footer 1')) : else : endif;?>
 					</div>
-					<div class="column is-3">
+					<div class="column is-4 is-12-mobile">
 						<?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('Footer 2')) : else : endif;?>
 					</div>
-					<div class="column is-3">
+					<div class="column is-4 is-12-mobile">
 						<?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('Footer 3')) : else : endif;?>
 					</div>
 				</div>
 			</div>
+			</div>
             <div id="copyright">
+                <div class="section">
                 <div class="container">
                 <div class="columns is-multiline is-vcentered">
                     <div class="column is-9">
@@ -25,6 +28,7 @@
                         </a>
                     </div>
                     </div>
+                </div>
                 </div>
                 </div>
             </div>

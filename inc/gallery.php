@@ -1,8 +1,12 @@
 <div id="gallery">
 <?php
 $block = '';
+$style  = '';
+$postThumbnailID = get_post_thumbnail_id();
 $gallery_images = get_post_meta( get_the_ID(), '_prop_images', 1);
-$thumb_limit = get_option('tnb_setup_options')['tnb_setup_options_gallery'];
+$thumb_limit = get_option('tnb_config_options')['tnb_config_options_gallery'];
+
+
 $limit = 5; //5+1
 if($thumb_limit){
     $limit = intval($thumb_limit);
@@ -12,13 +16,17 @@ if ( ! empty( $gallery_images ) ) :
     ?>
     <span class="img-list img-list-left img-list-big">
         <?php
+        $i = 0;
         foreach ( $gallery_images as $gallery_image ) :
             $image = wp_get_attachment_image_src( attachment_url_to_postid($gallery_image), 'large');
             $thumb = wp_get_attachment_image(attachment_url_to_postid( $gallery_image), 'thumbnail' );
             //$thumb = wp_get_attachment_image( $gallery_image, 'thumbnail' );
             //$img   = wp_get_attachment_image_src( $gallery_image[0], 'thumbnail');
             //$thumb = '<img src="'.$img[0].'" width="'.$img[1].'" height="'.$img[2].'" />';
-            if($postThumbnailID == $gallery_image){
+            //pr(wp_get_attachment_image(attachment_url_to_postid( $gallery_image), 'thumbnail' ));
+            //pr($postThumbnailID);
+            //pr($gallery_image);
+            if(!empty($postThumbnailID) && ($postThumbnailID == $gallery_image)){
                 continue;
             }
             if($i > $limit){
@@ -32,6 +40,7 @@ if ( ! empty( $gallery_images ) ) :
 
                 $style  = 'style="display:none"';
             }
+
             ?>
             <figure <?php echo $style ?>>
                 <a class="thumb" data-index="<?php echo $i ?>" href="<?php echo $image[0] ?>" itemprop="contentUrl" data-size="<?php echo $image[1].'x'.$image[2] ?>">
@@ -39,8 +48,8 @@ if ( ! empty( $gallery_images ) ) :
                 </a>
             </figure>
             <?php $i++; ?>
+            <?php echo $block; ?>
         <?php endforeach; ?>
-        <?php echo $block; ?>
     </span>
 <?php endif; ?>
 </div>

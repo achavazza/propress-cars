@@ -246,7 +246,7 @@ $notification_form = get_option('tnb_extra_options')['tnb_options_notification_f
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container mb-6">
 	<div class="columns">
 		<div class="column is-12 is-9-desktop">
 		<div class="section-mobile">

@@ -58,14 +58,27 @@
 		<div id="page-wrap">
             <div id="topbar" class="is-hidden-mobile">
             <div class="container">
-                <?php $address = $options['tnb_options_address'] ?>
-                <?php $email   = $options['tnb_options_email'] ?>
-                <?php $phones  = $options['tnb_options_phone'] ?>
+                <?php
+                $address   = isset($options['tnb_options_address']) ? $options['tnb_options_address'] : '';
+                $email     = isset($options['tnb_options_email']) ? $options['tnb_options_email'] : '';
+                $phones    = isset($options['tnb_options_phone']) ? $options['tnb_options_phone'] : '';
+                $facebook  = isset($options['tnb_options_facebook']) ? $options['tnb_options_facebook'] : '';
+        		$twitter   = isset($options['tnb_options_twitter']) ? $options['tnb_options_twitter'] : '';
+        		$instagram = isset($options['tnb_options_instagram']) ? $options['tnb_options_instagram'] : '';
+        		$whatsapp  = isset($options['tnb_options_whatsapp']) ? $options['tnb_options_whatsapp'] : '';
+                ?>
                 <div class="level is-mobile">
                     <div class="level-left">
                         <?= $address ? sprintf('<span class="level-item"><i class="icon-marker"></i> %s</span>', $address) : ''; ?>
                         <?= $email   ? sprintf('<span class="level-item"><i class="icon-mail"></i> %s</span>', $email) : ''; ?>
                         <?= $phones  ? sprintf('<span class="level-item"><i class="icon-phone"></i> %s</span>', $phones[0]) : ''; ?>
+                    </div>
+                    <div class="level-right">
+                        <?= ($whatsapp || $twitter || $facebook || $instagram) ? '<span class="level-item">Seguinos: </span>' : '' ?>
+                        <?= $whatsapp ? sprintf('<a href="%s" title="Contactanos via WhatsApp" class="level-item"><i class="fab fa-whatsapp"></i></a>', $whatsapp) : ''; ?>
+                        <?= $twitter ? sprintf('<a href="%s" title="Visítanos en Twitter" class="level-item"><i class="fab fa-twitter"></i></a>', $twitter) : ''; ?>
+                        <?= $facebook ? sprintf('<a href="%s" title="Visítanos en Facebook" class="level-item"><i class="fab fa-facebook-f"></i></a>', $facebook) : ''; ?>
+                        <?= $instagram ? sprintf('<a href="%s" title="Visítanos en Instagram" class="level-item"><i class="fab fa-instagram"></i></a>', $instagram) : ''; ?>
                     </div>
                 </div>
             </div>

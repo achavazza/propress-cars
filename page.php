@@ -1,12 +1,17 @@
 <?php get_header(); ?>
 <?php include('inc/slider.php'); ?>
+<div class="section">
 <div class="container">
-    <?php the_breadcrumb(); ?>
+    <?php //the_breadcrumb(); ?>
 	<div class="columns">
 		<div class="column is-three-quarters">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-				<div class="post" id="post-<?php the_ID(); ?>">
-					<h2 class="title is-3"><?php the_title(); ?></h2>
+				<div class="post mb-6" id="post-<?php the_ID(); ?>">
+                    <div class="block-title mb-4">
+                        <h3 class="title is-4">
+                            <?php the_title(); ?>
+                        </h3>
+                    </div>
 					<?php //include (TEMPLATEPATH . '/inc/meta.php' ); ?>
 					<div class="entry">
 						<?php the_content(); ?>
@@ -22,6 +27,7 @@
 			<?php get_sidebar(); ?>
 		</div>
 	</div>
+</div>
 </div>
 <?php
 include('inc/photoswipe-gallery.php');

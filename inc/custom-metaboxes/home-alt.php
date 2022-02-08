@@ -62,7 +62,7 @@ function cmb2_steps() {
         'id'            => 'steps_metabox',
         'title'         => __( 'Que estas buscando', 'cmb2' ),
         'object_types'  => array( 'post','page' ), // post type
-        'show_on'       => array( 'key' => 'page-template', 'value' => 'tpl-home-alt.php' ),
+        'show_on'       => array( 'key' => 'page-template', 'value' => array('tpl-home-alt.php','tpl-page-financiacion.php') ),
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -125,7 +125,7 @@ function cmb2_reviews() {
         'id'            => 'reviews_metabox',
         'title'         => __( 'Que estas buscando', 'cmb2' ),
         'object_types'  => array( 'post','page' ), // post type
-        'show_on'       => array( 'key' => 'page-template', 'value' => 'tpl-home-alt.php' ),
+        'show_on'       => array( 'key' => 'page-template', 'value' => array('tpl-home-alt.php', 'tpl-page-nosotros.php') ),
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left

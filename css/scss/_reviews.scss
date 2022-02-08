@@ -1,7 +1,10 @@
 //main: theme.scss
 .review-content{
-    background: #fff;
+    //background: #fff;
     padding: 4em 2em;
+}
+
+.review-content.home-alt{
     border-radius:3px;
     margin-top: -4em;
 }
@@ -12,7 +15,7 @@
 
 .review{
     .content{
-        background: #fafafa;
+        background: rgba(0,0,0,.05);
         padding: 40px;
     }
     .user{

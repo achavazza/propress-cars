@@ -10,11 +10,19 @@
     @extend .field;
 }
 input[type="text"].wpcf7-form-control,
+input[type="tel"].wpcf7-form-control,
+input[type="date"].wpcf7-form-control,
+input[type="time"].wpcf7-form-control,
+input[type="email"].wpcf7-form-control,
+input[type="number"].wpcf7-form-control,
+input[type="password"].wpcf7-form-control,
+input[type="url"].wpcf7-form-control,
 input[type="email"].wpcf7-form-control{
     @extend .input;
 }
-select.wpcf7-form-control{
+select.wpcf7-select{
     @extend .select;
+    @extend .input;
 }
 .wpcf7-textarea{
     @extend .textarea;

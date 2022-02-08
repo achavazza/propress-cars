@@ -53,7 +53,7 @@ $args = array(
 $related = new WP_Query( $args );
 //pr($related);
 if ( $related->have_posts()) {
-	echo '<h3 class="title is-4 is-normal">Los compradores tambien vieron</h3>';
+	echo '<h3 class="title is-4 is-normal is-secondary">Los compradores también vieron</h3>';
 	echo '<div class="columns is-same-height">';
 	while ($related->have_posts()): $related->the_post();
 		echo '<div class="column is-4">';

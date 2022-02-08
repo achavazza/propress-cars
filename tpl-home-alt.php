@@ -31,7 +31,7 @@ if($img){
 ?>
 
 <?php include('inc/slider.php'); ?>
-<div class="container">
+<div class="container search-overlap">
     <div class="search-panel">
 		<?php echo get_search_form(); ?>
     </div>
@@ -110,7 +110,7 @@ if ( $loop->have_posts() ) : ?>
         <?php if($reviews): ?>
         <div class="columns is-centered is-multiline">
             <div class="column">
-            <div class="review-content">
+            <div class="review-content home-alt has-background-white">
                 <?php
                 if($reviews_title) {
                     echo sprintf('<h3 class="title title-alt is-secondary has-text-centered is-4 py-4">%s</h3>', $reviews_title);

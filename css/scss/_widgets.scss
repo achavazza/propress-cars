@@ -76,3 +76,9 @@ $stepSize: 150px;
 
     }
 }
+
+.stacked-widgets{
+    .widget{
+        flex-basis: 100%;
+    }
+}

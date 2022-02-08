@@ -1,0 +1,95 @@
+//main: theme.scss
+
+.entry{
+    ol li,
+    ul li{
+        margin-left: 1em;
+        margin-bottom: 1em;
+    }
+    ul li       { list-style: disc        outside none; }
+    ul li li    { list-style: square      outside none; }
+    ul li li li { list-style: circle      outside none; }
+    ol li       { list-style: decimal     outside none; }
+    ol li li    { list-style: lower-alpha outside none; }
+    ol li li li { list-style: lower-roman outside none; }
+
+    dl{
+        dt{
+            font-weight: bold;
+            margin-bottom: 1em;
+            padding-top: 1em;
+        }
+        dd{
+            margin-bottom: 1em;
+            margin-left: 1em;
+        }
+        margin-bottom: 1em;
+    }
+
+    blockquote{
+        margin: 0;
+        padding: 2em;
+        background: #f0f0f0;
+        font-style: italic;
+        font-size: 1.5em;
+    }
+
+    p{
+        margin-bottom: 1em;
+    }
+
+    .alignright{
+        float:right;
+        margin: 0 0 1em 1em;
+    }
+    .alignleft{
+        float:left;
+        margin: 1em 1em 0 0;
+    }
+    .alignnone,
+    .aligncenter{
+        float:none;
+        //margin: 0 auto;
+        text-align: center;
+        margin: 0 auto 1em auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
+        @extend .title;
+    }
+    h1{ @extend .is-2; }
+    h2{ @extend .is-3; }
+    h3{ @extend .is-4; }
+    h4{ @extend .is-5; }
+    h5{ @extend .is-5; }
+    h6{ @extend .is-6; }
+
+    h1,
+    h2,
+    h3{
+        //@extend .is-primary;
+        //color: $primary;
+        @extend .has-text-primary;
+        @extend .block-title;
+        color: $secondary !important;
+    }
+    h4{
+        color: $primary !important;
+        //@extend .has-text-secondary;
+    }
+}
+
+.dl-list{
+    dt{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    dd{
+        margin-bottom: .5em;
+    }
+}

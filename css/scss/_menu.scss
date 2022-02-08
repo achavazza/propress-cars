@@ -51,6 +51,11 @@
     //padding: 1rem 1.5rem;
 }
 
+@media (max-width: ($desktop - 1px)){
+    .navbar-menu:before{
+        display: none;
+    }
+}
 @media (min-width: $desktop){
     .navbar-menu:before{
         content: "";
@@ -73,6 +78,9 @@
         right: -20vw;
         top: 0;
         bottom: 0;
+    }
+    .navbar-menu.is-active:before{
+        display: none;
     }
 }
 

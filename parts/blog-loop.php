@@ -45,12 +45,18 @@ var_dump($prop_sale);
         </figure>
     </div>
     <div class="card-content">
+        <?php /*
         <a href="<?php the_permalink(); ?>">
             <span class="title is-4">
              <?php the_title(); ?>
             </span>
             <?php the_excerpt(); ?>
         </a>
+        */ ?>
+        <span class="title is-4">
+         <?php the_title(); ?>
+        </span>
+        <?php the_excerpt(); ?>
     </div>
     <?php /*
      <div class="card-footer card-footer-padding is-justify-content-end">

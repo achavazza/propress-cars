@@ -230,7 +230,7 @@ $contact_form      = get_option('tnb_extra_options')['tnb_options_contact_form']
 	</div>
 </div>
 <div class="section">
-    <div class="container">
+    <div class="container mb-6">
         <?php include (TEMPLATEPATH . '/inc/related.php' ); ?>
     </div>
 </div>
